@@ -26,7 +26,7 @@ The playbook steps:
 
 8.	A table is created with an entry for each module that has answered (and contributed) to the enrichment process and the information (json) has replied back.
 
-9.	Determine Domains with Clean Verdict or Judgement. There may be the case that some Domain Names contacted by malware are not malicious. Therefore, a list of potential clean domains in the IOCs is created, with the objective to omit investigation with those observables.
+9.	Determine Domains with Clean Verdict. There may be the case that some Domain Names contacted by malware are not malicious. Therefore, those domains tha are Clean are omitted in the investigation with the objective to avoid detecting false targets in customer environment.
 
 10.	Find Targets - For each module that replied back, and for each target found and only for the first sighting, post on webex teams and/or send an email.
 

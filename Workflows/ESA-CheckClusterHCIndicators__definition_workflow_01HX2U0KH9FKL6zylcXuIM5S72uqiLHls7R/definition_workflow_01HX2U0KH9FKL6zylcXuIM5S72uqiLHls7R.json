@@ -1,0 +1,1678 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R",
+    "name": "Check ESAs HC Indicators, send email\u0026webex teams message",
+    "title": "Check ESAs HC Indicators, send email\u0026webex teams message",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "token_id",
+          "type": "datatype.secure_string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IED9NYF6UMG5byQY1UxkNAcR3X0oOBut7",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 1,
+          "scope": "local",
+          "name": "ELSE",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01ICJVJVD5AW617Pwrn6XsPrehn2SpHRvq7",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "total_number_esas_to_be_polled",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IE5GTY8NJ2T1VBkI6LcTiw4rEajreNbvK",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "num_msg_email_message_string",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01ICLT0RLTZWS1hz5noadfHqIUNSPL4Viuk",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "/xml/status",
+          "scope": "input",
+          "name": "api_path",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IBLEGQIC4CG16ML4cSXUWVMklGkGZYiAJ",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 300,
+          "scope": "input",
+          "name": "sleep_time_pool_cycle",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01ID774PIMTL45G0B7lbFTuTwTfA0ehZjMr",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "iteration_number",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01ID78T84KLUN09F360mP9VWoMZ4XgfXAhV",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 1000,
+          "scope": "input",
+          "name": "msgs_in_work_queue_threshold",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IBOY0MK7F680Y7dsJloACPgXJMfSf27LB",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "pfiano@cisco.com,jmariame@cisco.com",
+          "scope": "input",
+          "name": "email_list",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01ICP1XLL5FDH4tRGgXOPyAr5Q66ghu0URw",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "xml_string",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01HX6TF58QEGY0Iyu8PMOlqkPITO4SeDAKy",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "room_id",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IED5B572WZ96QIrEHV6wU3CY7isaKUAEV",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "cpu_email_message_string",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01ICK1FKI2IPA4W8MWmkNv8vqrVL2WJSMHN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 3,
+          "scope": "input",
+          "name": "number_of_loops",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01ID77T8BWHWS1jyikULXyMYO5jbdAbtaM9",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "syseng",
+          "scope": "local",
+          "name": "username",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IBLFNVENXYL6Rp2R9A9QT2Xb44TbxNRNb",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 85,
+          "scope": "input",
+          "name": "total_utilization_threshold",
+          "type": "datatype.integer",
+          "description": "%",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IBOU3P1M9C50gDEzNE08Cw9GJaPyJDPZh",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "current_msgs_in_work_queue",
+          "type": "datatype.integer",
+          "description": "number of messages in the work queue currently",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IBOUZ8YUXRP0MEpwAAibmeP9wm5MKJsHG",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "current_total_utilization",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IBOZCA9GWWY6JLXxlpEAMtvszxTFS8MTf",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 85,
+          "scope": "input",
+          "name": "cpu_utilization_threshold",
+          "type": "datatype.integer",
+          "description": "%",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IBOTGJ59SF15WCihZ3e30n85B14NApWNE",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "total_util_email_message_string",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01ICLSS50ZTNV6hvbzBiNc9R95jQ4YwTwaX",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "keep_alive_message",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IEBV1EM4RF41JhgXnuxEsk1miSJMNqA5w",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "output",
+          "name": "current_cpu_utilization",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IBOZ41FWY914vvnSSaG9oQmsAgADMuKnL",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "*****",
+          "scope": "local",
+          "name": "secure_password",
+          "type": "datatype.secure_string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01ID9U1IA043B35HGgHM3WcTAEdXyxKtzL0",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "\n\n",
+      "display_name": "Check ESAs HC Indicators, send email\u0026webex teams message",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "execute_on_target_group": false,
+        "execute_on_workflow_target": false,
+        "no_target": true,
+        "specify_on_workflow_start": false
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01IBL5ULTSDOS4kZyhgudGRjC2pmeMs2A2g",
+        "name": "CREATE ESA HOSTS LIST",
+        "title": "CREATE ESA HOSTS LIST",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "CREATE ESA HOSTS LIST",
+          "input": {
+            "variable_workflow_01IBK51I1F5XS780i0ikCdfoUXn3iKnII8m": "dh529-esa",
+            "variable_workflow_01IBK62UJECEK09tNyJwOHrIDjAqur5mf5I": ".c3s2.iphmx.com",
+            "variable_workflow_01IBK8OINRYQB7l7qgiNOyiplfDLgvL6G80": 20,
+            "variable_workflow_01IE4DPW31LJ65v4MKGGvSSWw4Ers846NHi": 18
+          },
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "no_target": true
+          },
+          "workflow_id": "definition_workflow_01IBJZTIHTFIL4qc0Fvxj9fwoSe2Fthr8VB"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01IBLBWXHHNTN72Ppv6xZacRiSxmLPATIJo",
+        "name": "For Each",
+        "title": "For Each ESA in the list",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "For Each ESA in the list",
+          "skip_execution": false,
+          "source_array": "$activity.definition_activity_01IBL5ULTSDOS4kZyhgudGRjC2pmeMs2A2g.output.variable_workflow_01IBKGTB4LQWA7bBmR4HMhK4k3fLrzaIehu$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01IKW38ZH9UFO7PRws0dOf9WCjO4dKsUbw3",
+            "name": "Group",
+            "title": "Clear Variables",
+            "type": "logic.group",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Clear Variables",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01ID790KZ7ZHE0H7to2b1yFfJyd5mOaCeVO",
+                "name": "Set Variables",
+                "title": "Set Iteration number to zero",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Iteration number to zero",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01ID78T84KLUN09F360mP9VWoMZ4XgfXAhV$",
+                      "variable_value_new": 1
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01ID7H1X5WVAW7MsrZkO2wlTuuKvO4evtBP",
+                "name": "Set Variables",
+                "title": "Clear all local Health Check Indicator variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Clear all local Health Check Indicator variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZ41FWY914vvnSSaG9oQmsAgADMuKnL$",
+                      "variable_value_new": 0
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOUZ8YUXRP0MEpwAAibmeP9wm5MKJsHG$",
+                      "variable_value_new": 0
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZCA9GWWY6JLXxlpEAMtvszxTFS8MTf$",
+                      "variable_value_new": 0
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01ID764XM1VRY1OUNzEiibtQdyEiFoYoIZt",
+            "name": "While Loop",
+            "title": "Do the API requests for each ESA",
+            "type": "logic.while",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Do the API requests for each ESA",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01ID7652JTJAO7RW179bTNVGdU5Fs5ta4A3",
+                "name": "Condition Branch",
+                "title": "Repeat the API request(s) for number_of_loops times",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01ID78T84KLUN09F360mP9VWoMZ4XgfXAhV$",
+                    "operator": "lte",
+                    "right_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01ID77T8BWHWS1jyikULXyMYO5jbdAbtaM9$"
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Repeat the API request(s) for number_of_loops times",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01IBL66EMVF6Z07Dvpap0FzteD67bo2zw7u",
+                    "name": "Execute Python Script",
+                    "title": "Launch API request",
+                    "type": "python3.script",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Launch API request",
+                      "script": "import sys, json, requests\n\nfull_uri = 'https://' + sys.argv[1] + \":443\" + sys.argv[2]\nr = requests.get(full_uri, auth=(sys.argv[3], sys.argv[4]), verify=False, timeout=30)\nxml_string = r.text",
+                      "script_arguments": [
+                        "$activity.definition_activity_01IBLBWXHHNTN72Ppv6xZacRiSxmLPATIJo.input.source_array[@].esa_url$",
+                        "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01IBLEGQIC4CG16ML4cSXUWVMklGkGZYiAJ$",
+                        "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01IBLFNVENXYL6Rp2R9A9QT2Xb44TbxNRNb$",
+                        "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01ID9U1IA043B35HGgHM3WcTAEdXyxKtzL0$"
+                      ],
+                      "script_queries": [
+                        {
+                          "script_query": "xml_string",
+                          "script_query_name": "xml_string",
+                          "script_query_type": "secure_string"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01ICJYJQO9FYN0sG8iE08YYozaVqXYwK2wP",
+                    "name": "Group",
+                    "title": "GET XML, CLEAN IT, CONVERT TO JSON",
+                    "type": "logic.group",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "GET XML, CLEAN IT, CONVERT TO JSON",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01HX6TIOJCORG6OWZUmyeHkrseK4dIjSCNN",
+                        "name": "Set Variables",
+                        "title": "Set Variables xml_string",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Variables xml_string",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01HX6TF58QEGY0Iyu8PMOlqkPITO4SeDAKy$",
+                              "variable_value_new": "$activity.definition_activity_01IBL66EMVF6Z07Dvpap0FzteD67bo2zw7u.output.script_queries.xml_string$"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01HX9W6MBNKGF2nkmhvo1fVeNYCOD45ttV3",
+                        "name": "Match Regex",
+                        "title": "Find XML line (header to be deleted)",
+                        "type": "core.matchregex",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Find XML line (header to be deleted)",
+                          "input_regex": ".*\\?\u003e",
+                          "input_string": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01HX6TF58QEGY0Iyu8PMOlqkPITO4SeDAKy$",
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01HX9XSNZJILX5mgdHhUe3rZeZQSqfniY2u",
+                        "name": "Replace String",
+                        "title": "Remove header in (XML)",
+                        "type": "core.replacestring",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Remove header in (XML)",
+                          "input_string": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01HX6TF58QEGY0Iyu8PMOlqkPITO4SeDAKy$",
+                          "replace_list": [
+                            {
+                              "replaced_string": "$activity.definition_activity_01HX9W6MBNKGF2nkmhvo1fVeNYCOD45ttV3.output.matching_strings[0]$",
+                              "replacement_string": ""
+                            },
+                            {
+                              "replaced_string": "\u003c/xml\u003e",
+                              "replacement_string": ""
+                            }
+                          ],
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01HXA4Y6BNXB71f4lKmDiXRAoDRJbMrz40g",
+                        "name": "Convert Xml to Json",
+                        "title": "Convert Xml to Json",
+                        "type": "core.xml2json",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Convert Xml to Json",
+                          "input_xml": "$activity.definition_activity_01HX9XSNZJILX5mgdHhUe3rZeZQSqfniY2u.output.result_string$",
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  },
+                  {
+                    "unique_name": "definition_activity_01ICG9XFM5ED25Wt1ifDX0vwx1yrDXp07a2",
+                    "name": "Execute Python Script",
+                    "title": "Extract ESA Health Check Indicators",
+                    "type": "python3.script",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Extract ESA Health Check Indicators",
+                      "script": "import sys, json\n\njson_hc = $activity.definition_activity_01HXA4Y6BNXB71f4lKmDiXRAoDRJbMrz40g.output.output_json$\n\ndef get_cpu_utilization():\n    json_hc_gauges = json_hc['status']['gauges']['gauge']\n    lenght = len(json_hc_gauges)\n\n    for x in range(lenght):\n        item = json_hc_gauges[x]        \n        if item['-name'] == 'cpu_utilization':\n            value = item['-current']\n            return(value)\n        \ndef get_total_utilization():\n    lenght = len(json_hc['status']['gauges']['gauge'])\n\n    for x in range(lenght):\n        item = json_hc['status']['gauges']['gauge'][x]        \n        if item['-name'] == 'total_utilization':\n            value = item['-current']\n            return(value)\n\ndef get_msgs_in_work_queue():\n    lenght = len(json_hc['status']['gauges']['gauge'])\n\n    for x in range(lenght):\n        item = json_hc['status']['gauges']['gauge'][x]        \n        if item['-name'] == 'msgs_in_work_queue':\n            value = item['-current']\n            return(value)\n\n#cpu = get_cpu_utilization()\nint_cpu = int(get_cpu_utilization())\nint_msgs =int(get_msgs_in_work_queue())\nint_total = int(get_total_utilization())",
+                      "script_arguments": [
+                        "$activity.definition_activity_01HXA4Y6BNXB71f4lKmDiXRAoDRJbMrz40g.output.output_json$"
+                      ],
+                      "script_queries": [
+                        {
+                          "script_query": "int_cpu",
+                          "script_query_name": "int_cpu",
+                          "script_query_type": "integer"
+                        },
+                        {
+                          "script_query": "int_msgs",
+                          "script_query_name": "int_msgs",
+                          "script_query_type": "integer"
+                        },
+                        {
+                          "script_query": "int_total",
+                          "script_query_name": "int_total",
+                          "script_query_type": "integer"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01ICJLOVZMYRZ1cJhG5UaI4srrwQd95HQHD",
+                    "name": "Set Variables",
+                    "title": "Set Health Check Variables (CPU, MSGs, Total)",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Set Health Check Variables (CPU, MSGs, Total)",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZ41FWY914vvnSSaG9oQmsAgADMuKnL$",
+                          "variable_value_new": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZ41FWY914vvnSSaG9oQmsAgADMuKnL$+$activity.definition_activity_01ICG9XFM5ED25Wt1ifDX0vwx1yrDXp07a2.output.script_queries.int_cpu$"
+                        },
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZCA9GWWY6JLXxlpEAMtvszxTFS8MTf$",
+                          "variable_value_new": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZCA9GWWY6JLXxlpEAMtvszxTFS8MTf$+$activity.definition_activity_01ICG9XFM5ED25Wt1ifDX0vwx1yrDXp07a2.output.script_queries.int_total$"
+                        },
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOUZ8YUXRP0MEpwAAibmeP9wm5MKJsHG$",
+                          "variable_value_new": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOUZ8YUXRP0MEpwAAibmeP9wm5MKJsHG$+$activity.definition_activity_01ICG9XFM5ED25Wt1ifDX0vwx1yrDXp07a2.output.script_queries.int_msgs$"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01ID7B8ZCEPXW72INZiqP0c6OZ41g0EuxTz",
+                    "name": "Sleep",
+                    "title": "Sleep before next API request",
+                    "type": "core.sleep",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Sleep before next API request",
+                      "skip_execution": false,
+                      "sleep_interval": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01ID774PIMTL45G0B7lbFTuTwTfA0ehZjMr$"
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01ID7BWLKJGOE6Vcxil8YoKyEcs1Fd73UMQ",
+                    "name": "Set Variables",
+                    "title": "Increment Iteration number",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increment Iteration number",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01ID78T84KLUN09F360mP9VWoMZ4XgfXAhV$",
+                          "variable_value_new": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01ID78T84KLUN09F360mP9VWoMZ4XgfXAhV$+1"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01IHOTETZZNCK6bzfbFYIczQC9vodyRDqiu",
+            "name": "Group",
+            "title": "Set (Average) HC Indicators Variables",
+            "type": "logic.group",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Set (Average) HC Indicators Variables",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01ID7ZXI6K83902YcgR2IkTPjC1sz7BoN6z",
+                "name": "Execute Python Script",
+                "title": "Calculate Average value for the HC Indicators",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "display_name": "Calculate Average value for the HC Indicators",
+                  "script": "average_cpu_util = int($workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZ41FWY914vvnSSaG9oQmsAgADMuKnL$/$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01ID77T8BWHWS1jyikULXyMYO5jbdAbtaM9$)\naverage_total_util = int($workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZCA9GWWY6JLXxlpEAMtvszxTFS8MTf$/$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01ID77T8BWHWS1jyikULXyMYO5jbdAbtaM9$)\naverage_num_msg = int($workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOUZ8YUXRP0MEpwAAibmeP9wm5MKJsHG$/$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01ID77T8BWHWS1jyikULXyMYO5jbdAbtaM9$)",
+                  "script_queries": [
+                    {
+                      "script_query": "average_cpu_util",
+                      "script_query_name": "average_cpu_util",
+                      "script_query_type": "integer"
+                    },
+                    {
+                      "script_query": "average_total_util",
+                      "script_query_name": "average_total_util",
+                      "script_query_type": "integer"
+                    },
+                    {
+                      "script_query": "average_num_msg",
+                      "script_query_name": "average_num_msg",
+                      "script_query_type": "integer"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01ID83JBXCOCK42b93azjYsedTX4WFmLALz",
+                "name": "Set Variables",
+                "title": "Set HC Indicator Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set HC Indicator Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZ41FWY914vvnSSaG9oQmsAgADMuKnL$",
+                      "variable_value_new": "$activity.definition_activity_01ID7ZXI6K83902YcgR2IkTPjC1sz7BoN6z.output.script_queries.average_cpu_util$"
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZCA9GWWY6JLXxlpEAMtvszxTFS8MTf$",
+                      "variable_value_new": "$activity.definition_activity_01ID7ZXI6K83902YcgR2IkTPjC1sz7BoN6z.output.script_queries.average_total_util$"
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOUZ8YUXRP0MEpwAAibmeP9wm5MKJsHG$",
+                      "variable_value_new": "$activity.definition_activity_01ID7ZXI6K83902YcgR2IkTPjC1sz7BoN6z.output.script_queries.average_num_msg$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01ID743DBWGHU42nJBQEdNxsNwwcL4nHoKZ",
+                "name": "Set Variables",
+                "title": "Clear email_text messages",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Clear email_text messages",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICK1FKI2IPA4W8MWmkNv8vqrVL2WJSMHN$",
+                      "variable_value_new": ""
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICLT0RLTZWS1hz5noadfHqIUNSPL4Viuk$",
+                      "variable_value_new": ""
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICLSS50ZTNV6hvbzBiNc9R95jQ4YwTwaX$",
+                      "variable_value_new": ""
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IEBV1EM4RF41JhgXnuxEsk1miSJMNqA5w$",
+                      "variable_value_new": ""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01ICK4EDIZMNW7SLspJryxleMIRQsgFgGWu",
+            "name": "Condition Block",
+            "title": "CHECK CPU UTILIZATION",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "CHECK CPU UTILIZATION",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01ICK4EIIQRSE17KwYa5mWHVE3SWsGXeMCx",
+                "name": "Condition Branch",
+                "title": "IF CPU UTILIZATION IS ABOVE THRESHOLD",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZ41FWY914vvnSSaG9oQmsAgADMuKnL$",
+                    "operator": "gte",
+                    "right_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01IBOTGJ59SF15WCihZ3e30n85B14NApWNE$"
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "IF CPU UTILIZATION IS ABOVE THRESHOLD",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01ICK5ZB8Z20Z4p3V6D8hMzDGm3VNXtp3tF",
+                    "name": "Set Variables",
+                    "title": "Insert CPU message in the email_text",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Insert CPU message in the email_text",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICK1FKI2IPA4W8MWmkNv8vqrVL2WJSMHN$",
+                          "variable_value_new": "The current CPU Utilization is $workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZ41FWY914vvnSSaG9oQmsAgADMuKnL$%."
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01ICK4EJKAUJY5aMJF25ZdIbBZbhZ641wOj",
+                "name": "Condition Branch",
+                "title": "ELSE",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01ICJVJVD5AW617Pwrn6XsPrehn2SpHRvq7$",
+                    "operator": "eq",
+                    "right_operand": 1
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "ELSE",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01ICK98PCAAHV3GBB0Z8pBxJwwkJrNIIdvo",
+            "name": "Condition Block",
+            "title": "CHECK NUM MESSAGES",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "CHECK NUM MESSAGES",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01ICK98S7TPRO0XasNd2YKfApt89dSDahfW",
+                "name": "Condition Branch",
+                "title": "IF NUM MESSAGES IS ABOVE THRESHOLD",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOUZ8YUXRP0MEpwAAibmeP9wm5MKJsHG$",
+                    "operator": "gte",
+                    "right_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01IBOY0MK7F680Y7dsJloACPgXJMfSf27LB$"
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "IF NUM MESSAGES IS ABOVE THRESHOLD",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01ICK98T9TK4G7EVjqj1QnXS4YoyNhZUPF4",
+                    "name": "Set Variables",
+                    "title": "Insert NUM MESSAGES  in the email_text",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Insert NUM MESSAGES  in the email_text",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICLT0RLTZWS1hz5noadfHqIUNSPL4Viuk$",
+                          "variable_value_new": "The current Number of Messages in the Workqueue is $workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOUZ8YUXRP0MEpwAAibmeP9wm5MKJsHG$."
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01ICK98VNVYWK0lDvNtIiyJKxHYC3xZCmm3",
+                "name": "Condition Branch",
+                "title": "ELSE",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01ICJVJVD5AW617Pwrn6XsPrehn2SpHRvq7$",
+                    "operator": "eq",
+                    "right_operand": 1
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "ELSE",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01ICKCIBX7UNY1iIgbdF2Ulnldjck3ghLTh",
+            "name": "Condition Block",
+            "title": "CHECK TOTAL UTILIZATION",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "CHECK TOTAL UTILIZATION",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01ICKCIEQUDV13Lgn87qzFWwkN15ZUEQhCY",
+                "name": "Condition Branch",
+                "title": "IF TOTAL UTILIZATION IS ABOVE THRESHOLD",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZCA9GWWY6JLXxlpEAMtvszxTFS8MTf$",
+                    "operator": "gte",
+                    "right_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01IBOU3P1M9C50gDEzNE08Cw9GJaPyJDPZh$"
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "IF TOTAL UTILIZATION IS ABOVE THRESHOLD",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01ICKCIFRZ3537NBP04KvfHoHJXq3wY7DQg",
+                    "name": "Set Variables",
+                    "title": "Insert TOTAL UTIL message in the email_text",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Insert TOTAL UTIL message in the email_text",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICLSS50ZTNV6hvbzBiNc9R95jQ4YwTwaX$",
+                          "variable_value_new": "The current Total Utilization is $workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01IBOZCA9GWWY6JLXxlpEAMtvszxTFS8MTf$%."
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01ICKCII4W1276TOAp3x2djnUy1ZoG82JNI",
+                "name": "Condition Branch",
+                "title": "ELSE",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01ICJVJVD5AW617Pwrn6XsPrehn2SpHRvq7$",
+                    "operator": "eq",
+                    "right_operand": 1
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "ELSE",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01IEDI6QM1QF76eNEb9sshcsBpdOpLQiKNv",
+            "name": "Group",
+            "title": "Prepare for sending Webex Teams message",
+            "type": "logic.group",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Prepare for sending Webex Teams message",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01ICOP5B7WWV47O9HY2Ry9ek5INJPVxEnjo",
+                "name": "Check and return Webex Room ID",
+                "title": "Check and return Webex Room ID",
+                "type": "workflow.sub_workflow",
+                "base_type": "subworkflow",
+                "properties": {
+                  "display_name": "Check and return Webex Room ID",
+                  "input": {
+                    "variable_workflow_01ICNZ7EJGGPC4WbyB0Qb8BFZiSvcrXgCLX": "Santander CES Health Check",
+                    "variable_workflow_01K9PNFXNZYEF6ahMypw7DuKfKCFaxVsvsA": "*****"
+                  },
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "target": {
+                    "no_target": true
+                  },
+                  "workflow_id": "definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01IED67RRF3WL1s00NB3nh0ZeXKWkdR0Yp5",
+                "name": "Set Variables",
+                "title": "Set room ID and webex token variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set room ID and webex token variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01IED5B572WZ96QIrEHV6wU3CY7isaKUAEV$",
+                      "variable_value_new": "$activity.definition_activity_01ICOP5B7WWV47O9HY2Ry9ek5INJPVxEnjo.output.variable_workflow_01ICOEP7H99UE4tnnrkfr5mnCI0Yd4iSMKD$"
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01IED9NYF6UMG5byQY1UxkNAcR3X0oOBut7$",
+                      "variable_value_new": "$activity.definition_activity_01ICOP5B7WWV47O9HY2Ry9ek5INJPVxEnjo.output.variable_workflow_01ICNIC6WM02T1OP0leuIhSh4p3gA4o1R97$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01ICKF65RS71Y4MdVIRPuZiWg7myoWVOvXo",
+            "name": "Condition Block",
+            "title": "CHECK IF MESSAGE TEXT IS EMPTY, IF NOT SEND EMAIL AND WEBEX",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "CHECK IF MESSAGE TEXT IS EMPTY, IF NOT SEND EMAIL AND WEBEX",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01ICKF68ZVW892bqkMZZUjamaBXHsvXn94z",
+                "name": "Condition Branch",
+                "title": "CHECK IF EMAIL TEXT IS EMPTY",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": {
+                      "left_operand": {
+                        "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICK1FKI2IPA4W8MWmkNv8vqrVL2WJSMHN$",
+                        "operator": "eq",
+                        "right_operand": ""
+                      },
+                      "operator": "and",
+                      "right_operand": {
+                        "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICLT0RLTZWS1hz5noadfHqIUNSPL4Viuk$",
+                        "operator": "eq",
+                        "right_operand": ""
+                      }
+                    },
+                    "operator": "and",
+                    "right_operand": {
+                      "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICLSS50ZTNV6hvbzBiNc9R95jQ4YwTwaX$",
+                      "operator": "eq",
+                      "right_operand": ""
+                    }
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "CHECK IF EMAIL TEXT IS EMPTY",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01ICKGU1YIZU90iFd3INzfWROEHRIOgCwJR",
+                    "name": "Continue",
+                    "title": "No message to be to sent, continue to the next ESA",
+                    "type": "logic.continue",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "No message to be to sent, continue to the next ESA",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01ICKF69VZXTP7GeVtbfQawXdmgC6piXheu",
+                "name": "Condition Branch",
+                "title": "ELSE",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01ICJVJVD5AW617Pwrn6XsPrehn2SpHRvq7$",
+                    "operator": "eq",
+                    "right_operand": 1
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "ELSE",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01ICKW4F3S7UG3ZLuZRaVqr0CuLKWdPpkQh",
+                    "name": "Send Email",
+                    "title": "Send Email warning about threshold(s) that have been exceeded",
+                    "type": "email.smtp_send_email",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "body": "The $activity.definition_activity_01IBLBWXHHNTN72Ppv6xZacRiSxmLPATIJo.input.source_array[@].esa_number$ needs attention, the following threshold(s) below has/have been exceeded.\n\n$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICK1FKI2IPA4W8MWmkNv8vqrVL2WJSMHN$\n$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICLT0RLTZWS1hz5noadfHqIUNSPL4Viuk$\n$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICLSS50ZTNV6hvbzBiNc9R95jQ4YwTwaX$\n\nThis is an automated message sent by a workflow periodically running on SecureX Orchestrator\n\nPlease note this is a workflow in testing phase.",
+                      "continue_if_one_address_valid": false,
+                      "continue_on_failure": false,
+                      "display_name": "Send Email warning about threshold(s) that have been exceeded",
+                      "from": "jmariame@email-sec.com",
+                      "runtime_user": {
+                        "override_target_runtime_user": false,
+                        "target_default": true
+                      },
+                      "skip_execution": false,
+                      "subject": "$activity.definition_activity_01IBLBWXHHNTN72Ppv6xZacRiSxmLPATIJo.input.source_array[@].esa_number$ Health Check Indicator(s) above threshold(s)",
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_01H3O3FKRHSF67CjVqJrhwtkeiqdHNFFYzW"
+                      },
+                      "to": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01ICP1XLL5FDH4tRGgXOPyAr5Q66ghu0URw$"
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01ICOQ72QZV0H7mlcSvissvDOownmuYulr9",
+                    "name": "Webex Teams - Post Message to Room",
+                    "title": "Webex Teams - Post Message to Room",
+                    "type": "workflow.atomic_workflow",
+                    "base_type": "subworkflow",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Webex Teams - Post Message to Room",
+                      "input": {
+                        "variable_workflow_01FGYY44G3MZ55amJu9YqgUeKS8GT49bZx3": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01IED9NYF6UMG5byQY1UxkNAcR3X0oOBut7$",
+                        "variable_workflow_01FGYY44G3TK951Crpnd8g2izonyM4bFtpW": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01IED5B572WZ96QIrEHV6wU3CY7isaKUAEV$",
+                        "variable_workflow_01FGYY44G3UPV3heGGc3vXCV47YL5WoI2X6": "ESA on CES, health check indicators exceeded threshold: $workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICK1FKI2IPA4W8MWmkNv8vqrVL2WJSMHN$",
+                        "variable_workflow_01FGYZ9BV4QTP19CuMwcW8QywvCP9ymx2BZ": "**$activity.definition_activity_01IBLBWXHHNTN72Ppv6xZacRiSxmLPATIJo.input.source_array[@].esa_number$ on CES, health check indicators exceeded threshold:** \u003cp\u003e    $workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICK1FKI2IPA4W8MWmkNv8vqrVL2WJSMHN$ \u003cbr\u003e    $workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICLT0RLTZWS1hz5noadfHqIUNSPL4Viuk$\u003cbr\u003e    $workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.output.variable_workflow_01ICLSS50ZTNV6hvbzBiNc9R95jQ4YwTwaX$\u003c/p\u003e"
+                      },
+                      "runtime_user": {
+                        "target_default": true
+                      },
+                      "skip_execution": false,
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_01GV5803R76SY2D8ITgcJHGWk0YvlvBp9tq",
+                        "target_type": "web-service.endpoint"
+                      },
+                      "workflow_id": "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf"
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01IEBWHHFJHRQ2af5XUQs9lVni2X4JiaN27",
+        "name": "Group",
+        "title": "Send keep alive message (email+webex teams) - only for testing",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "description": "This is for testing reasons",
+          "display_name": "Send keep alive message (email+webex teams) - only for testing",
+          "skip_execution": true
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01IEBXBWMRZIT2AR19z3d38ZiDUwfzwmxKS",
+            "name": "Send Email",
+            "title": "Send keep alive Email",
+            "type": "email.smtp_send_email",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "body": "Workflow cycle completion notification: this is a message to inform you that the HC Indicators have been retrieved and checked against the given thresholds from ESA$activity.definition_activity_01IBL5ULTSDOS4kZyhgudGRjC2pmeMs2A2g.output.variable_workflow_01IEC6YT047J37Yw6sDFvHGYixPjxDxDH3f$ to ESA$activity.definition_activity_01IBL5ULTSDOS4kZyhgudGRjC2pmeMs2A2g.output.variable_workflow_01IEC99KRWPCF5RTT0Bg3vnshVn1Q9Ttge2$. If any limit is exceeded, a specific email is sent with detailed information. ",
+              "continue_if_one_address_valid": false,
+              "continue_on_failure": false,
+              "display_name": "Send keep alive Email",
+              "from": "jmariame@email-sec.com",
+              "runtime_user": {
+                "override_target_runtime_user": false,
+                "target_default": true
+              },
+              "skip_execution": false,
+              "subject": "CES HC WORKFLOW INFORMATION MESSAGE",
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01H3O3FKRHSF67CjVqJrhwtkeiqdHNFFYzW"
+              },
+              "to": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.input.variable_workflow_01ICP1XLL5FDH4tRGgXOPyAr5Q66ghu0URw$"
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01IED3E4GLUTS74tOD7QfPeSD84YJJUYpex",
+            "name": "Webex Teams - Post Message to Room",
+            "title": "Webex Teams - Post Message to Room",
+            "type": "workflow.atomic_workflow",
+            "base_type": "subworkflow",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Webex Teams - Post Message to Room",
+              "input": {
+                "variable_workflow_01FGYY44G3MZ55amJu9YqgUeKS8GT49bZx3": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01IED9NYF6UMG5byQY1UxkNAcR3X0oOBut7$",
+                "variable_workflow_01FGYY44G3TK951Crpnd8g2izonyM4bFtpW": "$workflow.definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R.local.variable_workflow_01IED5B572WZ96QIrEHV6wU3CY7isaKUAEV$",
+                "variable_workflow_01FGYY44G3UPV3heGGc3vXCV47YL5WoI2X6": "CES HC WORKFLOW INFORMATION MESSAGE. Workflow cycle completion notification: this is a message to inform you that the HC Indicators from ESA$activity.definition_activity_01IBL5ULTSDOS4kZyhgudGRjC2pmeMs2A2g.output.variable_workflow_01IEC6YT047J37Yw6sDFvHGYixPjxDxDH3f$ to ESA$activity.definition_activity_01IBL5ULTSDOS4kZyhgudGRjC2pmeMs2A2g.output.variable_workflow_01IEC99KRWPCF5RTT0Bg3vnshVn1Q9Ttge2$ have been retrieved and checked against the given thresholds. If any limit is exceeded, a specific email and webex teams message is sent with detailed information.",
+                "variable_workflow_01FGYZ9BV4QTP19CuMwcW8QywvCP9ymx2BZ": "**CES HC WORKFLOW INFORMATION MESSAGE**  \\n\u003cp\u003eWorkflow cycle completion notification: this is an informative message to let you know that the HC Indicators from ESA$activity.definition_activity_01IBL5ULTSDOS4kZyhgudGRjC2pmeMs2A2g.output.variable_workflow_01IEC6YT047J37Yw6sDFvHGYixPjxDxDH3f$ to ESA$activity.definition_activity_01IBL5ULTSDOS4kZyhgudGRjC2pmeMs2A2g.output.variable_workflow_01IEC99KRWPCF5RTT0Bg3vnshVn1Q9Ttge2$  have been retrieved and checked against the given thresholds. If any limit is exceeded, a specific email and webex teams message is sent with detailed information.\u003c/p\u003e"
+              },
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01GV5803R76SY2D8ITgcJHGWk0YvlvBp9tq",
+                "target_type": "web-service.endpoint"
+              },
+              "workflow_id": "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf"
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_01EI33LMFFL7N5eTQLsOOJIrxdlSOHb7r3r",
+      "category_01FM7CGPZZCMY0KcvgiGjVH5UaB4y4aDJ7m",
+      "category_01I9YPYEDPICH7A1JhY2omoQAwdjSY3nxnJ"
+    ]
+  },
+  "categories": {
+    "category_01EI33LMFFL7N5eTQLsOOJIrxdlSOHb7r3r": {
+      "unique_name": "category_01EI33LMFFL7N5eTQLsOOJIrxdlSOHb7r3r",
+      "name": "SecureX",
+      "title": "SecureX",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    },
+    "category_01FM7CGPZZCMY0KcvgiGjVH5UaB4y4aDJ7m": {
+      "unique_name": "category_01FM7CGPZZCMY0KcvgiGjVH5UaB4y4aDJ7m",
+      "name": "response",
+      "title": "response",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    },
+    "category_01I9YPYEDPICH7A1JhY2omoQAwdjSY3nxnJ": {
+      "unique_name": "category_01I9YPYEDPICH7A1JhY2omoQAwdjSY3nxnJ",
+      "name": "pfiano",
+      "title": "pfiano",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "triggers": {
+    "triggerschedule_01ICM479MMSIO0ZrQuRvpb98vnCfXzTGuiS": {
+      "workflow_id": "definition_workflow_01HX2U0KH9FKL6zylcXuIM5S72uqiLHls7R",
+      "name": "CES TRIGGER",
+      "title": "",
+      "lowercase_name": "schedule.ces_trigger",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01HET6EF4053E0izf55lZZsHWavgaWF6JnY",
+      "version": "",
+      "disabled": true,
+      "unique_name": "triggerschedule_01ICM479MMSIO0ZrQuRvpb98vnCfXzTGuiS",
+      "object_type": "triggerschedule"
+    }
+  },
+  "schedules": {
+    "schedule_01HET6EF4053E0izf55lZZsHWavgaWF6JnY": {
+      "unique_name": "schedule_01HET6EF4053E0izf55lZZsHWavgaWF6JnY",
+      "name": "CES Monitoring",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ",
+        "timezone": "Europe/Brussels",
+        "starttime": "00:00",
+        "interval_hours": 0,
+        "interval_minutes": 15,
+        "number_of_times": 96,
+        "display_name": "CES Monitoring",
+        "description": ""
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
+    }
+  },
+  "targets": {
+    "definition_target_01GV5803R76SY2D8ITgcJHGWk0YvlvBp9tq": {
+      "unique_name": "definition_target_01GV5803R76SY2D8ITgcJHGWk0YvlvBp9tq",
+      "name": "Webex Teams",
+      "title": "Webex Teams",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "description": "Webex Teams",
+        "disable_certificate_validation": false,
+        "display_name": "Webex Teams",
+        "host": "webexapis.com",
+        "no_runtime_user": true,
+        "port": 443,
+        "protocol": "https"
+      }
+    },
+    "definition_target_01H3O3FKRHSF67CjVqJrhwtkeiqdHNFFYzW": {
+      "unique_name": "definition_target_01H3O3FKRHSF67CjVqJrhwtkeiqdHNFFYzW",
+      "name": "New Email Sender - Jose Merchan",
+      "title": "New Email Sender - Jose Merchan",
+      "type": "email.smtp_endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01H45DQBS2Z5P347fqpB4ldF51amV9okHwb",
+        "display_name": "New Email Sender - Jose Merchan",
+        "no_runtime_user": false,
+        "port": 587,
+        "protocol": "SMTP",
+        "server": "smtp.office365.com"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01H45DQBS2Z5P347fqpB4ldF51amV9okHwb": {
+      "unique_name": "definition_runtime_user_01H45DQBS2Z5P347fqpB4ldF51amV9okHwb",
+      "name": "Jose Merchan",
+      "title": "Jose Merchan",
+      "type": "runtime_user.email_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "Jose Merchan",
+        "password": "*****",
+        "sender": "*****"
+      }
+    }
+  },
+  "subworkflows": [
+    {
+      "workflow": {
+        "unique_name": "definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD",
+        "name": "Check and return Webex Room ID",
+        "title": "Check and return Webex Room ID",
+        "type": "generic.workflow",
+        "base_type": "workflow",
+        "variables": [
+          {
+            "schema_id": "datatype.secure_string",
+            "properties": {
+              "value": "*****",
+              "scope": "input",
+              "name": "i_token_id",
+              "type": "datatype.secure_string",
+              "is_required": true,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01K9PNFXNZYEF6ahMypw7DuKfKCFaxVsvsA",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "output",
+              "name": "room_id",
+              "type": "datatype.string",
+              "is_required": false,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01ICOEP7H99UE4tnnrkfr5mnCI0Yd4iSMKD",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "Webex Room Name",
+              "type": "datatype.string",
+              "is_required": true,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01ICNZ7EJGGPC4WbyB0Qb8BFZiSvcrXgCLX",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.secure_string",
+            "properties": {
+              "value": "*****",
+              "scope": "output",
+              "name": "token_id",
+              "type": "datatype.secure_string",
+              "is_required": false,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01ICNIC6WM02T1OP0leuIhSh4p3gA4o1R97",
+            "object_type": "variable_workflow"
+          }
+        ],
+        "properties": {
+          "atomic": {
+            "is_atomic": false
+          },
+          "delete_workflow_instance": false,
+          "display_name": "Check and return Webex Room ID",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "specify_on_workflow_start": false,
+            "target_default": true
+          },
+          "target": {
+            "execute_on_target_group": false,
+            "execute_on_workflow_target": false,
+            "no_target": true,
+            "specify_on_workflow_start": false
+          }
+        },
+        "object_type": "definition_workflow",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01ICNVF26N2FN2V6CG11YHWP8nqw55AjI4m",
+            "name": "Webex Teams - Search for Room",
+            "title": "Webex Teams - Search for Room",
+            "type": "workflow.atomic_workflow",
+            "base_type": "subworkflow",
+            "properties": {
+              "continue_on_failure": true,
+              "display_name": "Webex Teams - Search for Room",
+              "input": {
+                "variable_workflow_01FHMU6RWYQWI3QFUEzjWMT7JYBcz5vquuD": "",
+                "variable_workflow_01FHMU6RWYWY822p43LeMi8Lcx89Q9jeyek": "$workflow.definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD.input.variable_workflow_01ICNZ7EJGGPC4WbyB0Qb8BFZiSvcrXgCLX$",
+                "variable_workflow_01FHMU6RWYY481TVWDm0BQ1p0rWnqak191l": "$workflow.definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD.input.variable_workflow_01K9PNFXNZYEF6ahMypw7DuKfKCFaxVsvsA$",
+                "variable_workflow_01FHNGCYY2O6Z0NcPmUDabszT2P4P0oqMNd": ""
+              },
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01GV5803R76SY2D8ITgcJHGWk0YvlvBp9tq",
+                "target_type": "web-service.endpoint"
+              },
+              "workflow_id": "definition_workflow_01FHMU6SD5XPL6eRW4zFXqkA1w8jWiQCIBU"
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01K9OX9K18B4K1pWT8rUkY6SlauJuMOarnK",
+            "name": "Set Variables",
+            "title": "Set roomID Variable",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Set roomID Variable",
+              "skip_execution": false,
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$workflow.definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD.output.variable_workflow_01ICOEP7H99UE4tnnrkfr5mnCI0Yd4iSMKD$",
+                  "variable_value_new": "$activity.definition_activity_01ICNVF26N2FN2V6CG11YHWP8nqw55AjI4m.output.variable_workflow_01FHSVE2R6ZTQ6L92WEi0kWgR5T8zhMAUzO$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01ICO0ISKGO4F6erXPlHok5SHkbafmiH7AQ",
+            "name": "Condition Block",
+            "title": "Check if Santander Webex Room exists",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Check if Santander Webex Room exists",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01ICO0IXK1JDC07qNc4zPknNVqfYy9KbYar",
+                "name": "Condition Branch",
+                "title": "CONTINUE IF ROOM EXISTS",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01ICNVF26N2FN2V6CG11YHWP8nqw55AjI4m.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": true
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "CONTINUE IF ROOM EXISTS",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01ICO0IYHMYBW6k53UJSniHQ7kAwfIR5RKg",
+                "name": "Condition Branch",
+                "title": "CREATE ROOM",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01ICNVF26N2FN2V6CG11YHWP8nqw55AjI4m.output.succeeded$",
+                    "operator": "eq",
+                    "right_operand": false
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "CREATE ROOM",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01ICOGOZL6LTW6DFzhwAtEjt5u5Myfgm378",
+                    "name": "Webex Teams - Create Room",
+                    "title": "Webex Teams - Create Room",
+                    "type": "workflow.atomic_workflow",
+                    "base_type": "subworkflow",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Webex Teams - Create Room",
+                      "input": {
+                        "variable_workflow_01DSC4X9KXPKS2Qmb9Ztstye0zYwKscAn7P": "$workflow.definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD.input.variable_workflow_01K9PNFXNZYEF6ahMypw7DuKfKCFaxVsvsA$",
+                        "variable_workflow_01DSC61IB74B8425TxRduaFPThLQodDkVRF": "$workflow.definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD.input.variable_workflow_01ICNZ7EJGGPC4WbyB0Qb8BFZiSvcrXgCLX$",
+                        "variable_workflow_01DSC6J1J5W4R73lPbvtKw7MPvfADwgQY0l": ""
+                      },
+                      "runtime_user": {
+                        "target_default": true
+                      },
+                      "skip_execution": false,
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_01GV5803R76SY2D8ITgcJHGWk0YvlvBp9tq",
+                        "target_type": "web-service.endpoint"
+                      },
+                      "workflow_id": "definition_workflow_01DSC03B74DRH2SitgOVw4CXxRxTmM0nFYb"
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01ICOFQ5DBJCY5gqjrqyhlJflJrKBrsELvV",
+                    "name": "Set Variables",
+                    "title": "Set roomID Variable",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Set roomID Variable",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD.output.variable_workflow_01ICOEP7H99UE4tnnrkfr5mnCI0Yd4iSMKD$",
+                          "variable_value_new": "$activity.definition_activity_01ICOGOZL6LTW6DFzhwAtEjt5u5Myfgm378.output.variable_workflow_01DSCCQ6G8XUD4wYyzny05L2cOxgM4nLJCx$"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01ICO8EHOH5OM5JFAs5rYOP0kQXnMG0QIeA",
+            "name": "Webex Teams - Add pfiano to Room",
+            "title": "Webex Teams - Add pfiano to Room",
+            "type": "workflow.atomic_workflow",
+            "base_type": "subworkflow",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Webex Teams - Add pfiano to Room",
+              "input": {
+                "variable_workflow_01DSFETK2CQ2T6CDhG8O6cdt4CZaLbUFfAw": "pfiano@cisco.com",
+                "variable_workflow_01DSFF2L5LGX01coBVFS8HhKzKenJKe3dBZ": "$workflow.definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD.input.variable_workflow_01K9PNFXNZYEF6ahMypw7DuKfKCFaxVsvsA$",
+                "variable_workflow_01DSFFBR89I5170RGdiPUdTXLQn4lBmtpV7": "$workflow.definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD.output.variable_workflow_01ICOEP7H99UE4tnnrkfr5mnCI0Yd4iSMKD$",
+                "variable_workflow_01DSFMZDPUHPQ187u2zZJxQFURxOkGXaqAo": false
+              },
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01GV5803R76SY2D8ITgcJHGWk0YvlvBp9tq",
+                "target_type": "web-service.endpoint"
+              },
+              "workflow_id": "definition_workflow_01DSFCANQLPIY3aK0UajEz2KdDnbzYBjrSt"
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01ICSEKCUEIU347JGjGYkjEeqNTlyMegRsS",
+            "name": "Webex Teams - Add jmariame to Room",
+            "title": "Webex Teams - Add jmariame to Room",
+            "type": "workflow.atomic_workflow",
+            "base_type": "subworkflow",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Webex Teams - Add jmariame to Room",
+              "input": {
+                "variable_workflow_01DSFETK2CQ2T6CDhG8O6cdt4CZaLbUFfAw": "jmariame@cisco.com",
+                "variable_workflow_01DSFF2L5LGX01coBVFS8HhKzKenJKe3dBZ": "$workflow.definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD.input.variable_workflow_01K9PNFXNZYEF6ahMypw7DuKfKCFaxVsvsA$",
+                "variable_workflow_01DSFFBR89I5170RGdiPUdTXLQn4lBmtpV7": "$workflow.definition_workflow_01ICNGH7W6YV853fOuMIDmo4Og3C6znQ6aD.output.variable_workflow_01ICOEP7H99UE4tnnrkfr5mnCI0Yd4iSMKD$",
+                "variable_workflow_01DSFMZDPUHPQ187u2zZJxQFURxOkGXaqAo": false
+              },
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": true,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01GV5803R76SY2D8ITgcJHGWk0YvlvBp9tq",
+                "target_type": "web-service.endpoint"
+              },
+              "workflow_id": "definition_workflow_01DSFCANQLPIY3aK0UajEz2KdDnbzYBjrSt"
+            },
+            "object_type": "definition_activity"
+          }
+        ],
+        "categories": [
+          "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+        ]
+      }
+    }
+  ],
+  "atomic_workflows": [
+    "definition_workflow_01IBJZTIHTFIL4qc0Fvxj9fwoSe2Fthr8VB",
+    "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf",
+    "definition_workflow_01DSFCANQLPIY3aK0UajEz2KdDnbzYBjrSt",
+    "definition_workflow_01FHMU6SD5XPL6eRW4zFXqkA1w8jWiQCIBU",
+    "definition_workflow_01DSC03B74DRH2SitgOVw4CXxRxTmM0nFYb"
+  ]
+}

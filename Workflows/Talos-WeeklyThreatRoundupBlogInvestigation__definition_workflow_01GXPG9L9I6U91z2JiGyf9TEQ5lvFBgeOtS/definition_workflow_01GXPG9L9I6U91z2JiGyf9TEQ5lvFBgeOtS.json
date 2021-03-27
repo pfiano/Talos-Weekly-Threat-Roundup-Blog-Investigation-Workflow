@@ -7,94 +7,55 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.integer",
+        "schema_id": "datatype.string",
         "properties": {
-          "value": 0,
-          "scope": "local",
-          "name": "is_it_clean",
-          "type": "datatype.integer",
+          "value": "",
+          "scope": "input",
+          "name": "publish_date",
+          "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KJVAWJ62FHD4OdDqGa55CSiC01kywyBDW",
+        "unique_name": "variable_workflow_01KMXXZ804Z3M5uZvfgPBSkztr7eoDlDZX8",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "talos_blog_uri",
+          "type": "datatype.string",
+          "description": "Please insert the relative part of the URI in this format:\n\n/YYYY/MM/YYYYMMDD-tru.json_.txt",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KMXPL00TA9K10y5JsDs26BLypOvGc7xha",
         "object_type": "variable_workflow"
       },
       {
         "schema_id": "datatype.boolean",
         "properties": {
-          "value": false,
+          "value": true,
           "scope": "local",
-          "name": "casebook_targets_found",
+          "name": "it_is_clean",
           "type": "datatype.boolean",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KCCCVJ15DFN0NYIX8Nv3timSTcIbkIevc",
+        "unique_name": "variable_workflow_01KKDENDC8SB13ZfujH1lU5KBXmXPAbyh7V",
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.string",
+        "schema_id": "tabletype_01IWCT40XXPL85GK3WRmaSK0qhuziUVIoJc",
         "properties": {
-          "value": "pfiano@cisco.com",
-          "scope": "input",
-          "name": "email_recipient",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01H5NDR871RTA4dDba4PVbzRrHGbUISS7nn",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
           "scope": "local",
-          "name": "indicators",
-          "type": "datatype.string",
+          "name": "signatures_table",
+          "type": "datatype.table",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01GXQKHBW4AFW29niot1QVadlr4TZXMlo9n",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "name_of_the_signature",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01IWC6N5ZK7R44a0iiW08BiH5jASW85YHxN",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 0,
-          "scope": "local",
-          "name": "retry_iteration",
-          "type": "datatype.integer",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KHT01ZII6W94cX9EhgT9YJdgeHgjpkoVa",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "target_list",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KGASITNQ5R73NiXbqZwn4lAH70J1gHqPK",
+        "unique_name": "variable_workflow_01IWCUYYYRR9Z3STSpQ0O3j9ucKbEHCN7Di",
         "object_type": "variable_workflow"
       },
       {
@@ -114,23 +75,11 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "initial_webex_team_message",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KHV774O2ETY04SHok0FXUUCWqJuexPU7W",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
           "value": "TALOS ROUNDUP Investigation",
           "scope": "input",
           "name": "webex_room_name",
           "type": "datatype.string",
+          "description": "The name below is provided by default, feel free to change it. The workflow will first check if a Webex room with the given name is existing, if not then it will create it.",
           "is_required": true,
           "is_invisible": false
         },
@@ -142,25 +91,12 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "ioc_value",
+          "name": "target_list",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KJX2KLO0KEL0lvX6GxLYceTg2AolLPouY",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 0,
-          "scope": "local",
-          "name": "iteration",
-          "type": "datatype.integer",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01IWBPLAHT4WO7Y8RuypRQaAdhtdvdOlRRd",
+        "unique_name": "variable_workflow_01KGASITNQ5R73NiXbqZwn4lAH70J1gHqPK",
         "object_type": "variable_workflow"
       },
       {
@@ -168,26 +104,26 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "target_details_tmp",
+          "name": "clean_verdicts",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01H2MC1KII39V3rRVIAavDogHWd7KSvv5HQ",
+        "unique_name": "variable_workflow_01KDXC0EV54A672bI6OMaBYx6xAHjvxS8yC",
         "object_type": "variable_workflow"
       },
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
+          "value": "pfiano@cisco.com",
           "scope": "input",
-          "name": "talos_blog_uri",
+          "name": "email_recipient",
           "type": "datatype.string",
-          "description": "Please insert the relative part of the URI in this format:\n\n/YYYY/MM/YYYYMMDD-tru.json_.txt",
-          "is_required": false,
+          "description": "This is the SOC team notification email.",
+          "is_required": true,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KMXPL00TA9K10y5JsDs26BLypOvGc7xha",
+        "unique_name": "variable_workflow_01H5NDR871RTA4dDba4PVbzRrHGbUISS7nn",
         "object_type": "variable_workflow"
       },
       {
@@ -208,32 +144,6 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "clean_judgements",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KDXC9ULNLJS6GHPEN8k33640qvosJWIc4",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "casebook_id",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01K7X527YCKTV45gh6fFCmcze0rEMtydKro",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
           "name": "joined_hashes",
           "type": "datatype.string",
           "description": "This variable will contain all the hashes from File, Mutex and Registry",
@@ -244,80 +154,16 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.boolean",
-        "properties": {
-          "value": true,
-          "scope": "local",
-          "name": "it_is_clean",
-          "type": "datatype.boolean",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KKDENDC8SB13ZfujH1lU5KBXmXPAbyh7V",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "clean_verdicts",
+          "name": "name_of_the_signature",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KDXC0EV54A672bI6OMaBYx6xAHjvxS8yC",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "description_of_the_signature",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01IWC5T1QGVYD71wz6JR5WKIb4rc9fH1FrT",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "tabletype_01IWCT40XXPL85GK3WRmaSK0qhuziUVIoJc",
-        "properties": {
-          "scope": "local",
-          "name": "signatures_table",
-          "type": "datatype.table",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01IWCUYYYRR9Z3STSpQ0O3j9ucKbEHCN7Di",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "value": "*****",
-          "scope": "input",
-          "name": "webex_bot_token",
-          "type": "datatype.secure_string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01K9PVVZPK1R436nI1fWsAWkCxtgRtwl1tm",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "blog_publish_date",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KHY4XUS3CLH2kpHnIhtBcXx6eBqU3a5cH",
+        "unique_name": "variable_workflow_01IWC6N5ZK7R44a0iiW08BiH5jASW85YHxN",
         "object_type": "variable_workflow"
       },
       {
@@ -331,59 +177,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01KKJOZY66L4B4DeuUYixZVoR71eo6jJeCg",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "publish_date",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KMXXZ804Z3M5uZvfgPBSkztr7eoDlDZX8",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.boolean",
-        "properties": {
-          "value": true,
-          "scope": "local",
-          "name": "ELSE",
-          "type": "datatype.boolean",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KBC8CER8IY61CRWu6qMaV74hO5HwTL4i1",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "webex_message",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01H0BHHV5EU3T1vdqMdSWjYye4b59AzRVGT",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 24,
-          "scope": "input",
-          "name": "max_number_retry_iterations",
-          "type": "datatype.integer",
-          "description": "Please note that each retry means 1 hour",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KHT8SZYSJ7T5UT3xfCkeSIJdXkD3Trh8y",
         "object_type": "variable_workflow"
       },
       {
@@ -404,12 +197,52 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "current_blog_uri",
+          "name": "initial_webex_team_message",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KHWKPBK4D637a9RatyCqhH4bA9UpC5fDR",
+        "unique_name": "variable_workflow_01KHV774O2ETY04SHok0FXUUCWqJuexPU7W",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "target_details_tmp",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01H2MC1KII39V3rRVIAavDogHWd7KSvv5HQ",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "iteration",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IWBPLAHT4WO7Y8RuypRQaAdhtdvdOlRRd",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "*****",
+          "scope": "input",
+          "name": "webex_bot_token",
+          "type": "datatype.secure_string",
+          "description": "Please provide the webex_bot_token in order to publish messages in the provided room name",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01K9PVVZPK1R436nI1fWsAWkCxtgRtwl1tm",
         "object_type": "variable_workflow"
       },
       {
@@ -423,6 +256,176 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01KB3H4IYW6X80DfPtL2LVdU566E2RQAY65",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "webex_message",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01H0BHHV5EU3T1vdqMdSWjYye4b59AzRVGT",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "retry_iteration",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KHT01ZII6W94cX9EhgT9YJdgeHgjpkoVa",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": true,
+          "scope": "local",
+          "name": "ELSE",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KBC8CER8IY61CRWu6qMaV74hO5HwTL4i1",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 24,
+          "scope": "input",
+          "name": "max_number_retry_iterations",
+          "type": "datatype.integer",
+          "description": "Please note that each retry means 1 hour",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KHT8SZYSJ7T5UT3xfCkeSIJdXkD3Trh8y",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "casebook_id",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01K7X527YCKTV45gh6fFCmcze0rEMtydKro",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "current_blog_uri",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KHWKPBK4D637a9RatyCqhH4bA9UpC5fDR",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "ioc_value",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KJX2KLO0KEL0lvX6GxLYceTg2AolLPouY",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "local",
+          "name": "casebook_targets_found",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KCCCVJ15DFN0NYIX8Nv3timSTcIbkIevc",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "is_it_clean",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KJVAWJ62FHD4OdDqGa55CSiC01kywyBDW",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "blog_publish_date",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KHY4XUS3CLH2kpHnIhtBcXx6eBqU3a5cH",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "description_of_the_signature",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IWC5T1QGVYD71wz6JR5WKIb4rc9fH1FrT",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "indicators",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01GXQKHBW4AFW29niot1QVadlr4TZXMlo9n",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "clean_judgements",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KDXC9ULNLJS6GHPEN8k33640qvosJWIc4",
         "object_type": "variable_workflow"
       }
     ],
@@ -590,7 +593,7 @@
                   "action_timeout": 180,
                   "allow_auto_redirect": true,
                   "continue_on_error_status_code": false,
-                  "continue_on_failure": true,
+                  "continue_on_failure": false,
                   "description": "This is simply an HTTPS GET call to check whether the Talos Roundup Blog resource URI built at the previous step is available",
                   "display_name": "Do an HTTPS GET call at Talos Roundup blog URI",
                   "method": "GET",
@@ -1656,7 +1659,7 @@
                     "base_type": "activity",
                     "properties": {
                       "condition": {
-                        "left_operand": "$activity.definition_activity_01IYWOLW8D9M93TriOiLpZU3Xqlbf3qYc3l.output.succeeded$",
+                        "left_operand": "$activity.definition_activity_01K9I06DN0BHI6P0K2bOKH7wKKg67e6bBQx.output.succeeded$",
                         "operator": "eq",
                         "right_operand": false
                       },
@@ -1674,7 +1677,7 @@
                     "base_type": "activity",
                     "properties": {
                       "condition": {
-                        "left_operand": "$activity.definition_activity_01IYWOLW8D9M93TriOiLpZU3Xqlbf3qYc3l.output.succeeded$",
+                        "left_operand": "$activity.definition_activity_01K9I06DN0BHI6P0K2bOKH7wKKg67e6bBQx.output.succeeded$",
                         "operator": "eq",
                         "right_operand": true
                       },
@@ -1925,152 +1928,168 @@
           {
             "unique_name": "definition_activity_01KJWYFTS8IMF4Tz6I8gl9HGMrlK9ZhRFcq",
             "name": "For Each",
-            "title": "For Each IOC denoting current Threat OMIT IOC with Clean verdict",
+            "title": "For Each IOC denoting the current analized Threat",
             "type": "logic.for_each",
             "base_type": "activity",
             "properties": {
               "continue_on_failure": false,
-              "description": "We create a list of Observables, omitting the ones with Clean verdict since they would generate false positive.",
-              "display_name": "For Each IOC denoting current Threat OMIT IOC with Clean verdict",
+              "description": "We create a list of Observables, with special treatment for Domain names observables.",
+              "display_name": "For Each IOC denoting the current analized Threat",
               "skip_execution": false,
               "source_array": "$activity.definition_activity_01H043LO2UQT56v5oHDJCiDS46y2zgShah1.output.read_table_from_json$"
             },
             "object_type": "definition_activity",
             "actions": [
               {
-                "unique_name": "definition_activity_01KJX23YP79SR4zAfqpiHyBg6a87sPW5YkB",
-                "name": "Set Variables",
-                "title": "Set ioc_value variable with IOC value",
-                "type": "core.set_multiple_variables",
-                "base_type": "activity",
-                "properties": {
-                  "continue_on_failure": false,
-                  "display_name": "Set ioc_value variable with IOC value",
-                  "skip_execution": false,
-                  "variables_to_update": [
-                    {
-                      "variable_to_update": "$workflow.definition_workflow_01GXPG9L9I6U91z2JiGyf9TEQ5lvFBgeOtS.local.variable_workflow_01KJX2KLO0KEL0lvX6GxLYceTg2AolLPouY$",
-                      "variable_value_new": "$activity.definition_activity_01KJWYFTS8IMF4Tz6I8gl9HGMrlK9ZhRFcq.input.source_array[@].value$"
-                    }
-                  ]
-                },
-                "object_type": "definition_activity"
-              },
-              {
-                "unique_name": "definition_activity_01KKN5JTMN60W3SaRGS3aa5jTYsPccAiCc6",
-                "name": "SxTR Generate Access Token",
-                "title": "SxTR Generate Access Token",
-                "type": "workflow.atomic_workflow",
-                "base_type": "subworkflow",
-                "properties": {
-                  "continue_on_failure": false,
-                  "display_name": "SxTR Generate Access Token",
-                  "runtime_user": {
-                    "target_default": true
-                  },
-                  "skip_execution": false,
-                  "target": {
-                    "override_workflow_target": true,
-                    "target_id": "definition_target_01GV57Z7EJW3I1qAM8JeafF0dYcFRPlfUh4",
-                    "target_type": "web-service.endpoint"
-                  },
-                  "workflow_id": "definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4"
-                },
-                "object_type": "definition_activity"
-              },
-              {
-                "unique_name": "definition_activity_01KPQF12BH6EA6VgLmpUqR2USaCduQvasTw",
-                "name": "SxTR Check Deliberate Verdict",
-                "title": "SxTR Check Deliberate Verdict",
-                "type": "workflow.atomic_workflow",
-                "base_type": "subworkflow",
-                "properties": {
-                  "continue_on_failure": false,
-                  "description": "Check for the Verdict of the provided domain. A Verdict is chosen from all of the Judgements on that Observable which have not yet expired. The highest priority Judgement becomes the active verdict. If there is more than one Judgement with that priority, then Clean disposition has priority over all others, then Malicious disposition, and so on down to Unknown. \n\nThe  disposition_name field \u003cstring\u003e is returned:  {Clean, Malicious, Suspicious, Common, Unknown}.",
-                  "display_name": "SxTR Check Deliberate Verdict",
-                  "input": {
-                    "variable_workflow_01BNHL4AUXTA60OSH5VldUDF7oZlNJRNNcc": "$activity.definition_activity_01KKN5JTMN60W3SaRGS3aa5jTYsPccAiCc6.output.variable_workflow_01BNOOXA3G6MV1PGAvsfZOKDdMYcE6XS726$",
-                    "variable_workflow_01BNHLBDQWA600jzzEXCr1LXkUns1D1aB3u": "$activity.definition_activity_01KJWYFTS8IMF4Tz6I8gl9HGMrlK9ZhRFcq.input.source_array[@].type$",
-                    "variable_workflow_01BNHLIRPBN4Q61YBYNOEfvHQi0Y1Vzr501": "$workflow.definition_workflow_01GXPG9L9I6U91z2JiGyf9TEQ5lvFBgeOtS.local.variable_workflow_01KJX2KLO0KEL0lvX6GxLYceTg2AolLPouY$"
-                  },
-                  "runtime_user": {
-                    "target_default": true
-                  },
-                  "skip_execution": false,
-                  "target": {
-                    "override_workflow_target": true,
-                    "target_id": "definition_target_01GV57YWSXRUZ3o1AtaLjwArItjVqIAjgyQ",
-                    "target_type": "web-service.endpoint"
-                  },
-                  "workflow_id": "definition_workflow_01BMYF7PCRLRM3pfYcuM9yYFsKoYBEBO4PK"
-                },
-                "object_type": "definition_activity"
-              },
-              {
-                "unique_name": "definition_activity_01KKGCEVJRQUU7EtOQRsUoPj4zWLQfAFIFs",
+                "unique_name": "definition_activity_01KJX1BB4UUH46nfF2sXL2kXhpQKswcaiNb",
                 "name": "Condition Block",
-                "title": "Check Verdict",
+                "title": "Is this IOC (observable) a Domain?",
                 "type": "logic.if_else",
                 "base_type": "activity",
                 "properties": {
                   "continue_on_failure": false,
-                  "display_name": "Check Verdict",
+                  "description": "We treat the Domain observables differntly by checking the Verdict. Determine Domains with Clean Verdict. There may be the case that some Domain Names contacted by malware are not malicious. Therefore, a list of potential clean domains in the IOCs is created, with the objective to omit investigation with those observables.",
+                  "display_name": "Is this IOC (observable) a Domain?",
                   "skip_execution": false
                 },
                 "object_type": "definition_activity",
                 "blocks": [
                   {
-                    "unique_name": "definition_activity_01KKGCF2ZXT5X62bi7PlChyylJdyl2esXn8",
+                    "unique_name": "definition_activity_01KJX1BFYB1D702nayo9H6LUlT5YzfGHVeE",
                     "name": "Condition Branch",
-                    "title": "If the Verdic is Clean then",
+                    "title": "YES",
                     "type": "logic.condition_block",
                     "base_type": "activity",
                     "properties": {
                       "condition": {
-                        "left_operand": "$activity.definition_activity_01KPQF12BH6EA6VgLmpUqR2USaCduQvasTw.output.variable_workflow_01BMYF7P6UO321YgBxyhxAiaqqvwzeopu2x$",
+                        "left_operand": "$activity.definition_activity_01KJWYFTS8IMF4Tz6I8gl9HGMrlK9ZhRFcq.input.source_array[@].type$",
                         "operator": "eq",
-                        "right_operand": "Clean"
+                        "right_operand": "domain"
                       },
                       "continue_on_failure": false,
-                      "display_name": "If the Verdic is Clean then",
+                      "display_name": "YES",
                       "skip_execution": false
                     },
                     "object_type": "definition_activity",
                     "actions": [
                       {
-                        "unique_name": "definition_activity_01KKJPJ090B4U2K4GEFEhMblqAY4kQNtJsx",
-                        "name": "Continue",
-                        "title": "Continue, do not include this Domain in the list of the IOC",
-                        "type": "logic.continue",
+                        "unique_name": "definition_activity_01KJX23YP79SR4zAfqpiHyBg6a87sPW5YkB",
+                        "name": "Set Variables",
+                        "title": "Set ioc_value variable with IOC value",
+                        "type": "core.set_multiple_variables",
                         "base_type": "activity",
                         "properties": {
                           "continue_on_failure": false,
-                          "description": "Continue, the Domain is Clean, do not include this Domain in the list of the IOCs to be investigated, otherwise will identify false Targets in the customer environment.",
-                          "display_name": "Continue, do not include this Domain in the list of the IOC",
-                          "skip_execution": false
+                          "display_name": "Set ioc_value variable with IOC value",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01GXPG9L9I6U91z2JiGyf9TEQ5lvFBgeOtS.local.variable_workflow_01KJX2KLO0KEL0lvX6GxLYceTg2AolLPouY$",
+                              "variable_value_new": "$activity.definition_activity_01KJWYFTS8IMF4Tz6I8gl9HGMrlK9ZhRFcq.input.source_array[@].value$"
+                            }
+                          ]
                         },
                         "object_type": "definition_activity"
-                      }
-                    ]
-                  },
-                  {
-                    "unique_name": "definition_activity_01N4A5OQ4N6JC3B01JWGRsbuonGolCmORf9",
-                    "name": "Condition Branch",
-                    "title": "ELSE",
-                    "type": "logic.condition_block",
-                    "base_type": "activity",
-                    "properties": {
-                      "condition": {
-                        "left_operand": "$activity.definition_activity_01KPQF12BH6EA6VgLmpUqR2USaCduQvasTw.output.variable_workflow_01BMYF7P6UO321YgBxyhxAiaqqvwzeopu2x$",
-                        "operator": "ne",
-                        "right_operand": "Clean"
                       },
-                      "continue_on_failure": false,
-                      "display_name": "ELSE",
-                      "skip_execution": false
-                    },
-                    "object_type": "definition_activity",
-                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01KKN5JTMN60W3SaRGS3aa5jTYsPccAiCc6",
+                        "name": "SxTR Generate Access Token",
+                        "title": "SxTR Generate Access Token",
+                        "type": "workflow.atomic_workflow",
+                        "base_type": "subworkflow",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "SxTR Generate Access Token",
+                          "runtime_user": {
+                            "target_default": true
+                          },
+                          "skip_execution": false,
+                          "target": {
+                            "override_workflow_target": true,
+                            "target_id": "definition_target_01GV57Z7EJW3I1qAM8JeafF0dYcFRPlfUh4",
+                            "target_type": "web-service.endpoint"
+                          },
+                          "workflow_id": "definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4"
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01KPQF12BH6EA6VgLmpUqR2USaCduQvasTw",
+                        "name": "SxTR Check Deliberate Verdict",
+                        "title": "SxTR Check Deliberate Verdict",
+                        "type": "workflow.atomic_workflow",
+                        "base_type": "subworkflow",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "description": "Check for the Verdict of the provided domain. A Verdict is chosen from all of the Judgements on that Observable which have not yet expired. The highest priority Judgement becomes the active verdict. If there is more than one Judgement with that priority, then Clean disposition has priority over all others, then Malicious disposition, and so on down to Unknown. \n\nThe  disposition_name field \u003cstring\u003e is returned:  {Clean, Malicious, Suspicious, Common, Unknown}.",
+                          "display_name": "SxTR Check Deliberate Verdict",
+                          "input": {
+                            "variable_workflow_01BNHL4AUXTA60OSH5VldUDF7oZlNJRNNcc": "$activity.definition_activity_01KKN5JTMN60W3SaRGS3aa5jTYsPccAiCc6.output.variable_workflow_01BNOOXA3G6MV1PGAvsfZOKDdMYcE6XS726$",
+                            "variable_workflow_01BNHLBDQWA600jzzEXCr1LXkUns1D1aB3u": "domain",
+                            "variable_workflow_01BNHLIRPBN4Q61YBYNOEfvHQi0Y1Vzr501": "$workflow.definition_workflow_01GXPG9L9I6U91z2JiGyf9TEQ5lvFBgeOtS.local.variable_workflow_01KJX2KLO0KEL0lvX6GxLYceTg2AolLPouY$"
+                          },
+                          "runtime_user": {
+                            "target_default": true
+                          },
+                          "skip_execution": false,
+                          "target": {
+                            "override_workflow_target": true,
+                            "target_id": "definition_target_01GV57YWSXRUZ3o1AtaLjwArItjVqIAjgyQ",
+                            "target_type": "web-service.endpoint"
+                          },
+                          "workflow_id": "definition_workflow_01BMYF7PCRLRM3pfYcuM9yYFsKoYBEBO4PK"
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01KKGCEVJRQUU7EtOQRsUoPj4zWLQfAFIFs",
+                        "name": "Condition Block",
+                        "title": "Check Verdict",
+                        "type": "logic.if_else",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Check Verdict",
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity",
+                        "blocks": [
+                          {
+                            "unique_name": "definition_activity_01KKGCF2ZXT5X62bi7PlChyylJdyl2esXn8",
+                            "name": "Condition Branch",
+                            "title": "If the Verdic is Clean then",
+                            "type": "logic.condition_block",
+                            "base_type": "activity",
+                            "properties": {
+                              "condition": {
+                                "left_operand": "$activity.definition_activity_01KPQF12BH6EA6VgLmpUqR2USaCduQvasTw.output.variable_workflow_01BMYF7P6UO321YgBxyhxAiaqqvwzeopu2x$",
+                                "operator": "eq",
+                                "right_operand": "Clean"
+                              },
+                              "continue_on_failure": false,
+                              "display_name": "If the Verdic is Clean then",
+                              "skip_execution": false
+                            },
+                            "object_type": "definition_activity",
+                            "actions": [
+                              {
+                                "unique_name": "definition_activity_01KKJPJ090B4U2K4GEFEhMblqAY4kQNtJsx",
+                                "name": "Continue",
+                                "title": "Continue, do not include this Domain in the list of the IOC",
+                                "type": "logic.continue",
+                                "base_type": "activity",
+                                "properties": {
+                                  "continue_on_failure": false,
+                                  "description": "Continue, the Domain is Clean, do not include this Domain in the list of the IOCs to be investigated, otherwise will identify false Targets in the customer environment.",
+                                  "display_name": "Continue, do not include this Domain in the list of the IOC",
+                                  "skip_execution": false
+                                },
+                                "object_type": "definition_activity"
+                              }
+                            ]
+                          }
+                        ]
+                      },
                       {
                         "unique_name": "definition_activity_01KKJQ9JTLARU52BeSNz76rdl9UwOOyKnUV",
                         "name": "Set Variables",
@@ -2092,40 +2111,45 @@
                         "object_type": "definition_activity"
                       }
                     ]
-                  }
-                ]
-              },
-              {
-                "unique_name": "definition_activity_01KJX1BB4UUH46nfF2sXL2kXhpQKswcaiNb",
-                "name": "Condition Block",
-                "title": "Is this IOC (observable) a Domain?",
-                "type": "logic.if_else",
-                "base_type": "activity",
-                "properties": {
-                  "continue_on_failure": false,
-                  "description": "We treat the Domain observables differntly by checking the Verdict. Determine Domains with Clean Verdict. There may be the case that some Domain Names contacted by malware are not malicious. Therefore, a list of potential clean domains in the IOCs is created, with the objective to omit investigation with those observables.",
-                  "display_name": "Is this IOC (observable) a Domain?",
-                  "skip_execution": true
-                },
-                "object_type": "definition_activity",
-                "blocks": [
+                  },
                   {
-                    "unique_name": "definition_activity_01KJX1BFYB1D702nayo9H6LUlT5YzfGHVeE",
+                    "unique_name": "definition_activity_01KJX1BGUDZVD3SeikbrBX1DTRWHtWygCwT",
                     "name": "Condition Branch",
-                    "title": "YES",
+                    "title": "NO",
                     "type": "logic.condition_block",
                     "base_type": "activity",
                     "properties": {
                       "condition": {
                         "left_operand": "$activity.definition_activity_01KJWYFTS8IMF4Tz6I8gl9HGMrlK9ZhRFcq.input.source_array[@].type$",
-                        "operator": "eq",
+                        "operator": "ne",
                         "right_operand": "domain"
                       },
                       "continue_on_failure": false,
-                      "display_name": "YES",
+                      "display_name": "NO",
                       "skip_execution": false
                     },
-                    "object_type": "definition_activity"
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01KKJYJQ32V575aEI1R1AGVYaEnwxXuGxMY",
+                        "name": "Set Variables",
+                        "title": "Include the Observable in the observable_list variable",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Include the Observable in the observable_list variable",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01GXPG9L9I6U91z2JiGyf9TEQ5lvFBgeOtS.local.variable_workflow_01KKJOZY66L4B4DeuUYixZVoR71eo6jJeCg$",
+                              "variable_value_new": "$workflow.definition_workflow_01GXPG9L9I6U91z2JiGyf9TEQ5lvFBgeOtS.local.variable_workflow_01KKJOZY66L4B4DeuUYixZVoR71eo6jJeCg${\"value\":\"$activity.definition_activity_01KJWYFTS8IMF4Tz6I8gl9HGMrlK9ZhRFcq.input.source_array[@].value$\",\"type\":\"$activity.definition_activity_01KJWYFTS8IMF4Tz6I8gl9HGMrlK9ZhRFcq.input.source_array[@].type$\"},"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
                   }
                 ]
               }
@@ -2787,7 +2811,6 @@
                       "continue_if_one_address_valid": false,
                       "continue_on_failure": true,
                       "display_name": "Send Email",
-                      "from": "pionicola.fiano@gmail.com",
                       "html": true,
                       "runtime_user": {
                         "target_default": true
@@ -2866,74 +2889,6 @@
     ]
   },
   "targets": {
-    "definition_target_01GV57YWSXRUZ3o1AtaLjwArItjVqIAjgyQ": {
-      "unique_name": "definition_target_01GV57YWSXRUZ3o1AtaLjwArItjVqIAjgyQ",
-      "name": "CTR_API",
-      "title": "CTR API Target",
-      "type": "web-service.endpoint",
-      "base_type": "target",
-      "object_type": "definition_target",
-      "properties": {
-        "description": "Target used to invoke iroh endpoints",
-        "disable_certificate_validation": false,
-        "display_name": "CTR_API",
-        "host": "visibility.eu.amp.cisco.com",
-        "no_runtime_user": true,
-        "path": "/iroh",
-        "protocol": "https"
-      }
-    },
-    "definition_target_01GV57Z7EJW3I1qAM8JeafF0dYcFRPlfUh4": {
-      "unique_name": "definition_target_01GV57Z7EJW3I1qAM8JeafF0dYcFRPlfUh4",
-      "name": "CTR Target for access token",
-      "title": "CTR Target for access token",
-      "type": "web-service.endpoint",
-      "base_type": "target",
-      "object_type": "definition_target",
-      "properties": {
-        "default_runtime_user_id": "definition_runtime_user_01GV57Y5TV0Y72QeHecNM57ESqSIfyu1aHA",
-        "description": "CTR For Access Token",
-        "disable_certificate_validation": false,
-        "display_name": "CTR Target for access token",
-        "host": "visibility.eu.amp.cisco.com",
-        "no_runtime_user": false,
-        "path": "/iroh",
-        "protocol": "https"
-      }
-    },
-    "definition_target_01GV57ZORA6UG1VXjJC4P2trMGuW2cU3TVl": {
-      "unique_name": "definition_target_01GV57ZORA6UG1VXjJC4P2trMGuW2cU3TVl",
-      "name": "Private_CTIA_Target",
-      "title": "Private_CTIA_Target",
-      "type": "web-service.endpoint",
-      "base_type": "target",
-      "object_type": "definition_target",
-      "properties": {
-        "description": "Private_CTIA_Target",
-        "disable_certificate_validation": false,
-        "display_name": "Private_CTIA_Target",
-        "host": "private.intel.eu.amp.cisco.com",
-        "no_runtime_user": true,
-        "protocol": "https"
-      }
-    },
-    "definition_target_01GV5803R76SY2D8ITgcJHGWk0YvlvBp9tq": {
-      "unique_name": "definition_target_01GV5803R76SY2D8ITgcJHGWk0YvlvBp9tq",
-      "name": "Webex Teams",
-      "title": "Webex Teams",
-      "type": "web-service.endpoint",
-      "base_type": "target",
-      "object_type": "definition_target",
-      "properties": {
-        "description": "Webex Teams",
-        "disable_certificate_validation": false,
-        "display_name": "Webex Teams",
-        "host": "webexapis.com",
-        "no_runtime_user": true,
-        "port": 443,
-        "protocol": "https"
-      }
-    },
     "definition_target_01IW076RTU9I23JHmZ8DBwxnxmNCozQDW9m": {
       "unique_name": "definition_target_01IW076RTU9I23JHmZ8DBwxnxmNCozQDW9m",
       "name": "Talos Blog Endpoint",
@@ -2953,14 +2908,15 @@
     },
     "definition_target_01KAKXBC4MRE86SLo0YmEA47M3oRoB0nVUl": {
       "unique_name": "definition_target_01KAKXBC4MRE86SLo0YmEA47M3oRoB0nVUl",
-      "name": "PFIANO SEND EMAIL ENDPOINT",
-      "title": "PFIANO SEND EMAIL ENDPOINT",
+      "name": "SEND EMAIL ENDPOINT",
+      "title": "SEND EMAIL ENDPOINT",
       "type": "email.smtp_endpoint",
       "base_type": "target",
       "object_type": "definition_target",
       "properties": {
         "default_runtime_user_id": "definition_runtime_user_01KAKX3F93NB55QeIPhhtpxWTnXmkqUhawM",
-        "display_name": "PFIANO SEND EMAIL ENDPOINT",
+        "description": "This is the definition of the SMTP endpoint in order to send email in the TALOS Roundup Investigation workflow.",
+        "display_name": "SEND EMAIL ENDPOINT",
         "no_runtime_user": false,
         "port": 587,
         "protocol": "SMTP",
@@ -2969,31 +2925,16 @@
     }
   },
   "runtime_users": {
-    "definition_runtime_user_01GV57Y5TV0Y72QeHecNM57ESqSIfyu1aHA": {
-      "unique_name": "definition_runtime_user_01GV57Y5TV0Y72QeHecNM57ESqSIfyu1aHA",
-      "name": "CTR_Credentials",
-      "title": "CTR_Credentials",
-      "description": "Account Key for CTR",
-      "type": "runtime_user.web-service_basic_credentials",
-      "base_type": "runtime_user",
-      "object_type": "definition_runtime_user",
-      "properties": {
-        "auth_option": "*****",
-        "basic_password": "*****",
-        "basic_username": "*****",
-        "description": "pfiano-test-action-orchestrator",
-        "display_name": "CTR_Credentials"
-      }
-    },
     "definition_runtime_user_01KAKX3F93NB55QeIPhhtpxWTnXmkqUhawM": {
       "unique_name": "definition_runtime_user_01KAKX3F93NB55QeIPhhtpxWTnXmkqUhawM",
-      "name": "PFIANO GMAIL CREDENTIALS",
-      "title": "PFIANO GMAIL CREDENTIALS",
+      "name": "EMAIL CREDENTIALS (TALOS ROUNDUP)",
+      "title": "EMAIL CREDENTIALS (TALOS ROUNDUP)",
       "type": "runtime_user.email_credentials",
       "base_type": "runtime_user",
       "object_type": "definition_runtime_user",
       "properties": {
-        "display_name": "PFIANO GMAIL CREDENTIALS",
+        "description": "These are the credentials for the STMP Endpoint for the TALOS Roundup Investigation workflow.",
+        "display_name": "EMAIL CREDENTIALS (TALOS ROUNDUP)",
         "password": "*****",
         "sender": "*****"
       }
@@ -3029,13 +2970,13 @@
       "display_name": "SIGNATURE_TABLE",
       "columns": [
         {
-          "name": "signature_name",
-          "title": "signature_nane",
+          "name": "signature_description",
+          "title": "signature_description",
           "type": "string"
         },
         {
-          "name": "signature_description",
-          "title": "signature_description",
+          "name": "signature_name",
+          "title": "signature_nane",
           "type": "string"
         }
       ],
@@ -3053,16 +2994,16 @@
         "base_type": "workflow",
         "variables": [
           {
-            "schema_id": "datatype.secure_string",
+            "schema_id": "datatype.string",
             "properties": {
-              "value": "*****",
-              "scope": "output",
-              "name": "token_id",
-              "type": "datatype.secure_string",
-              "is_required": false,
+              "value": "",
+              "scope": "input",
+              "name": "Webex Room Name",
+              "type": "datatype.string",
+              "is_required": true,
               "is_invisible": false
             },
-            "unique_name": "variable_workflow_01ICNIC6WM02T1OP0leuIhSh4p3gA4o1R97",
+            "unique_name": "variable_workflow_01ICNZ7EJGGPC4WbyB0Qb8BFZiSvcrXgCLX",
             "object_type": "variable_workflow"
           },
           {
@@ -3079,19 +3020,6 @@
             "object_type": "variable_workflow"
           },
           {
-            "schema_id": "datatype.string",
-            "properties": {
-              "value": "",
-              "scope": "input",
-              "name": "Webex Room Name",
-              "type": "datatype.string",
-              "is_required": true,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01ICNZ7EJGGPC4WbyB0Qb8BFZiSvcrXgCLX",
-            "object_type": "variable_workflow"
-          },
-          {
             "schema_id": "datatype.secure_string",
             "properties": {
               "value": "*****",
@@ -3102,6 +3030,19 @@
               "is_invisible": false
             },
             "unique_name": "variable_workflow_01K9PNFXNZYEF6ahMypw7DuKfKCFaxVsvsA",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.secure_string",
+            "properties": {
+              "value": "*****",
+              "scope": "output",
+              "name": "token_id",
+              "type": "datatype.secure_string",
+              "is_required": false,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01ICNIC6WM02T1OP0leuIhSh4p3gA4o1R97",
             "object_type": "variable_workflow"
           }
         ],
@@ -3335,13 +3276,13 @@
     }
   ],
   "atomic_workflows": [
-    "definition_workflow_01C9F1VJ1I5KH26f860hJC5zDSD33548bYS",
-    "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf",
-    "definition_workflow_01BMYF7PCRLRM3pfYcuM9yYFsKoYBEBO4PK",
-    "definition_workflow_01DS6ELBOO8YR3uFJZju566LqiqR18VlE6r",
-    "definition_workflow_01DSC03B74DRH2SitgOVw4CXxRxTmM0nFYb",
     "definition_workflow_01DSFCANQLPIY3aK0UajEz2KdDnbzYBjrSt",
     "definition_workflow_01FHMU6SD5XPL6eRW4zFXqkA1w8jWiQCIBU",
-    "definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4"
+    "definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4",
+    "definition_workflow_01C9F1VJ1I5KH26f860hJC5zDSD33548bYS",
+    "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf",
+    "definition_workflow_01DSC03B74DRH2SitgOVw4CXxRxTmM0nFYb",
+    "definition_workflow_01DS6ELBOO8YR3uFJZju566LqiqR18VlE6r",
+    "definition_workflow_01BMYF7PCRLRM3pfYcuM9yYFsKoYBEBO4PK"
   ]
 }

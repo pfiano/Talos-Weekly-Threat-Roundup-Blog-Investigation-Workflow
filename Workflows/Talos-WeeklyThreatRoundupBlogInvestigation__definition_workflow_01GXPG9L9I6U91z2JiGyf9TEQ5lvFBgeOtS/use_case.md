@@ -7,6 +7,7 @@ Security teams are often too focused on dealing with daily inci¬dent response f
 to catch emerging threats in their environments. Even when they have enough time to execute threat hunting exercises, correlating intelligence from multiple 
 threat feeds unfortunately is a manual, repetitive exercise that does not leave enough time for decision-making.
 
+
 Solution
 
 As we all know, Every Friday evening, US time, Talos is publishing a glimpse into the most prevalent threats they have observed over the current week. 

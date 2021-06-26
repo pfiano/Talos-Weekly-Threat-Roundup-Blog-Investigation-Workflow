@@ -3,7 +3,7 @@
 
 ## Problem Statement
 
-Security teams are often too focused on dealing with daily inci¬dent response fires to dedicate time to proactive and scheduled threat hunting operations 
+Security teams are often too focused on dealing with daily incident response fires to dedicate time to proactive and scheduled threat hunting operations 
 to catch emerging threats in their environments. Even when they have enough time to execute threat hunting exercises, correlating intelligence from multiple 
 threat feeds unfortunately is a manual, repetitive exercise that does not leave enough time for decision-making.
 

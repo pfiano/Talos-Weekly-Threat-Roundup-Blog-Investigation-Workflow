@@ -158,7 +158,17 @@ Please note that these values have (required) defaults in the variables defined 
 
 Then click RUN.
 
-26. In case of automatic or scheduled run, the workflow will automatically determine the URI for the latest Talos Roundup. **Please note** that if you wish to run again the workflow against a past Talos Roundup blog, first modify the global variable **Talos_URL_ID** and detract 50 to the current value. For instance, if the current value for the  Global Variable **Talos_URL_ID is 550**, then change it and 500.
+26. In case of automatic or scheduled run, the workflow will automatically determine the URI for the latest Talos Roundup. 
+
+## Talos_URL_ID
+
+if you wish to run again the workflow against a past Talos Roundup blog, first modify the global variable **Talos_URL_ID** and detract 50 to the current value. For instance, if the current value for the  Global Variable **Talos_URL_ID is 550**, then change it and 500:
+
+![image](https://user-images.githubusercontent.com/67795055/123676556-62174500-d844-11eb-9070-950a3ce94b67.png)
+
+Then change it to 500
+
+![image](https://user-images.githubusercontent.com/67795055/123676651-82df9a80-d844-11eb-90d6-3b0e2e9a110b.png)
 
 
 ## Playbook Steps

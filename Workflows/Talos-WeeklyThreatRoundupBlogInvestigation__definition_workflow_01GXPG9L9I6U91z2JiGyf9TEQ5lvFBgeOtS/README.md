@@ -1,3 +1,18 @@
+
+# Talos Weekly Threat Roundup Blog Investigation Workflow
+
+This workflow will automate inside the SecureX Orchestrator the investigation based on the IOCs published weekly by Talos Threat Roundup blog to understand whether there has been an impact of one of those threats in your environment.
+
+
+## Use Cases
+
+- Simplify threat hunting: Give the ability to security analyst to investigate most prevalent threats that Talos has observed over the current week and converts it into a SecureX casebook
+
+- SOC task automation: This workflow can be scheduled to periodically run at Talos Blog publish date so that investigation could be carried out immediatly upon blog availability
+
+
+## Description
+
 Every Friday evening, US time, Talos is publishing a glimpse into the most prevalent threats they have observed over the current week.
 
 For each threat described in the weekly roundup blog, an accompanying JSON file can be retrieved making an https request to Talos Roundup hosted IOCs that includes the complete list of file hashes, as well as all other IOCs from the post. The https request will be directed to the following resource:
@@ -8,11 +23,29 @@ where DD stands for the calendar day of the publication (remember, always on Fri
 
 https://s3.amazonaws.com/talos-intelligence-site/production/document_files/files/000/095/<URL_ID>/original/20201113-tru.json.txt
 
-The <URL_ID> will increment each week. The workflow will increase the <URL_ID> and check if the URL is valid. Once the valid <URL_ID> is found out, this is recorded in the global variable Talos_URL_ID, so that it will remembered the week after for the next run starting from the stored Talos_URL_ID.
+The <URL_ID> will increment each week. The workflow will automatically increase the <URL_ID> and check if the URL is valid. Once the valid <URL_ID> is found out, this is recorded in the SecureX Orchestrator global variable **Talos_URL_ID**, so that it will remembered the week after for the next run starting from the stored Talos_URL_ID value.
 
-The playbook steps:
+## Installation Steps
 
-1. Through a Schedule trigger, we program the workflow to start every Friday evening. The option also exists to enter manually a Blog URI in case we wish to run the workflow against a past published blog.
+1. Go to your instance of SecureX Orchestration and click on IMPORT
+
+![image](https://user-images.githubusercontent.com/67795055/123630969-79d7d480-d816-11eb-9fb1-5de04cd86ae7.png)
+
+
+2. We have two options here, through a GitHub repository or browse/copy-paste the JSON of the workflow
+
+- Option through GitHub repository
+
+![image](https://user-images.githubusercontent.com/67795055/123631411-04b8cf00-d817-11eb-8149-8659ad9ad160.png)
+
+
+3. gg
+
+## Playbook Steps
+
+![image](https://user-images.githubusercontent.com/67795055/123629583-bacee980-d814-11eb-95b3-756ff3d5ed38.png)
+
+1. Through a Schedule trigger, we program the workflow to start every Friday evening (schedule trigger description is outside of this README file, just follow the Schudule capability that SecureX Orchestrator offers in order to do so). The option also exists to enter manually a Blog URI in case we wish to run the workflow against a past published blog.
 
 2. Once the workflow starts, first step will be to build the URI of the blog for the current week, then do an https request to retrieve the JSON file describing the threats and IOCs.
 
@@ -35,7 +68,7 @@ The playbook steps:
 11. In case targets have not been found, an information message is sent out in any case.
 
 
-Required Targets
+## Required Targets
 
 1. CTR_For_Access_Token (default)
 2. CTR_API (default)
@@ -44,14 +77,14 @@ Required Targets
 5. Webex Teams
 
 
-Required Account Keys
+## Required Account Keys
 
 1. CTR_Credentials
 2. Webex Teams Token
 3. Email Credentials
 
 
-Required Atomic Workflows
+## Required Atomic Workflows
 
 1. CTRGenerateAccessToken
 2. Webex Teams - Post Message to Room

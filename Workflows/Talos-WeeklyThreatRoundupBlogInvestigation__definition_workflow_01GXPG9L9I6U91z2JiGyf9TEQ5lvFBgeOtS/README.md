@@ -66,65 +66,71 @@ The <URL_ID> will increment each week. The workflow will automatically increase 
 
 ![image](https://user-images.githubusercontent.com/67795055/123658821-5ae73b80-d832-11eb-8a61-7d4e930aeb51.png)
 
-9. Verify that the following Endpoints have been created under Targets
+9. Update the SMTP settings accordingly with the smtp server and port information in the SMTP Endpoint
+
+![image](https://user-images.githubusercontent.com/67795055/123675079-9db10f80-d842-11eb-9c31-60dbe65680e4.png)
+
+10. Verify that the following Endpoints have been created under Targets
 
 ![image](https://user-images.githubusercontent.com/67795055/123659801-5a02d980-d833-11eb-9892-5f973da0ce1e.png)
 
-10. Verify the following credentials have been created under Account Keys
+11. Verify the following credentials have been created under Account Keys
 
 ![image](https://user-images.githubusercontent.com/67795055/123660105-a77f4680-d833-11eb-9644-2d89fe9c3947.png)
 
-11. Open the workflow, the following message will be displayed. Click OK
+12. Open the workflow, the following message will be displayed. Click OK
 
 ![image](https://user-images.githubusercontent.com/67795055/123660323-d990a880-d833-11eb-9ca7-a33119346144.png)
 
-12. In the Canvas, click on warnings
+13. In the Canvas, click on warnings
 
 ![image](https://user-images.githubusercontent.com/67795055/123660687-2b393300-d834-11eb-8f7f-e74b1f86db15.png)
 
-13. Select SxTR Check Deliberate Verdict
+14. Select SxTR Check Deliberate Verdict
 
 ![image](https://user-images.githubusercontent.com/67795055/123660865-4f950f80-d834-11eb-9b64-3b3f43f57b39.png)
 
-14. Go to Properties of the SxTR Check Deliberate Verdict and select _Override Workflow Target_, from the list menu select **ADD NEW**
+15. Go to Properties of the SxTR Check Deliberate Verdict and select _Override Workflow Target_, from the list menu select **ADD NEW**
 
 ![image](https://user-images.githubusercontent.com/67795055/123661780-1e690f00-d835-11eb-81f6-63114c0c33a7.png)
 
-15. Create now a new HTTP Target Endpoint with the following configuration (leave the other fields empty, and select the right SecureX Cloud visibility.amp.cisco.com for NAM, visibility.eu.amp.cisco.com for EU):
+16. Create now a new HTTP Target Endpoint with the following configuration (leave the other fields empty, and select the right SecureX Cloud visibility.amp.cisco.com for NAM, visibility.eu.amp.cisco.com for EU):
 
 ![image](https://user-images.githubusercontent.com/67795055/123662415-bb2bac80-d835-11eb-93b7-049627df73e2.png)
+
 ![image](https://user-images.githubusercontent.com/67795055/123662278-9800fd00-d835-11eb-8dea-44151a3dc69a.png)
 
-16. After saving, you should see the following, with the warning counter down to 2. Now select _SxTR Create Casebook_
+17. After saving, you should see the following, with the warning counter down to 2. Now select _SxTR Create Casebook_
 
 ![image](https://user-images.githubusercontent.com/67795055/123663058-515fd280-d836-11eb-9eec-6d3548f3f339.png)
 
-17. Select ADD NEW
+18. Select ADD NEW
 
 ![image](https://user-images.githubusercontent.com/67795055/123663183-72282800-d836-11eb-88d6-ceed57c71a28.png)
 
-18. Create now a new HTTP Target Endpoint with the following configuration (leave the other fields empty, and select the right SecureX Cloud private.intel.amp.cisco.com for NAM, private.intel.eu.amp.cisco.com for EU):
+19. Create now a new HTTP Target Endpoint with the following configuration (leave the other fields empty, and select the right SecureX Cloud private.intel.amp.cisco.com for NAM, private.intel.eu.amp.cisco.com for EU):
 
 ![image](https://user-images.githubusercontent.com/67795055/123663419-aac80180-d836-11eb-9155-33774038b79b.png)
+
 ![image](https://user-images.githubusercontent.com/67795055/123663900-2033d200-d837-11eb-9c30-5342931dab50.png)
 
-19. After saving, you should see the following, with the counter down to 1. Now select _Webex Teams - Post Message to Room_
+20. After saving, you should see the following, with the counter down to 1. Now select _Webex Teams - Post Message to Room_
 
 ![image](https://user-images.githubusercontent.com/67795055/123664017-42c5eb00-d837-11eb-82d1-237695bd4527.png)
 
-20. Select **Webex Teams** from _Override Workflow Target_
+21. Select **Webex Teams** from _Override Workflow Target_
 
 ![image](https://user-images.githubusercontent.com/67795055/123664417-9d5f4700-d837-11eb-9962-5c72e1e8b52c.png)
 
-21. Now should looks like this, with no warnings active (counter down to 0). Validate the workflow.
+22. Now should looks like this, with no warnings active (counter down to 0). Validate the workflow.
 
 ![image](https://user-images.githubusercontent.com/67795055/123664899-1199ea80-d838-11eb-919b-d90b50217670.png)
 
-22. Verify that that teh Global Variable **Talos_URL_ID** been created. Please see the Description section of this README file to understand the role of the Talos_URL_ID global variable.
+23. Verify that that teh Global Variable **Talos_URL_ID** been created. Please see the Description section of this README file to understand the role of the Talos_URL_ID global variable.
 
 ![image](https://user-images.githubusercontent.com/67795055/123665319-76eddb80-d838-11eb-823e-30c82e11cb41.png)
 
-23. Now it is time for testing the workflow. Enter the workflow and click on RUN, the following screen for input variable pops up
+24. Now it is time for testing the workflow. Enter the workflow and click on RUN, the following screen for input variable pops up
 
 ![image](https://user-images.githubusercontent.com/67795055/123666126-393d8280-d839-11eb-9a33-6228f0f61644.png)
 
@@ -142,7 +148,21 @@ Please note that these values have (required) defaults in the variables defined 
 
 - **webex_room_name**, to specify the name of the Webex Teams room. Please note that if a room does not exists with the provided name, then it will be created.
 
-- ## Playbook Steps
+25. Let's do first a manual run by providing manullay the URI of the IOCs published in a roundup. For instance, we go to the Talos Roundup of June 17th 2021 at https://blog.talosintelligence.com/2021/06/threat-roundup-0611-0617.html, then click on **_here_** where the IOCs are published and copy the URL https://s3.amazonaws.com/talos-intelligence-site/production/document_files/files/000/095/584/original/20210617-tru.json.txt?1623962447, and paste in the workflow input variable **talos_blog_uri** just the Relative URL, in this case **/talos-intelligence-site/production/document_files/files/000/095/584/original/20210617-tru.json.txt?1623962447**
+
+![image](https://user-images.githubusercontent.com/67795055/123669153-152f7080-d83c-11eb-8dc9-ad00c7fdbe80.png)
+
+![image](https://user-images.githubusercontent.com/67795055/123669514-73f4ea00-d83c-11eb-8722-b941f4f3f965.png)
+
+![image](https://user-images.githubusercontent.com/67795055/123673916-4cece700-d841-11eb-9e95-432d34d4ee7b.png)
+
+Then click RUN.
+
+26. In case of automatic or scheduled run, the workflow will automatically determine the URI for the latest Talos Roundup.
+
+
+
+## Playbook Steps
 
 ![image](https://user-images.githubusercontent.com/67795055/123629583-bacee980-d814-11eb-95b3-756ff3d5ed38.png)
 
@@ -195,3 +215,12 @@ Please note that these values have (required) defaults in the variables defined 
 6. CTR CheckDeliberateVerdict
 7. CTR Enrich Observable
 8. CTR Create Casebook
+
+
+## Video
+
+https://www.youtube.com/watch?v=5ZchL_qsRPc
+
+## Commnents and Suggestions
+
+Please send your comments and suggestions to Nicola (pfiano@cisco.com)

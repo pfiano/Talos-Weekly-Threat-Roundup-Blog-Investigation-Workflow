@@ -17,7 +17,7 @@ Every Friday evening, US time, Talos is publishing a glimpse into the most preva
 
 For each threat described in the weekly roundup blog, an accompanying JSON file can be retrieved making an https request to Talos Roundup hosted IOCs that includes the complete list of file hashes, as well as all other IOCs from the post. The https request will be directed to the following resource:
 
-https://s3.amazonaws.com/talos-intelligence-site/production/document_files/files/000/095/<URL_ID>/original/YYYYMMDD-tru.json.txt
+https://s3.amazonaws.com/talos-intelligence-site/production/document_files/files/000/095/![image](https://user-images.githubusercontent.com/67795055/123665374-82d99d80-d838-11eb-9e73-447c471e972a.png)/original/YYYYMMDD-tru.json.txt
 
 where DD stands for the calendar day of the publication (remember, always on Fridays!). For instance, the JSON file containing all the IOCs related to the most prevalent threats they have observed between Nov. 6th and Nov. 13th will have the following link:
 
@@ -34,14 +34,115 @@ The <URL_ID> will increment each week. The workflow will automatically increase 
 
 2. We have two options here, through a GitHub repository or browse/copy-paste the JSON of the workflow
 
-- Option through GitHub repository
+**_Option through GitHub repository_ (please configure the Git Repository with the Cisco Code Exchange -> Explore -> Repository where the workflow is published)**
 
 ![image](https://user-images.githubusercontent.com/67795055/123631411-04b8cf00-d817-11eb-8149-8659ad9ad160.png)
 
+**_Option Paste JSON or upload the workflow to import_**
 
-3. gg
+![image](https://user-images.githubusercontent.com/67795055/123651803-15277480-d82c-11eb-81d3-3b65878f18c5.png)
 
-## Playbook Steps
+3. When starting the import the following warning will be displayed. This is due to the fact that the workflow needs configuration updates. Please click UPDATE
+
+![image](https://user-images.githubusercontent.com/67795055/123652905-fbd2f800-d82c-11eb-9664-90a0603ad67a.png)
+
+4. Provide SecureX Threat Response API Credentials
+
+![image](https://user-images.githubusercontent.com/67795055/123654822-ba434c80-d82e-11eb-9a1b-609a97adfaf4.png)
+
+5. Provide email credentials for the SMTP Endpoint
+
+![image](https://user-images.githubusercontent.com/67795055/123656722-76514700-d830-11eb-9cca-e3c5063a0984.png)
+
+6. Provide the Webex Teams Bot Token
+
+![image](https://user-images.githubusercontent.com/67795055/123657175-dc3dce80-d830-11eb-971c-e7512252334e.png)
+
+7. Provide again the Webex Teams Bot Token when asked
+
+![image](https://user-images.githubusercontent.com/67795055/123657175-dc3dce80-d830-11eb-971c-e7512252334e.png)
+
+8. The workflow at this point should be succefully imported
+
+![image](https://user-images.githubusercontent.com/67795055/123658821-5ae73b80-d832-11eb-8a61-7d4e930aeb51.png)
+
+9. Verify that the following Endpoints have been created under Targets
+
+![image](https://user-images.githubusercontent.com/67795055/123659801-5a02d980-d833-11eb-9892-5f973da0ce1e.png)
+
+10. Verify the following credentials have been created under Account Keys
+
+![image](https://user-images.githubusercontent.com/67795055/123660105-a77f4680-d833-11eb-9644-2d89fe9c3947.png)
+
+11. Open the workflow, the following message will be displayed. Click OK
+
+![image](https://user-images.githubusercontent.com/67795055/123660323-d990a880-d833-11eb-9ca7-a33119346144.png)
+
+12. In the Canvas, click on warnings
+
+![image](https://user-images.githubusercontent.com/67795055/123660687-2b393300-d834-11eb-8f7f-e74b1f86db15.png)
+
+13. Select SxTR Check Deliberate Verdict
+
+![image](https://user-images.githubusercontent.com/67795055/123660865-4f950f80-d834-11eb-9b64-3b3f43f57b39.png)
+
+14. Go to Properties of the SxTR Check Deliberate Verdict and select _Override Workflow Target_, from the list menu select **ADD NEW**
+
+![image](https://user-images.githubusercontent.com/67795055/123661780-1e690f00-d835-11eb-81f6-63114c0c33a7.png)
+
+15. Create now a new HTTP Target Endpoint with the following configuration (leave the other fields empty, and select the right SecureX Cloud visibility.amp.cisco.com for NAM, visibility.eu.amp.cisco.com for EU):
+
+![image](https://user-images.githubusercontent.com/67795055/123662415-bb2bac80-d835-11eb-93b7-049627df73e2.png)
+![image](https://user-images.githubusercontent.com/67795055/123662278-9800fd00-d835-11eb-8dea-44151a3dc69a.png)
+
+16. After saving, you should see the following, with the warning counter down to 2. Now select _SxTR Create Casebook_
+
+![image](https://user-images.githubusercontent.com/67795055/123663058-515fd280-d836-11eb-9eec-6d3548f3f339.png)
+
+17. Select ADD NEW
+
+![image](https://user-images.githubusercontent.com/67795055/123663183-72282800-d836-11eb-88d6-ceed57c71a28.png)
+
+18. Create now a new HTTP Target Endpoint with the following configuration (leave the other fields empty, and select the right SecureX Cloud private.intel.amp.cisco.com for NAM, private.intel.eu.amp.cisco.com for EU):
+
+![image](https://user-images.githubusercontent.com/67795055/123663419-aac80180-d836-11eb-9155-33774038b79b.png)
+![image](https://user-images.githubusercontent.com/67795055/123663900-2033d200-d837-11eb-9c30-5342931dab50.png)
+
+19. After saving, you should see the following, with the counter down to 1. Now select _Webex Teams - Post Message to Room_
+
+![image](https://user-images.githubusercontent.com/67795055/123664017-42c5eb00-d837-11eb-82d1-237695bd4527.png)
+
+20. Select **Webex Teams** from _Override Workflow Target_
+
+![image](https://user-images.githubusercontent.com/67795055/123664417-9d5f4700-d837-11eb-9962-5c72e1e8b52c.png)
+
+21. Now should looks like this, with no warnings active (counter down to 0). Validate the workflow.
+
+![image](https://user-images.githubusercontent.com/67795055/123664899-1199ea80-d838-11eb-919b-d90b50217670.png)
+
+22. Verify that that teh Global Variable **Talos_URL_ID** been created. Please see the Description section of this README file to understand the role of the Talos_URL_ID global variable.
+
+![image](https://user-images.githubusercontent.com/67795055/123665319-76eddb80-d838-11eb-823e-30c82e11cb41.png)
+
+23. Now it is time for testing the workflow. Enter the workflow and click on RUN, the following screen for input variable pops up
+
+![image](https://user-images.githubusercontent.com/67795055/123666126-393d8280-d839-11eb-9a33-6228f0f61644.png)
+
+Please note that these values have (required) defaults in the variables defined in the workflow properties. You can change the defaults there.
+
+- **max_number_retry_iterations** is the max number of retries the workflow does in case the IOCs have not been published for the week. Between each retry, the workflow will sleep for _retry_interval_. When the max_number_retry_iterations is reached, the workflow send a notification and quits. The workflow will then be activated at the next schedule trigger.
+
+- **retry_interval** is the sleep time between each retry (in seconds)
+
+- **webex_bot_token**, you can specify a different Webex Teams Bot token in case you would not like to use the configured one
+
+- **email_recipients**, comma separated, in order to send notifications
+
+- **talos_blog_uri**, please insert manually here the URI of the IOCs of a specific Talos Roundup
+
+- **webex_room_name**, to specify the name of the Webex Teams room. Please note that if a room does not exists with the provided name, then it will be created.
+
+- ## Playbook Steps
 
 ![image](https://user-images.githubusercontent.com/67795055/123629583-bacee980-d814-11eb-95b3-756ff3d5ed38.png)
 

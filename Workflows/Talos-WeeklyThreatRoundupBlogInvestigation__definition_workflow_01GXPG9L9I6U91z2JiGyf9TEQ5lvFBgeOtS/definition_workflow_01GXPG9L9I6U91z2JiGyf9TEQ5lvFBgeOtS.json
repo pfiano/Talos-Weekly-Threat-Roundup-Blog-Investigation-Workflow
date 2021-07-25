@@ -7,41 +7,16 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "tabletype_01IWCT40XXPL85GK3WRmaSK0qhuziUVIoJc",
-        "properties": {
-          "scope": "local",
-          "name": "signatures_table",
-          "type": "datatype.table",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01IWCUYYYRR9Z3STSpQ0O3j9ucKbEHCN7Di",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": " ",
-          "scope": "local",
-          "name": "CR",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01H2NYQFHSL1I4P7S3blZGh0sduKYT9XDMd",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "input",
-          "name": "publish_date",
+          "scope": "local",
+          "name": "observable_list",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KMXXZ804Z3M5uZvfgPBSkztr7eoDlDZX8",
+        "unique_name": "variable_workflow_01KKJOZY66L4B4DeuUYixZVoR71eo6jJeCg",
         "object_type": "variable_workflow"
       },
       {
@@ -49,66 +24,12 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "joined_hashes",
-          "type": "datatype.string",
-          "description": "This variable will contain all the hashes from File, Mutex and Registry",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01K9LF1CXET8S34SSTtqG4YWZkhLH5VNNXR",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "https://talosintelligence.com/resources/",
-          "scope": "local",
-          "name": "Talos_URL",
+          "name": "clean_judgements",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01PFYU8UYIO3U1Br9DtYBMqdJJOHcjVuR3h",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "TALOS ROUNDUP Investigation",
-          "scope": "input",
-          "name": "webex_room_name",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01K9PU0HNDGOP4sXRKx0el03LAb4nHXRuxr",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "value": "*****",
-          "scope": "input",
-          "name": "webex_bot_token",
-          "type": "datatype.secure_string",
-          "description": "This is the bot token for Webex Teams",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01K9PVVZPK1R436nI1fWsAWkCxtgRtwl1tm",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 50,
-          "scope": "local",
-          "name": "max_increase_talos_url_id",
-          "type": "datatype.integer",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PFYNQHOLFTL1AH9eQcgqfSobV5qeOPqbp",
+        "unique_name": "variable_workflow_01KDXC9ULNLJS6GHPEN8k33640qvosJWIc4",
         "object_type": "variable_workflow"
       },
       {
@@ -116,25 +37,38 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "casebook_id",
+          "name": "indicators",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01K7X527YCKTV45gh6fFCmcze0rEMtydKro",
+        "unique_name": "variable_workflow_01GXQKHBW4AFW29niot1QVadlr4TZXMlo9n",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "inital_email_message",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KHV6ZES4ZRL0cA9PT9ItWZtiF81iaVHA1",
         "object_type": "variable_workflow"
       },
       {
         "schema_id": "datatype.boolean",
         "properties": {
-          "value": true,
+          "value": false,
           "scope": "local",
-          "name": "ELSE",
+          "name": "uri_is_working",
           "type": "datatype.boolean",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KBC8CER8IY61CRWu6qMaV74hO5HwTL4i1",
+        "unique_name": "variable_workflow_01PGJCTFC3KZX1U088s8Z4vkzYdykBKPweT",
         "object_type": "variable_workflow"
       },
       {
@@ -151,17 +85,56 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.integer",
+        "schema_id": "datatype.string",
         "properties": {
-          "value": 24,
-          "scope": "input",
-          "name": "max_number_retry_iterations",
-          "type": "datatype.integer",
-          "description": "Please note that each retry means 1 hour",
+          "value": "",
+          "scope": "local",
+          "name": "casebook_id",
+          "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KHT8SZYSJ7T5UT3xfCkeSIJdXkD3Trh8y",
+        "unique_name": "variable_workflow_01K7X527YCKTV45gh6fFCmcze0rEMtydKro",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "casebook_title",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KB3H4IYW6X80DfPtL2LVdU566E2RQAY65",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 3600,
+          "scope": "input",
+          "name": "retry_interval",
+          "type": "datatype.integer",
+          "description": "This is the time interval between each retry to check whether the JSON file has become available.\n\nDefault is 3600 seconds (1 hour).",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KLCHD18CFB22JMo6MO5EKpDpdTdsr9osb",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 50,
+          "scope": "local",
+          "name": "max_increase_talos_url_id",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PFYNQHOLFTL1AH9eQcgqfSobV5qeOPqbp",
         "object_type": "variable_workflow"
       },
       {
@@ -182,12 +155,12 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "clean_judgements",
+          "name": "loop_blog_url",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KDXC9ULNLJS6GHPEN8k33640qvosJWIc4",
+        "unique_name": "variable_workflow_01PG0VN961KEK2CGTSzmfLqr9caIeZwbKo0",
         "object_type": "variable_workflow"
       },
       {
@@ -195,12 +168,78 @@
         "properties": {
           "value": 0,
           "scope": "local",
-          "name": "is_it_clean",
+          "name": "Temp_Talos_URL_ID",
           "type": "datatype.integer",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KJVAWJ62FHD4OdDqGa55CSiC01kywyBDW",
+        "unique_name": "variable_workflow_01PFYLQBSAXL72c74uuf2uQowm0TUN1CJpQ",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "https://talosintelligence.com/resources/",
+          "scope": "local",
+          "name": "Talos_URL",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01PFYU8UYIO3U1Br9DtYBMqdJJOHcjVuR3h",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "description_of_the_signature",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IWC5T1QGVYD71wz6JR5WKIb4rc9fH1FrT",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "current_blog_uri",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KHWKPBK4D637a9RatyCqhH4bA9UpC5fDR",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "joined_hashes",
+          "type": "datatype.string",
+          "description": "This variable will contain all the hashes from File, Mutex and Registry",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01K9LF1CXET8S34SSTtqG4YWZkhLH5VNNXR",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "target_details_tmp",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01H2MC1KII39V3rRVIAavDogHWd7KSvv5HQ",
         "object_type": "variable_workflow"
       },
       {
@@ -230,29 +269,16 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.string",
+        "schema_id": "datatype.integer",
         "properties": {
-          "value": "",
+          "value": 0,
           "scope": "local",
-          "name": "inital_email_message",
-          "type": "datatype.string",
+          "name": "is_it_clean",
+          "type": "datatype.integer",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KHV6ZES4ZRL0cA9PT9ItWZtiF81iaVHA1",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "current_blog_uri",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KHWKPBK4D637a9RatyCqhH4bA9UpC5fDR",
+        "unique_name": "variable_workflow_01KJVAWJ62FHD4OdDqGa55CSiC01kywyBDW",
         "object_type": "variable_workflow"
       },
       {
@@ -269,16 +295,44 @@
         "object_type": "variable_workflow"
       },
       {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 24,
+          "scope": "input",
+          "name": "max_number_retry_iterations",
+          "type": "datatype.integer",
+          "description": "Please note that each retry means 1 hour",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KHT8SZYSJ7T5UT3xfCkeSIJdXkD3Trh8y",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "target_list",
+          "name": "name_of_the_signature",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KGASITNQ5R73NiXbqZwn4lAH70J1gHqPK",
+        "unique_name": "variable_workflow_01IWC6N5ZK7R44a0iiW08BiH5jASW85YHxN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "*****",
+          "scope": "input",
+          "name": "webex_bot_token",
+          "type": "datatype.secure_string",
+          "description": "This is the bot token for Webex Teams",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01K9PVVZPK1R436nI1fWsAWkCxtgRtwl1tm",
         "object_type": "variable_workflow"
       },
       {
@@ -298,14 +352,40 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
+          "value": " ",
           "scope": "local",
-          "name": "loop_blog_url",
+          "name": "CR",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01PG0VN961KEK2CGTSzmfLqr9caIeZwbKo0",
+        "unique_name": "variable_workflow_01H2NYQFHSL1I4P7S3blZGh0sduKYT9XDMd",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": true,
+          "scope": "local",
+          "name": "ELSE",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KBC8CER8IY61CRWu6qMaV74hO5HwTL4i1",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "publish_date",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KMXXZ804Z3M5uZvfgPBSkztr7eoDlDZX8",
         "object_type": "variable_workflow"
       },
       {
@@ -313,12 +393,12 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "observable_list",
+          "name": "initial_webex_team_message",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KKJOZY66L4B4DeuUYixZVoR71eo6jJeCg",
+        "unique_name": "variable_workflow_01KHV774O2ETY04SHok0FXUUCWqJuexPU7W",
         "object_type": "variable_workflow"
       },
       {
@@ -326,12 +406,51 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "indicators",
+          "name": "target_list",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01GXQKHBW4AFW29niot1QVadlr4TZXMlo9n",
+        "unique_name": "variable_workflow_01KGASITNQ5R73NiXbqZwn4lAH70J1gHqPK",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "testingworkflowinvestigation@gmail.com",
+          "scope": "input",
+          "name": "email_recipients",
+          "type": "datatype.string",
+          "description": "emails for notifications (comma separated)",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01H5NDR871RTA4dDba4PVbzRrHGbUISS7nn",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "TALOS ROUNDUP Investigation",
+          "scope": "input",
+          "name": "webex_room_name",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01K9PU0HNDGOP4sXRKx0el03LAb4nHXRuxr",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_01IWCT40XXPL85GK3WRmaSK0qhuziUVIoJc",
+        "properties": {
+          "scope": "local",
+          "name": "signatures_table",
+          "type": "datatype.table",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01IWCUYYYRR9Z3STSpQ0O3j9ucKbEHCN7Di",
         "object_type": "variable_workflow"
       },
       {
@@ -352,52 +471,12 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "initial_webex_team_message",
+          "name": "webex_message",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01KHV774O2ETY04SHok0FXUUCWqJuexPU7W",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.boolean",
-        "properties": {
-          "value": false,
-          "scope": "local",
-          "name": "casebook_targets_found",
-          "type": "datatype.boolean",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KCCCVJ15DFN0NYIX8Nv3timSTcIbkIevc",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.boolean",
-        "properties": {
-          "value": false,
-          "scope": "local",
-          "name": "uri_is_working",
-          "type": "datatype.boolean",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PGJCTFC3KZX1U088s8Z4vkzYdykBKPweT",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "testingworkflowinvestigation@gmail.com",
-          "scope": "input",
-          "name": "email_recipients",
-          "type": "datatype.string",
-          "description": "emails for notifications (comma separated)",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01H5NDR871RTA4dDba4PVbzRrHGbUISS7nn",
+        "unique_name": "variable_workflow_01H0BHHV5EU3T1vdqMdSWjYye4b59AzRVGT",
         "object_type": "variable_workflow"
       },
       {
@@ -414,95 +493,16 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.string",
+        "schema_id": "datatype.boolean",
         "properties": {
-          "value": "",
+          "value": false,
           "scope": "local",
-          "name": "webex_message",
-          "type": "datatype.string",
+          "name": "casebook_targets_found",
+          "type": "datatype.boolean",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01H0BHHV5EU3T1vdqMdSWjYye4b59AzRVGT",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "casebook_title",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KB3H4IYW6X80DfPtL2LVdU566E2RQAY65",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "description_of_the_signature",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01IWC5T1QGVYD71wz6JR5WKIb4rc9fH1FrT",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 3600,
-          "scope": "input",
-          "name": "retry_interval",
-          "type": "datatype.integer",
-          "description": "This is the time interval between each retry to check whether the JSON file has become available.\n\nDefault is 3600 seconds (1 hour).",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01KLCHD18CFB22JMo6MO5EKpDpdTdsr9osb",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "target_details_tmp",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01H2MC1KII39V3rRVIAavDogHWd7KSvv5HQ",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 0,
-          "scope": "local",
-          "name": "Temp_Talos_URL_ID",
-          "type": "datatype.integer",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01PFYLQBSAXL72c74uuf2uQowm0TUN1CJpQ",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "name_of_the_signature",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01IWC6N5ZK7R44a0iiW08BiH5jASW85YHxN",
+        "unique_name": "variable_workflow_01KCCCVJ15DFN0NYIX8Nv3timSTcIbkIevc",
         "object_type": "variable_workflow"
       }
     ],
@@ -642,7 +642,7 @@
                                   "continue_on_failure": false,
                                   "description": "This python script builds the part of the URI taking into account the current date of run.",
                                   "display_name": "Build Talos Roundup blog URI (current week)",
-                                  "script": "import datetime\nfrom datetime import timedelta\ndt = datetime.date.today()\ny = dt.weekday() \nif y == 4:\n#       offset = 14\n    offset = 0\nelif y == 5:\n    offset = 1\nelif y == 6:\n    offset = 2\nelse:\n    offset = y + 3\n#       offset = y + 17\nx = timedelta(days=offset)\nlast_blog_publish_date = dt - x\nmonth = last_blog_publish_date.strftime(\"%m\")\nyear = last_blog_publish_date.strftime(\"%Y\")\n#current_blog_url = last_blog_publish_date.strftime(\"%Y%m%d\") + '-tru.json.txt'\ncurrent_blog_url = 'TRU_' + last_blog_publish_date.strftime(\"%m%d%y\") + '.txt'\npublish_date = last_blog_publish_date.strftime(\"%d-%m-%Y\")",
+                                  "script": "import datetime\nfrom datetime import timedelta\ndt = datetime.date.today()\ny = dt.weekday() \nif y == 4:\n#       offset = 14\n    offset = 0\nelif y == 5:\n    offset = 1\nelif y == 6:\n    offset = 2\nelse:\n    offset = y + 3\n#       offset = y + 17\nx = timedelta(days=offset)\nlast_blog_publish_date = dt - x\nmonth = last_blog_publish_date.strftime(\"%m\")\nyear = last_blog_publish_date.strftime(\"%Y\")\ncurrent_blog_url = last_blog_publish_date.strftime(\"%Y%m%d\") + '-tru.json.txt'\n#current_blog_url = 'TRU_' + last_blog_publish_date.strftime(\"%m%d%y\") + '.txt'\npublish_date = last_blog_publish_date.strftime(\"%d-%m-%Y\")",
                                   "script_queries": [
                                     {
                                       "script_query": "current_blog_url",
@@ -3514,7 +3514,7 @@
     "variable_01PFXY5TMS70Q5JFPiURkejiUJyvSjSydlw": {
       "unique_name": "variable_01PFXY5TMS70Q5JFPiURkejiUJyvSjSydlw",
       "properties": {
-        "value": 595,
+        "value": 597,
         "scope": "global",
         "name": "Talos_URL_ID",
         "type": "datatype.integer",
@@ -3586,19 +3586,6 @@
             "schema_id": "datatype.string",
             "properties": {
               "value": "",
-              "scope": "input",
-              "name": "Webex Room Name",
-              "type": "datatype.string",
-              "is_required": true,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01ICNZ7EJGGPC4WbyB0Qb8BFZiSvcrXgCLX",
-            "object_type": "variable_workflow"
-          },
-          {
-            "schema_id": "datatype.string",
-            "properties": {
-              "value": "",
               "scope": "output",
               "name": "room_id",
               "type": "datatype.string",
@@ -3606,6 +3593,19 @@
               "is_invisible": false
             },
             "unique_name": "variable_workflow_01ICOEP7H99UE4tnnrkfr5mnCI0Yd4iSMKD",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "Webex Room Name",
+              "type": "datatype.string",
+              "is_required": true,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01ICNZ7EJGGPC4WbyB0Qb8BFZiSvcrXgCLX",
             "object_type": "variable_workflow"
           }
         ],
@@ -3811,13 +3811,13 @@
     }
   ],
   "atomic_workflows": [
-    "definition_workflow_01DSC03B74DRH2SitgOVw4CXxRxTmM0nFYb",
-    "definition_workflow_01DSFCANQLPIY3aK0UajEz2KdDnbzYBjrSt",
+    "definition_workflow_01C9F1VJ1I5KH26f860hJC5zDSD33548bYS",
     "definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4",
     "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf",
+    "definition_workflow_01BMYF7PCRLRM3pfYcuM9yYFsKoYBEBO4PK",
     "definition_workflow_01FHMU6SD5XPL6eRW4zFXqkA1w8jWiQCIBU",
-    "definition_workflow_01C9F1VJ1I5KH26f860hJC5zDSD33548bYS",
     "definition_workflow_01DS6ELBOO8YR3uFJZju566LqiqR18VlE6r",
-    "definition_workflow_01BMYF7PCRLRM3pfYcuM9yYFsKoYBEBO4PK"
+    "definition_workflow_01DSC03B74DRH2SitgOVw4CXxRxTmM0nFYb",
+    "definition_workflow_01DSFCANQLPIY3aK0UajEz2KdDnbzYBjrSt"
   ]
 }

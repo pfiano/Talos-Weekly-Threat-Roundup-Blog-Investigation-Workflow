@@ -17,13 +17,13 @@ Every Friday evening, US time, Talos is publishing a glimpse into the most preva
 
 For each threat described in the weekly roundup blog, an accompanying JSON file can be retrieved making an https request to Talos Roundup hosted IOCs that includes the complete list of file hashes, as well as all other IOCs from the post. The https request will be directed to the following resource:
 
-https://s3.amazonaws.com/talos-intelligence-site/production/document_files/files/000/095/<URL_ID>/original/TRU_MMDDYY.txt
+https://s3.amazonaws.com/talos-intelligence-site/production/document_files/files/000/095/<URL_ID>/original/YYYYMMDD-tru.json.txt
 
-where DD stands for the calendar day of the publication (remember, always on Fridays!). For instance, the JSON file containing all the IOCs related to the most prevalent threats they have observed between Jul. 2nd and Nov. 9th will have the following link:
+where DD stands for the calendar day of the publication (remember, always on Fridays!). For instance, the JSON file containing all the IOCs related to the most prevalent threats they have observed between Jul. 16th and Nov. 23rd will have the following link:
 
-https://s3.amazonaws.com/talos-intelligence-site/production/document_files/files/000/095/595/original/TRU_070921.txt
+https://s3.amazonaws.com/talos-intelligence-site/production/document_files/files/000/095/597/original/20210723-tru.json.txt
 
-where the <URL_ID> assigned by TALOS to this pubblication is 595.
+where the <URL_ID> assigned by TALOS to this pubblication is 597.
 
 The <URL_ID> will increment each week. The workflow will automatically increase the <URL_ID> and check if the URL is valid. Once the valid <URL_ID> is found out, this is recorded in the SecureX Orchestrator global variable **Talos_URL_ID**, so that it will remembered the week after for the next run starting from the stored Talos_URL_ID value.
 

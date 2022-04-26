@@ -1,0 +1,295 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN",
+    "name": "FMC Health Status",
+    "title": "FMC Health Status",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "input",
+          "name": "test variable",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01WNE4OYUB2TE3JPLKc1JPit5UCLKRuOHKJ",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "FMC Health Status",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX",
+        "name": "Secure Firewall - Get Access Token",
+        "title": "Secure Firewall - Get Access Token",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Secure Firewall - Get Access Token",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o",
+            "target_type": "web-service.endpoint"
+          },
+          "workflow_id": "definition_workflow_01PP76OBLMFFT4g43eU1MrFz5S7BxbqRzOk",
+          "workflow_name": "Secure Firewall - Get Access Token"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01WN8YDG89IKP3FoneNyyZUiXnbQX1QerXM",
+        "name": "HTTP Request",
+        "title": "Secure Firewall - Get Health Alerts",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "X-auth-access-token",
+              "value": "$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECVZD3O8cyvubv6Cb2mfX5HASQ2$"
+            }
+          ],
+          "display_name": "Secure Firewall - Get Health Alerts",
+          "method": "GET",
+          "relative_url": "/fmc_config/v1/domain/$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECP484xngkIgAlf2Yr0SrpVXhYx$/health/alerts",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01WN97BHV1J5P2ipFaj99qNsBJV1jI988jP",
+        "name": "Read Table from JSON",
+        "title": "Create Health Alerts Table",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Create Health Alerts Table",
+          "input_json": "$activity.definition_activity_01WN8YDG89IKP3FoneNyyZUiXnbQX1QerXM.output.response_body$",
+          "jsonpath_query": "$.items",
+          "persist_output": false,
+          "populate_columns": false,
+          "skip_execution": false,
+          "table_columns": [
+            {
+              "column_name": "moduleID",
+              "column_type": "string"
+            },
+            {
+              "column_name": "params",
+              "column_type": "string"
+            },
+            {
+              "column_name": "status",
+              "column_type": "string"
+            },
+            {
+              "column_name": "details",
+              "column_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01WN9KOPRZD0J5Wjjobu77Mp91YQM9kg5dH",
+        "name": "For Each",
+        "title": "For Each",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "For Each",
+          "skip_execution": false,
+          "source_array": "$activity.definition_activity_01WN97BHV1J5P2ipFaj99qNsBJV1jI988jP.output.read_table_from_json$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01WN9KXDXUGTU5OHilUoPXQQZHW161gOUnv",
+            "name": "Condition Block",
+            "title": "Condition Block",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Condition Block",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01WN9KXE3JX505lTagtn72TeAc8fwCZahEZ",
+                "name": "Condition Branch",
+                "title": "Condition Branch",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01WN9KOPRZD0J5Wjjobu77Mp91YQM9kg5dH.input.source_array[@].status$",
+                    "operator": "ne",
+                    "right_operand": "GREEN"
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Condition Branch",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01WN9KXEBMW7Z6DV81T9aZh4Zj48MANki7u",
+                "name": "Condition Branch",
+                "title": "Condition Branch",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01WN9KOPRZD0J5Wjjobu77Mp91YQM9kg5dH.input.source_array[@].status$",
+                    "operator": "eqi",
+                    "right_operand": "DISABLED"
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Condition Branch",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01WNAT3TRJHJ477IMMh5sRSJBBJMbS61i6u",
+                "name": "Condition Branch",
+                "title": "Condition Branch",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": {
+                      "left_operand": "$activity.definition_activity_01WN9KOPRZD0J5Wjjobu77Mp91YQM9kg5dH.input.source_array[@].status$",
+                      "operator": "ne",
+                      "right_operand": "DISABLED"
+                    },
+                    "operator": "or",
+                    "right_operand": {
+                      "left_operand": "$activity.definition_activity_01WN9KOPRZD0J5Wjjobu77Mp91YQM9kg5dH.input.source_array[@].status$",
+                      "operator": "ne",
+                      "right_operand": "GREEN"
+                    }
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Condition Branch",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o": {
+      "unique_name": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o",
+      "name": "Firepower",
+      "title": "Firepower",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "ao_remote_id": "01WEVLNL4YTR45DQFdkzLxY6dOMFuLwKtGM",
+        "default_runtime_user_id": "definition_runtime_user_01WN8NUOS4MB47YsVwg5FcNIzz0lhkNM0jH",
+        "disable_certificate_validation": true,
+        "display_name": "Firepower",
+        "host": "10.48.184.50",
+        "ignore_proxy": false,
+        "no_runtime_user": false,
+        "path": "/api",
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01WN8NUOS4MB47YsVwg5FcNIzz0lhkNM0jH": {
+      "unique_name": "definition_runtime_user_01WN8NUOS4MB47YsVwg5FcNIzz0lhkNM0jH",
+      "name": "Firepower_pfiano_credentials",
+      "title": "Firepower_pfiano_credentials",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "auth_option": "*****",
+        "basic_password": "*****",
+        "basic_username": "*****",
+        "display_name": "Firepower_pfiano_credentials"
+      }
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_01PP76OBLMFFT4g43eU1MrFz5S7BxbqRzOk"
+  ],
+  "remotemetas": {
+    "remote_meta_01WEVLNL51K3R5wVmmQc4zUkd1jtMYeqqSx": {
+      "base_type": "remote_meta",
+      "type": "generic.remote_meta",
+      "name": "Calo Lab Remote Connector",
+      "title": "Calo Lab Remote Connector",
+      "version": "1.0.0",
+      "properties": {
+        "cloud_type": "vmware",
+        "display_name": "Calo Lab Remote Connector",
+        "network": {
+          "dns_servers": "144.254.71.184",
+          "gateway": "10.48.184.1",
+          "ip_endpoint": "10.48.184.81/24",
+          "is_static_ip": true
+        },
+        "proxy": {
+          "proxy_url": "socks5://proxy.esl.cisco.com:1080",
+          "require_proxy": true
+        }
+      },
+      "unique_name": "remote_meta_01WEVLNL51K3R5wVmmQc4zUkd1jtMYeqqSx",
+      "object_type": "remote_meta"
+    }
+  },
+  "dependent_workflows": [
+    "definition_workflow_01PP76OBLMFFT4g43eU1MrFz5S7BxbqRzOk"
+  ]
+}

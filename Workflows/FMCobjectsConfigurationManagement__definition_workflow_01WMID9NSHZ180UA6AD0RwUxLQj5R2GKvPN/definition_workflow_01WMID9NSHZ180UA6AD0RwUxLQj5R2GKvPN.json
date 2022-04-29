@@ -9,6 +9,32 @@
       {
         "schema_id": "datatype.string",
         "properties": {
+          "value": "My commit message",
+          "scope": "input",
+          "name": "Commit Message",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01WO342J5TIYJ4wavWdVB19Q6Iu3KKvx0xu",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "Current Page",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01WOUA8HTLP964kn1QsUNWtFVmUJuDgRsZa",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
           "value": "networks,intrusionrules,hosts",
           "scope": "input",
           "name": "Objects",
@@ -17,6 +43,46 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01WO1VOR3BNQQ4O2mlSaDmB1u3L87GfRgQB",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "input",
+          "name": "Expanded",
+          "type": "datatype.boolean",
+          "description": "If set to true, the GET response displays a list of objects with additional attributes. Defautl value TRUE",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01WORKK2QRLAY26jGGv8xCFAUckFjnGViju",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "Number of Pages",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01WOR9OZ8LD5T7mbkR8Zt67CkGLIf0QV6iL",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "pfiano@cisco.com",
+          "scope": "input",
+          "name": "Email Committer",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01WO34T91C4FY7j6jJflwogNpL38v102wl9",
         "object_type": "variable_workflow"
       },
       {
@@ -36,7 +102,7 @@
         "schema_id": "datatype.integer",
         "properties": {
           "value": 1000,
-          "scope": "local",
+          "scope": "input",
           "name": "Limit Global",
           "type": "datatype.integer",
           "description": "Limit Global = 1000 (by default) # number of object to retrieve in one single GET request",
@@ -47,30 +113,16 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.boolean",
+        "schema_id": "datatype.string",
         "properties": {
-          "value": true,
+          "value": "",
           "scope": "local",
-          "name": "Expanded",
-          "type": "datatype.boolean",
-          "description": "If set to true, the GET response displays a list of objects with additional attributes. Defautl value TRUE",
+          "name": "Object Items",
+          "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01WORKK2QRLAY26jGGv8xCFAUckFjnGViju",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "pfiano@cisco.com",
-          "scope": "input",
-          "name": "Email Committer",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01WO34T91C4FY7j6jJflwogNpL38v102wl9",
+        "unique_name": "variable_workflow_01WPQ1PKBWGBS3DN8pZGb0mQhpB0I9gsFL8",
         "object_type": "variable_workflow"
       },
       {
@@ -97,45 +149,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01WNXUL625TO37fpHUacVn4aMM1OCrOZ5tc",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 0,
-          "scope": "local",
-          "name": "Current Page",
-          "type": "datatype.integer",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01WOUA8HTLP964kn1QsUNWtFVmUJuDgRsZa",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "My commit message",
-          "scope": "input",
-          "name": "Commit Message",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01WO342J5TIYJ4wavWdVB19Q6Iu3KKvx0xu",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 0,
-          "scope": "local",
-          "name": "Number of Pages",
-          "type": "datatype.integer",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01WOR9OZ8LD5T7mbkR8Zt67CkGLIf0QV6iL",
         "object_type": "variable_workflow"
       }
     ],
@@ -326,7 +339,7 @@
                   ],
                   "display_name": "Secure Firewall - Get Objects by Name",
                   "method": "GET",
-                  "relative_url": "/fmc_config/v1/domain/$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECP484xngkIgAlf2Yr0SrpVXhYx$/object/$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@]$?limit=$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WORI9DW4HM44lL2sSV342dOa7B2yM3qSE$\u0026expanded=$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WORKK2QRLAY26jGGv8xCFAUckFjnGViju$",
+                  "relative_url": "/fmc_config/v1/domain/$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECP484xngkIgAlf2Yr0SrpVXhYx$/object/$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@]$?limit=$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.input.variable_workflow_01WORI9DW4HM44lL2sSV342dOa7B2yM3qSE$\u0026expanded=$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.input.variable_workflow_01WORKK2QRLAY26jGGv8xCFAUckFjnGViju$",
                   "runtime_user": {
                     "target_default": true
                   },
@@ -384,17 +397,21 @@
           {
             "unique_name": "definition_activity_01WOU942JXFBK6LHUtNOrjO19QvstbE7gzB",
             "name": "Set Variables",
-            "title": "Set Current Page variable to 0",
+            "title": "Clear Variables",
             "type": "core.set_multiple_variables",
             "base_type": "activity",
             "properties": {
               "continue_on_failure": false,
-              "display_name": "Set Current Page variable to 0",
+              "display_name": "Clear Variables",
               "skip_execution": false,
               "variables_to_update": [
                 {
                   "variable_to_update": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WOUA8HTLP964kn1QsUNWtFVmUJuDgRsZa$",
                   "variable_value_new": 0
+                },
+                {
+                  "variable_to_update": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WPQ1PKBWGBS3DN8pZGb0mQhpB0I9gsFL8$",
+                  "variable_value_new": ""
                 }
               ]
             },
@@ -409,7 +426,7 @@
             "properties": {
               "continue_on_failure": false,
               "display_name": "While Pages Available",
-              "skip_execution": true
+              "skip_execution": false
             },
             "object_type": "definition_activity",
             "blocks": [
@@ -442,7 +459,7 @@
                       "allow_auto_redirect": true,
                       "content_type": "application/json",
                       "continue_on_error_status_code": false,
-                      "continue_on_failure": false,
+                      "continue_on_failure": true,
                       "custom_headers": [
                         {
                           "name": "X-auth-access-token",
@@ -451,7 +468,7 @@
                       ],
                       "display_name": "Secure Firewall - Get Objects by Name",
                       "method": "GET",
-                      "relative_url": "/fmc_config/v1/domain/$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECP484xngkIgAlf2Yr0SrpVXhYx$/object/$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@]$?expanded=true",
+                      "relative_url": "/fmc_config/v1/domain/$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECP484xngkIgAlf2Yr0SrpVXhYx$/object/$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@]$?limit=$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.input.variable_workflow_01WORI9DW4HM44lL2sSV342dOa7B2yM3qSE$\u0026expanded=$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.input.variable_workflow_01WORKK2QRLAY26jGGv8xCFAUckFjnGViju$",
                       "runtime_user": {
                         "target_default": true
                       },
@@ -460,6 +477,83 @@
                         "override_workflow_target": true,
                         "target_id": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o"
                       }
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01WPPZDDGBQTN3N33y7j92lnIyY4ofV62JF",
+                    "name": "JSONPath Query",
+                    "title": "Extract Object Items",
+                    "type": "corejava.jsonpathquery",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Extract Object Items",
+                      "input_json": "$activity.definition_activity_01WOR6BVH2MDE1YMFXn2ZIPMsJEAJiRHxgK.output.response_body$",
+                      "jsonpath_queries": [
+                        {
+                          "jsonpath_query": "$.items",
+                          "jsonpath_query_name": "items",
+                          "jsonpath_query_type": "string"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01WPQ4958AD6T1b2LpY2agT6szZNYJ8hY8F",
+                    "name": "Trim String",
+                    "title": "Trim String - eliminate leading '[['",
+                    "type": "core.trim_string",
+                    "base_type": "activity",
+                    "properties": {
+                      "characters_to_trim": "[[]",
+                      "continue_on_failure": false,
+                      "display_name": "Trim String - eliminate leading '[['",
+                      "skip_execution": false,
+                      "source": "$activity.definition_activity_01WPPZDDGBQTN3N33y7j92lnIyY4ofV62JF.output.jsonpath_queries.items$",
+                      "trim_leading": true,
+                      "trim_trailing": true
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01WPPVFFW324O4iXDfKDnqCMGAJWpwhnSH0",
+                    "name": "Set Variables",
+                    "title": "Append current object items in the list",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Append current object items in the list",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WPQ1PKBWGBS3DN8pZGb0mQhpB0I9gsFL8$",
+                          "variable_value_new": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WPQ1PKBWGBS3DN8pZGb0mQhpB0I9gsFL8$,$activity.definition_activity_01WPQ4958AD6T1b2LpY2agT6szZNYJ8hY8F.output.trimmed$"
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01WPQ8D7N58IM2Fx8GOYOT2SrABulWoBOR5",
+                    "name": "Set Variables",
+                    "title": "Increase page number",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Increase page number",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WOUA8HTLP964kn1QsUNWtFVmUJuDgRsZa$",
+                          "variable_value_new": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WOUA8HTLP964kn1QsUNWtFVmUJuDgRsZa$+1"
+                        }
+                      ]
                     },
                     "object_type": "definition_activity"
                   }
@@ -488,38 +582,6 @@
               "display_name": "GitHub - Get File Information",
               "method": "GET",
               "relative_url": "/git/trees/main:",
-              "runtime_user": {
-                "target_default": true
-              },
-              "skip_execution": false,
-              "target": {
-                "override_workflow_target": true,
-                "target_id": "definition_target_01WNXQ6VKXFX92EwZXnuI8Vp0iV58wfj8xr"
-              }
-            },
-            "object_type": "definition_activity"
-          },
-          {
-            "unique_name": "definition_activity_01WP7K33KPOO85JlTz5jLe7scpORQzRA7Xx",
-            "name": "HTTP Request",
-            "title": "GitHub - Get File Information",
-            "type": "web-service.http_request",
-            "base_type": "activity",
-            "properties": {
-              "action_timeout": 180,
-              "allow_auto_redirect": true,
-              "content_type": "application/json",
-              "continue_on_error_status_code": false,
-              "continue_on_failure": true,
-              "custom_headers": [
-                {
-                  "name": "Authorization",
-                  "value": "Bearer $workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WNXUL625TO37fpHUacVn4aMM1OCrOZ5tc$"
-                }
-              ],
-              "display_name": "GitHub - Get File Information",
-              "method": "GET",
-              "relative_url": "/contents/$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@]$.json",
               "runtime_user": {
                 "target_default": true
               },
@@ -658,7 +720,7 @@
               "display_name": "Execute Python Script",
               "script": "import base64\nimport sys\n\nmessage = sys.argv[1]\nmessage_bytes = message.encode('ascii')\nbase64_bytes = base64.b64encode(message_bytes)\nbase64_message = base64_bytes.decode('ascii')\n",
               "script_arguments": [
-                "$activity.definition_activity_01WO232UHVJAY6LhUVuH10h69KcMtGbR3ky.output.response_body$"
+                "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WPQ1PKBWGBS3DN8pZGb0mQhpB0I9gsFL8$"
               ],
               "script_queries": [
                 {
@@ -758,9 +820,9 @@
       "base_type": "runtime_user",
       "object_type": "definition_runtime_user",
       "properties": {
-        "auth_option": "*****",
+        "auth_option": "Basic",
         "basic_password": "*****",
-        "basic_username": "*****",
+        "basic_username": "pfiano",
         "display_name": "Firepower_pfiano_credentials"
       }
     }

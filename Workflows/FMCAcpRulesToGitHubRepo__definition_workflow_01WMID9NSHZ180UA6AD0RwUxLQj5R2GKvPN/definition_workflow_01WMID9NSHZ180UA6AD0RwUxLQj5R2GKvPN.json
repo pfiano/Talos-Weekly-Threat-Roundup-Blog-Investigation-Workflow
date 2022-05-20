@@ -1,11 +1,37 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN",
-    "name": "FMC ACP Rules to GitHub repo",
-    "title": "FMC ACP Rules to GitHub repo",
+    "name": "ACP Rules from GitHub to FMC",
+    "title": "ACP Rules from GitHub to FMC",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "pfiano@cisco.com",
+          "scope": "input",
+          "name": "Email Committer",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01WO34T91C4FY7j6jJflwogNpL38v102wl9",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "My commit message",
+          "scope": "input",
+          "name": "Commit Message",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01WO342J5TIYJ4wavWdVB19Q6Iu3KKvx0xu",
+        "object_type": "variable_workflow"
+      },
       {
         "schema_id": "tabletype_01WYBVZJFMHFM0VlVEGxcBEt1nUnY0TAunT",
         "properties": {
@@ -23,51 +49,37 @@
         "properties": {
           "value": 0,
           "scope": "local",
-          "name": "Current Rule",
+          "name": "Number of File Committed",
           "type": "datatype.integer",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01X5DO57EG36E6sF6TTAhjyRONWA4SXxRnx",
+        "unique_name": "variable_workflow_01X6PISEA3HDV7dEj9fZ8rskZuO63shd5De",
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.string",
+        "schema_id": "tabletype_01X6RRAKB5ZE067ZQlI3uRYz9MiS3eU690b",
         "properties": {
-          "value": "My commit message",
-          "scope": "input",
-          "name": "Commit Message",
-          "type": "datatype.string",
-          "is_required": true,
+          "scope": "local",
+          "name": "New Commits Table",
+          "type": "datatype.table",
+          "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01WO342J5TIYJ4wavWdVB19Q6Iu3KKvx0xu",
+        "unique_name": "variable_workflow_01X6RS172FTE17TfFmaLTOxLn3FG6YT2beA",
         "object_type": "variable_workflow"
       },
       {
         "schema_id": "datatype.integer",
         "properties": {
-          "value": 0,
+          "value": 1,
           "scope": "local",
-          "name": "Current Page",
+          "name": "Page Number",
           "type": "datatype.integer",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01WOUA8HTLP964kn1QsUNWtFVmUJuDgRsZa",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "value": "*****",
-          "scope": "local",
-          "name": "GitHub pfiano Token",
-          "type": "datatype.secure_string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01WNXUL625TO37fpHUacVn4aMM1OCrOZ5tc",
+        "unique_name": "variable_workflow_01X6OGZDG95GU6pe18eBuVb0n4MT2Za71jm",
         "object_type": "variable_workflow"
       },
       {
@@ -96,29 +108,68 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.string",
+        "schema_id": "datatype.integer",
         "properties": {
-          "value": "pfiano@cisco.com",
-          "scope": "input",
-          "name": "Email Committer",
-          "type": "datatype.string",
-          "is_required": true,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01WO34T91C4FY7j6jJflwogNpL38v102wl9",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
+          "value": 0,
           "scope": "local",
-          "name": "Rule Name",
-          "type": "datatype.string",
+          "name": "Current Page",
+          "type": "datatype.integer",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01X5E364HUIN33YwwpECgzs6scwy3j7ZX7r",
+        "unique_name": "variable_workflow_01WOUA8HTLP964kn1QsUNWtFVmUJuDgRsZa",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": true,
+          "scope": "local",
+          "name": "true",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01X6Q7QCAA35C5i5IiqtQplJj6IMIhlqmde",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "*****",
+          "scope": "local",
+          "name": "GitHub pfiano Token",
+          "type": "datatype.secure_string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01WNXUL625TO37fpHUacVn4aMM1OCrOZ5tc",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "Current Rule",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01X5DO57EG36E6sF6TTAhjyRONWA4SXxRnx",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "local",
+          "name": "New ACP Rule",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01X7I6VC4QILE6I1MfGOeSuXfZdc00pRXHF",
         "object_type": "variable_workflow"
       },
       {
@@ -140,7 +191,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
-      "display_name": "FMC ACP Rules to GitHub repo",
+      "display_name": "ACP Rules from GitHub to FMC",
       "runtime_user": {
         "target_default": true
       },
@@ -151,121 +202,62 @@
     "object_type": "definition_workflow",
     "actions": [
       {
-        "unique_name": "definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX",
-        "name": "Secure Firewall - Get Access Token",
-        "title": "Secure Firewall - Get Access Token",
-        "type": "workflow.atomic_workflow",
-        "base_type": "subworkflow",
+        "unique_name": "definition_activity_01X7O7AQ2I94O5XWPGwdWZs0f4ckumBtN9c",
+        "name": "Execute Python Script",
+        "title": "Current Date\u0026Time",
+        "type": "python3.script",
+        "base_type": "activity",
         "properties": {
+          "action_timeout": 180,
           "continue_on_failure": false,
-          "display_name": "Secure Firewall - Get Access Token",
-          "runtime_user": {
-            "target_default": true
-          },
-          "skip_execution": false,
-          "target": {
-            "override_workflow_target": true,
-            "target_id": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o",
-            "target_type": "web-service.endpoint"
-          },
-          "workflow_id": "definition_workflow_01PP76OBLMFFT4g43eU1MrFz5S7BxbqRzOk",
-          "workflow_name": "Secure Firewall - Get Access Token"
+          "display_name": "Current Date\u0026Time",
+          "script": "from datetime import datetime\n\ndate = datetime.today().strftime('%Y-%m-%dT%H:%M:%SZ')\n",
+          "script_queries": [
+            {
+              "script_query": "date",
+              "script_query_name": "date",
+              "script_query_type": "string"
+            }
+          ],
+          "skip_execution": false
         },
         "object_type": "definition_activity"
       },
       {
-        "unique_name": "definition_activity_01WYB093QRZH53WgrpuUojsO7g2nNAzkcfF",
-        "name": "Group",
-        "title": "Create ACP and ACP Rules Tables",
-        "type": "logic.group",
+        "unique_name": "definition_activity_01X6Q6XO94Z1Y7hMvsokX1HW1SYePwmJHl8",
+        "name": "While Loop",
+        "title": "While Loop",
+        "type": "logic.while",
         "base_type": "activity",
         "properties": {
           "continue_on_failure": false,
-          "description": "This Group of Activities creates the ACP Table and for each ACP an ACP Rules Table",
-          "display_name": "Create ACP and ACP Rules Tables",
+          "display_name": "While Loop",
           "skip_execution": false
         },
         "object_type": "definition_activity",
-        "actions": [
+        "blocks": [
           {
-            "unique_name": "definition_activity_01WYB093QYW7Q3501SezX2hWAeZHMOOZOaC",
-            "name": "HTTP Request",
-            "title": "Secure Firewall - Get Access Policies",
-            "type": "web-service.http_request",
+            "unique_name": "definition_activity_01X6Q6XOF6KS26AfxElMOmUr8rzV2EWpfsR",
+            "name": "Condition Branch",
+            "title": "For Each New Commit",
+            "type": "logic.condition_block",
             "base_type": "activity",
             "properties": {
-              "action_timeout": 180,
-              "allow_auto_redirect": true,
-              "allow_headers_redirect": false,
-              "content_type": "application/json",
-              "continue_on_error_status_code": false,
-              "continue_on_failure": false,
-              "custom_headers": [
-                {
-                  "name": "X-auth-access-token",
-                  "value": "$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECVZD3O8cyvubv6Cb2mfX5HASQ2$"
-                }
-              ],
-              "display_name": "Secure Firewall - Get Access Policies",
-              "method": "GET",
-              "relative_url": "/fmc_config/v1/domain/$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECP484xngkIgAlf2Yr0SrpVXhYx$/policy/accesspolicies",
-              "runtime_user": {
-                "target_default": true
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X6Q7QCAA35C5i5IiqtQplJj6IMIhlqmde$",
+                "operator": "eq",
+                "right_operand": true
               },
-              "skip_execution": false,
-              "target": {
-                "override_workflow_target": true,
-                "target_id": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o"
-              }
-            },
-            "object_type": "definition_activity"
-          },
-          {
-            "unique_name": "definition_activity_01WYBAEMONCH67ZCAy5SWdfJGWsS5B60HmG",
-            "name": "Read Table from JSON",
-            "title": "Create Table of AC Policies",
-            "type": "corejava.read_table_from_json",
-            "base_type": "activity",
-            "properties": {
-              "action_timeout": 180,
               "continue_on_failure": false,
-              "display_name": "Create Table of AC Policies",
-              "input_json": "$activity.definition_activity_01WYB093QYW7Q3501SezX2hWAeZHMOOZOaC.output.response_body$",
-              "jsonpath_query": "$.items",
-              "persist_output": false,
-              "populate_columns": false,
-              "skip_execution": false,
-              "table_columns": [
-                {
-                  "column_name": "name",
-                  "column_type": "string"
-                },
-                {
-                  "column_name": "id",
-                  "column_type": "string"
-                }
-              ]
-            },
-            "object_type": "definition_activity"
-          },
-          {
-            "unique_name": "definition_activity_01WYBN2ROE89E12ALB905lzwc604e4zV914",
-            "name": "For Each",
-            "title": "For Each Access Control Policy",
-            "type": "logic.for_each",
-            "base_type": "activity",
-            "properties": {
-              "continue_on_failure": false,
-              "display_name": "For Each Access Control Policy",
-              "skip_execution": false,
-              "source_array": "$activity.definition_activity_01WYBAEMONCH67ZCAy5SWdfJGWsS5B60HmG.output.read_table_from_json$"
+              "display_name": "For Each New Commit",
+              "skip_execution": false
             },
             "object_type": "definition_activity",
             "actions": [
               {
-                "unique_name": "definition_activity_01WYBR1YD7FV42pTo2qAnekh8886r8DwDZP",
+                "unique_name": "definition_activity_01X6NDF7T60TG1tZuemLpv1BAat2xw5DDlC",
                 "name": "HTTP Request",
-                "title": "Secure Firewall - Get ACP Rules",
+                "title": "GitHub - Get Repo Latest Commits",
                 "type": "web-service.http_request",
                 "base_type": "activity",
                 "properties": {
@@ -274,43 +266,43 @@
                   "allow_headers_redirect": false,
                   "content_type": "application/json",
                   "continue_on_error_status_code": false,
-                  "continue_on_failure": false,
+                  "continue_on_failure": true,
                   "custom_headers": [
                     {
-                      "name": "X-auth-access-token",
-                      "value": "$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECVZD3O8cyvubv6Cb2mfX5HASQ2$"
+                      "name": "Authorization",
+                      "value": "Bearer $workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WNXUL625TO37fpHUacVn4aMM1OCrOZ5tc$"
                     }
                   ],
-                  "display_name": "Secure Firewall - Get ACP Rules",
+                  "display_name": "GitHub - Get Repo Latest Commits",
                   "method": "GET",
-                  "relative_url": "/fmc_config/v1/domain/$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECP484xngkIgAlf2Yr0SrpVXhYx$/policy/accesspolicies/$activity.definition_activity_01WYBN2ROE89E12ALB905lzwc604e4zV914.input.source_array[@].id$/accessrules?limit=1000\u0026expanded=true",
+                  "relative_url": "/commits?since=$global.variable_01X6NCSHH18BI757LwB3eOBIblb6KPdx0J7.global.variable_01X6NCSHH18BI757LwB3eOBIblb6KPdx0J7$\u0026per_page=1\u0026page=$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X6OGZDG95GU6pe18eBuVb0n4MT2Za71jm$",
                   "runtime_user": {
                     "target_default": true
                   },
                   "skip_execution": false,
                   "target": {
                     "override_workflow_target": true,
-                    "target_id": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o"
+                    "target_id": "definition_target_01X60HR8ADEZE0Q3Dkc8u99k8gJDTy2hMXe"
                   }
                 },
                 "object_type": "definition_activity"
               },
               {
-                "unique_name": "definition_activity_01X5DG4I18OJT3RWAodWCeNNx45yTXEkTt6",
+                "unique_name": "definition_activity_01X6NZ5ZH5TB73dfs8lZUqgIJ4XzPn9tRq5",
                 "name": "JSONPath Query",
-                "title": "Determine the number of rules",
+                "title": "Get SHA of the commit",
                 "type": "corejava.jsonpathquery",
                 "base_type": "activity",
                 "properties": {
                   "action_timeout": 180,
-                  "continue_on_failure": false,
-                  "display_name": "Determine the number of rules",
-                  "input_json": "$activity.definition_activity_01WYBR1YD7FV42pTo2qAnekh8886r8DwDZP.output.response_body$",
+                  "continue_on_failure": true,
+                  "display_name": "Get SHA of the commit",
+                  "input_json": "$activity.definition_activity_01X6NDF7T60TG1tZuemLpv1BAat2xw5DDlC.output.response_body$",
                   "jsonpath_queries": [
                     {
-                      "jsonpath_query": "$.paging.count",
-                      "jsonpath_query_name": "count",
-                      "jsonpath_query_type": "integer"
+                      "jsonpath_query": "$[0].sha",
+                      "jsonpath_query_name": "sha",
+                      "jsonpath_query_type": "string"
                     }
                   ],
                   "skip_execution": false
@@ -318,145 +310,268 @@
                 "object_type": "definition_activity"
               },
               {
-                "unique_name": "definition_activity_01X5DN2TG0EJC4DF4kMLqvWEyoq1gtxha5Q",
-                "name": "While Loop",
-                "title": "While Loop",
-                "type": "logic.while",
+                "unique_name": "definition_activity_01X6RLLO79G9J0rEIY8nusmjiI1lZ0lotkS",
+                "name": "Condition Block",
+                "title": "Check if we have extracted all new commits",
+                "type": "logic.if_else",
                 "base_type": "activity",
                 "properties": {
                   "continue_on_failure": false,
-                  "display_name": "While Loop",
+                  "display_name": "Check if we have extracted all new commits",
                   "skip_execution": false
                 },
                 "object_type": "definition_activity",
                 "blocks": [
                   {
-                    "unique_name": "definition_activity_01X5DN2TNDBFQ3lwpNzRNuE5NepoUBNhkaf",
+                    "unique_name": "definition_activity_01X6RLLOFNOJ51kjQeUwsxdjeCLWVLwQQXC",
                     "name": "Condition Branch",
-                    "title": "For Each ACP Rule",
+                    "title": "Yes, all new commits identified",
                     "type": "logic.condition_block",
                     "base_type": "activity",
                     "properties": {
                       "condition": {
-                        "left_operand": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X5DO57EG36E6sF6TTAhjyRONWA4SXxRnx$",
-                        "operator": "lt",
-                        "right_operand": "$activity.definition_activity_01X5DG4I18OJT3RWAodWCeNNx45yTXEkTt6.output.jsonpath_queries.count$"
+                        "left_operand": "$activity.definition_activity_01X6NZ5ZH5TB73dfs8lZUqgIJ4XzPn9tRq5.output.succeeded$",
+                        "operator": "eq",
+                        "right_operand": false
                       },
                       "continue_on_failure": false,
-                      "display_name": "For Each ACP Rule",
+                      "display_name": "Yes, all new commits identified",
                       "skip_execution": false
                     },
                     "object_type": "definition_activity",
                     "actions": [
                       {
-                        "unique_name": "definition_activity_01X5EFP49EPYB1gpmOPsOFLAO6s2f68o1fa",
-                        "name": "JSONPath Query",
-                        "title": "Extract ACP Rule Name",
-                        "type": "corejava.jsonpathquery",
+                        "unique_name": "definition_activity_01X6RLWD7QMNI2eqAGj4mFj3OQ2O10pderg",
+                        "name": "Break",
+                        "title": "Break",
+                        "type": "logic.break",
                         "base_type": "activity",
                         "properties": {
-                          "action_timeout": 180,
                           "continue_on_failure": false,
-                          "display_name": "Extract ACP Rule Name",
-                          "input_json": "$activity.definition_activity_01WYBR1YD7FV42pTo2qAnekh8886r8DwDZP.output.response_body$",
-                          "jsonpath_queries": [
-                            {
-                              "jsonpath_query": "$.items[$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X5DO57EG36E6sF6TTAhjyRONWA4SXxRnx$].name",
-                              "jsonpath_query_name": "Rule Name",
-                              "jsonpath_query_type": "string"
-                            }
-                          ],
+                          "display_name": "Break",
                           "skip_execution": false
                         },
                         "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01X6Q8ZXPJAB53cZGMZMkJLLSAIrN7Ys1xM",
+                "name": "HTTP Request",
+                "title": "GitHub - Get Repo Latest Commits",
+                "type": "web-service.http_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "allow_auto_redirect": true,
+                  "allow_headers_redirect": false,
+                  "content_type": "application/json",
+                  "continue_on_error_status_code": false,
+                  "continue_on_failure": true,
+                  "custom_headers": [
+                    {
+                      "name": "Authorization",
+                      "value": "Bearer $workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WNXUL625TO37fpHUacVn4aMM1OCrOZ5tc$"
+                    }
+                  ],
+                  "display_name": "GitHub - Get Repo Latest Commits",
+                  "method": "GET",
+                  "relative_url": "/commits/$activity.definition_activity_01X6NZ5ZH5TB73dfs8lZUqgIJ4XzPn9tRq5.output.jsonpath_queries.sha$",
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01X60HR8ADEZE0Q3Dkc8u99k8gJDTy2hMXe"
+                  }
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01X6QENLN1WJ46cuOI9cm3ZrFTEgDiUVz11",
+                "name": "Set Variables",
+                "title": "Next Page",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Next Page",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X6OGZDG95GU6pe18eBuVb0n4MT2Za71jm$",
+                      "variable_value_new": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X6OGZDG95GU6pe18eBuVb0n4MT2Za71jm$+1"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01X6QADGRRNRX4p2lzGmtOnkfIcY9n5pvs0",
+                "name": "JSONPath Query",
+                "title": "Get the SHA and Filename of the File committed",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "display_name": "Get the SHA and Filename of the File committed",
+                  "input_json": "$activity.definition_activity_01X6Q8ZXPJAB53cZGMZMkJLLSAIrN7Ys1xM.output.response_body$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$.files[-1:].sha",
+                      "jsonpath_query_name": "sha",
+                      "jsonpath_query_type": "string"
+                    },
+                    {
+                      "jsonpath_query": "$.files[-1:].filename",
+                      "jsonpath_query_name": "filename",
+                      "jsonpath_query_type": "string"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01X7NOWOK5H3L5fkEorvA2NmWn3Bt0qRoMO",
+                "name": "Condition Block",
+                "title": "Is the File README.md?",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Is the File README.md?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_01X7NOWORPJTJ7V2mMGSl2nS1Pkb4BNZ7XD",
+                    "name": "Condition Branch",
+                    "title": "YES",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_01X6QADGRRNRX4p2lzGmtOnkfIcY9n5pvs0.output.jsonpath_queries.filename$",
+                        "operator": "eq",
+                        "right_operand": "README.md"
                       },
+                      "continue_on_failure": false,
+                      "display_name": "YES",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
                       {
-                        "unique_name": "definition_activity_01X5D1T3677QY706EaKY4FSJlIdmkUh5Nfb",
-                        "name": "Secure Firewall - Get Access Rule by Name",
-                        "title": "Secure Firewall - Get Access Rule by Name",
-                        "type": "workflow.atomic_workflow",
-                        "base_type": "subworkflow",
+                        "unique_name": "definition_activity_01X7NQ9RMWX631vk7ews7tKAtsi3A4ULzOA",
+                        "name": "Continue",
+                        "title": "Continue",
+                        "type": "logic.continue",
+                        "base_type": "activity",
                         "properties": {
                           "continue_on_failure": false,
-                          "display_name": "Secure Firewall - Get Access Rule by Name",
-                          "input": {
-                            "variable_workflow_01RNQEJ8GMNYM5Ek02lCS01ikHXVooQoCUV": "$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECVZD3O8cyvubv6Cb2mfX5HASQ2$",
-                            "variable_workflow_01RNQEZK20WWX3uuD5OyG0t1LsizsHvOioh": "$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECP484xngkIgAlf2Yr0SrpVXhYx$",
-                            "variable_workflow_01RNQH7WK60GB4gojsP5dhiSfiYlgyt9Ad9": "$activity.definition_activity_01X5EFP49EPYB1gpmOPsOFLAO6s2f68o1fa.output.jsonpath_queries.Rule Name$",
-                            "variable_workflow_01RNQM63LHGIE2F8i3PTVHSuJSyPdCWx0LC": "$activity.definition_activity_01WYBN2ROE89E12ALB905lzwc604e4zV914.input.source_array[@].id$"
-                          },
-                          "runtime_user": {
-                            "target_default": true
-                          },
-                          "skip_execution": false,
-                          "target": {
-                            "override_workflow_target": true,
-                            "target_id": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o",
-                            "target_type": "web-service.endpoint"
-                          },
-                          "workflow_id": "definition_workflow_01RNQDMNVPYOA3R2brNciZxBSTEEjlG0vi1",
-                          "workflow_name": "Secure Firewall - Get Access Rule by Name"
+                          "display_name": "Continue",
+                          "skip_execution": false
                         },
                         "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01X7JP1YV3NMQ0HFhAWgfbfRsJE82eJOt42",
+                "name": "Select from Table",
+                "title": "Select from New Commit Table with Filename",
+                "type": "core.selectfromtable",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "columns": [
+                    {
+                      "column_name": "FileName",
+                      "column_type": "string"
+                    },
+                    {
+                      "column_name": "FileSHA",
+                      "column_type": "string"
+                    }
+                  ],
+                  "continue_on_failure": true,
+                  "display_name": "Select from New Commit Table with Filename",
+                  "input_table": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X6RS172FTE17TfFmaLTOxLn3FG6YT2beA$",
+                  "number_of_rows": {
+                    "all_rows": true
+                  },
+                  "persist_output": true,
+                  "skip_execution": false,
+                  "sorting": {
+                    "no_sort": true
+                  },
+                  "where_clause": "FileName = '$activity.definition_activity_01X6QADGRRNRX4p2lzGmtOnkfIcY9n5pvs0.output.jsonpath_queries.filename$' OR FileSHA = '$activity.definition_activity_01X6QADGRRNRX4p2lzGmtOnkfIcY9n5pvs0.output.jsonpath_queries.sha$'"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01X7JWXE4KAYA2KzJNp0BYz358K5E0LmOMQ",
+                "name": "Condition Block",
+                "title": "Newer Commit Exists?",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Newer Commit Exists?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_01X7JWXEBF2C03m4MDu0XDumVSyXTtUZj4W",
+                    "name": "Condition Branch",
+                    "title": "NO",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_01X7JP1YV3NMQ0HFhAWgfbfRsJE82eJOt42.output.row_count$",
+                        "operator": "eq",
+                        "right_operand": 0
                       },
+                      "continue_on_failure": false,
+                      "display_name": "NO",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
                       {
-                        "unique_name": "definition_activity_01X5ZTZ7RI1O37eaWgTvzSCWnPmHdKxavay",
+                        "unique_name": "definition_activity_01X6RRIZD4K9A12OTrit1FwnUP4rKC0ZhJo",
                         "name": "Add Row to Table",
-                        "title": "Add Rule to ACP Rules Table",
+                        "title": "Add New Commit Row to Table",
                         "type": "core.addrowtotable",
                         "base_type": "activity",
                         "properties": {
                           "action_timeout": 180,
                           "continue_on_failure": false,
-                          "display_name": "Add Rule to ACP Rules Table",
-                          "input_table": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X5ZTVS9W1FB3UFPTtt6LNOzTxJlW7U7TR$",
+                          "display_name": "Add New Commit Row to Table",
+                          "input_table": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X6RS172FTE17TfFmaLTOxLn3FG6YT2beA$",
                           "row": [
                             {
-                              "key": "ACPName",
+                              "key": "FileName",
                               "type": "string",
-                              "value": "$activity.definition_activity_01WYBN2ROE89E12ALB905lzwc604e4zV914.input.source_array[@].name$"
+                              "value": "$activity.definition_activity_01X6QADGRRNRX4p2lzGmtOnkfIcY9n5pvs0.output.jsonpath_queries.filename$"
                             },
                             {
-                              "key": "ACPRuleIndex",
-                              "type": "integer",
-                              "value": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X5DO57EG36E6sF6TTAhjyRONWA4SXxRnx$+1"
-                            },
-                            {
-                              "key": "ACPRuleName",
+                              "key": "FileSHA",
                               "type": "string",
-                              "value": "$activity.definition_activity_01X5EFP49EPYB1gpmOPsOFLAO6s2f68o1fa.output.jsonpath_queries.Rule Name$"
-                            },
-                            {
-                              "key": "ACPRuleID",
-                              "type": "string",
-                              "value": "$activity.definition_activity_01X5D1T3677QY706EaKY4FSJlIdmkUh5Nfb.output.variable_workflow_01RNQIN17J0KM4xumfgKP1SRp5rB9bghDLu$"
-                            },
-                            {
-                              "key": "ACPRuleJSON",
-                              "type": "string",
-                              "value": "$activity.definition_activity_01X5D1T3677QY706EaKY4FSJlIdmkUh5Nfb.output.variable_workflow_01RNQJ85LMGH23H4bmrS69BMVlHt5P2j33U$"
+                              "value": "$activity.definition_activity_01X6QADGRRNRX4p2lzGmtOnkfIcY9n5pvs0.output.jsonpath_queries.sha$"
                             }
                           ],
                           "skip_execution": false
-                        },
-                        "object_type": "definition_activity"
-                      },
-                      {
-                        "unique_name": "definition_activity_01X5DUO62WF583JexSA6NN61I4W0H1oPWUx",
-                        "name": "Set Variables",
-                        "title": "Increase ACP Rule Counter",
-                        "type": "core.set_multiple_variables",
-                        "base_type": "activity",
-                        "properties": {
-                          "continue_on_failure": false,
-                          "display_name": "Increase ACP Rule Counter",
-                          "skip_execution": false,
-                          "variables_to_update": [
-                            {
-                              "variable_to_update": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X5DO57EG36E6sF6TTAhjyRONWA4SXxRnx$",
-                              "variable_value_new": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X5DO57EG36E6sF6TTAhjyRONWA4SXxRnx$+1"
-                            }
-                          ]
                         },
                         "object_type": "definition_activity"
                       }
@@ -469,23 +584,23 @@
         ]
       },
       {
-        "unique_name": "definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4",
+        "unique_name": "definition_activity_01X6U9QXRIDFN1sfEmBWFSIdUiy19qPfT8Z",
         "name": "For Each",
-        "title": "For Each ACP Rule",
+        "title": "For Each new Rule Commit",
         "type": "logic.for_each",
         "base_type": "activity",
         "properties": {
           "continue_on_failure": false,
-          "display_name": "For Each ACP Rule",
+          "display_name": "For Each new Rule Commit",
           "skip_execution": false,
-          "source_array": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X5ZTVS9W1FB3UFPTtt6LNOzTxJlW7U7TR$"
+          "source_array": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X6RS172FTE17TfFmaLTOxLn3FG6YT2beA$"
         },
         "object_type": "definition_activity",
         "actions": [
           {
-            "unique_name": "definition_activity_01WNXL7YR42F55SNKoXzAJTNjhZvP79DSyp",
+            "unique_name": "definition_activity_01X6UCOQQ4H5J6E4qb2zaUK9LEHn3gBsVRe",
             "name": "HTTP Request",
-            "title": "GitHub - Get Repo Information",
+            "title": "GitHub - Get Repo File Rule Commit",
             "type": "web-service.http_request",
             "base_type": "activity",
             "properties": {
@@ -501,9 +616,9 @@
                   "value": "Bearer $workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WNXUL625TO37fpHUacVn4aMM1OCrOZ5tc$"
                 }
               ],
-              "display_name": "GitHub - Get Repo Information",
+              "display_name": "GitHub - Get Repo File Rule Commit",
               "method": "GET",
-              "relative_url": "/git/trees/main:",
+              "relative_url": "/contents/$activity.definition_activity_01X6U9QXRIDFN1sfEmBWFSIdUiy19qPfT8Z.input.source_array[@].FileName$",
               "runtime_user": {
                 "target_default": true
               },
@@ -516,20 +631,20 @@
             "object_type": "definition_activity"
           },
           {
-            "unique_name": "definition_activity_01WNY79MVGE7B266DTn66Qe74A7TdBOHYHk",
+            "unique_name": "definition_activity_01X6UNPG9ATMV4PGKLIe0Us2a0icHla7ZIQ",
             "name": "JSONPath Query",
-            "title": "Search and Extract SHA in GitHub repo of the ACP Rule file",
+            "title": "Extract ACP Rule content (base64)",
             "type": "corejava.jsonpathquery",
             "base_type": "activity",
             "properties": {
               "action_timeout": 180,
-              "continue_on_failure": true,
-              "display_name": "Search and Extract SHA in GitHub repo of the ACP Rule file",
-              "input_json": "$activity.definition_activity_01WNXL7YR42F55SNKoXzAJTNjhZvP79DSyp.output.response_body$",
+              "continue_on_failure": false,
+              "display_name": "Extract ACP Rule content (base64)",
+              "input_json": "$activity.definition_activity_01X6UCOQQ4H5J6E4qb2zaUK9LEHn3gBsVRe.output.response_body$",
               "jsonpath_queries": [
                 {
-                  "jsonpath_query": "$.tree[?(@.path == '$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@].ACPName$-$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@].ACPRuleIndex$-$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@].ACPRuleName$.json')].sha",
-                  "jsonpath_query_name": "sha",
+                  "jsonpath_query": "$.content",
+                  "jsonpath_query_name": "content",
                   "jsonpath_query_type": "string"
                 }
               ],
@@ -538,89 +653,114 @@
             "object_type": "definition_activity"
           },
           {
-            "unique_name": "definition_activity_01WO39OUFEFI41LzlO0k1r3OODH5UDYH8pA",
+            "unique_name": "definition_activity_01X6UOID3K7DJ1Pe3J3hJv88malGsjLkYMf",
+            "name": "Execute Python Script",
+            "title": "Bas64 decode ACP Rule and prepare JSON",
+            "type": "python3.script",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Bas64 decode ACP Rule and prepare JSON",
+              "script": "import base64\n\nbase64_message = \"$activity.definition_activity_01X6UNPG9ATMV4PGKLIe0Us2a0icHla7ZIQ.output.jsonpath_queries.content$\"\nbase64_bytes = base64_message.encode('ascii')\nmessage_bytes = base64.b64decode(base64_bytes)\ndecoded_content = message_bytes.decode('ascii')\n\n",
+              "script_queries": [
+                {
+                  "script_query": "decoded_content",
+                  "script_query_name": "decoded_content",
+                  "script_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01X721K4VPT521R3bl2eqrz8LVi3yS5CaZt",
+            "name": "JSONPath Query",
+            "title": "Extract AC Policy and ACP Rule info",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract AC Policy and ACP Rule info",
+              "input_json": "$activity.definition_activity_01X6UOID3K7DJ1Pe3J3hJv88malGsjLkYMf.output.script_queries.decoded_content$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$.metadata.accessPolicy.name",
+                  "jsonpath_query_name": "ACP Name",
+                  "jsonpath_query_type": "string"
+                },
+                {
+                  "jsonpath_query": "$.metadata.accessPolicy.id",
+                  "jsonpath_query_name": "ACP ID",
+                  "jsonpath_query_type": "string"
+                },
+                {
+                  "jsonpath_query": "$.name",
+                  "jsonpath_query_name": "ACP Rule Name",
+                  "jsonpath_query_type": "string"
+                },
+                {
+                  "jsonpath_query": "$.id",
+                  "jsonpath_query_name": "ACP Rule ID",
+                  "jsonpath_query_type": "string"
+                },
+                {
+                  "jsonpath_query": "$",
+                  "jsonpath_query_name": "ACP Rule Content",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01X7I5J21SZTK3Ofvui6zXPfJTudXSvdBHv",
             "name": "Condition Block",
-            "title": "Check if it is the first commit of the ACP Rule file",
+            "title": "Is this a new ACP Rule?",
             "type": "logic.if_else",
             "base_type": "activity",
             "properties": {
               "continue_on_failure": false,
-              "display_name": "Check if it is the first commit of the ACP Rule file",
+              "display_name": "Is this a new ACP Rule?",
               "skip_execution": false
             },
             "object_type": "definition_activity",
             "blocks": [
               {
-                "unique_name": "definition_activity_01WO39OUMER190AvuBIgqMZSmnNKTLf1UyH",
+                "unique_name": "definition_activity_01X7I5J2FE0LY7Ol0yPv8CNg42D8j7LGRk2",
                 "name": "Condition Branch",
-                "title": "YES (ACP Rule file SHA not existing)",
+                "title": "YES",
                 "type": "logic.condition_block",
                 "base_type": "activity",
                 "properties": {
                   "condition": {
-                    "left_operand": "$activity.definition_activity_01WNY79MVGE7B266DTn66Qe74A7TdBOHYHk.output.succeeded$",
+                    "left_operand": "$activity.definition_activity_01X721K4VPT521R3bl2eqrz8LVi3yS5CaZt.output.jsonpath_queries.ACP Rule ID$",
                     "operator": "eq",
-                    "right_operand": false
+                    "right_operand": ""
                   },
                   "continue_on_failure": false,
-                  "display_name": "YES (ACP Rule file SHA not existing)",
+                  "display_name": "YES",
                   "skip_execution": false
                 },
                 "object_type": "definition_activity",
                 "actions": [
                   {
-                    "unique_name": "definition_activity_01WO3F5F6INK30sGXBJjNh9saUNynBTq0VQ",
+                    "unique_name": "definition_activity_01X7I7AKA3VVQ6355pcFmoPEJsp5Q5M5nV1",
                     "name": "Set Variables",
-                    "title": "Set ACP Rule file SHA option value to null",
+                    "title": "Set \"New ACP Rule\" variable to True",
                     "type": "core.set_multiple_variables",
                     "base_type": "activity",
                     "properties": {
                       "continue_on_failure": false,
-                      "display_name": "Set ACP Rule file SHA option value to null",
+                      "display_name": "Set \"New ACP Rule\" variable to True",
                       "skip_execution": false,
                       "variables_to_update": [
                         {
-                          "variable_to_update": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WO3FPHZ5J143sHQn09k3vP12gogmkLEXt$",
-                          "variable_value_new": ""
-                        }
-                      ]
-                    },
-                    "object_type": "definition_activity"
-                  }
-                ]
-              },
-              {
-                "unique_name": "definition_activity_01WO39OUTV6653yoIjH8JbCJVClotmBzmTI",
-                "name": "Condition Branch",
-                "title": "NO (ACP Rule File SHA exists)",
-                "type": "logic.condition_block",
-                "base_type": "activity",
-                "properties": {
-                  "condition": {
-                    "left_operand": "$activity.definition_activity_01WNY79MVGE7B266DTn66Qe74A7TdBOHYHk.output.succeeded$",
-                    "operator": "eq",
-                    "right_operand": true
-                  },
-                  "continue_on_failure": false,
-                  "display_name": "NO (ACP Rule File SHA exists)",
-                  "skip_execution": false
-                },
-                "object_type": "definition_activity",
-                "actions": [
-                  {
-                    "unique_name": "definition_activity_01WO3GEXEG7A86ZwYVq6ljVy8Kiamu4o4dH",
-                    "name": "Set Variables",
-                    "title": "Set ACP Rule file SHA option with extracted value",
-                    "type": "core.set_multiple_variables",
-                    "base_type": "activity",
-                    "properties": {
-                      "continue_on_failure": false,
-                      "display_name": "Set ACP Rule file SHA option with extracted value",
-                      "skip_execution": false,
-                      "variables_to_update": [
-                        {
-                          "variable_to_update": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WO3FPHZ5J143sHQn09k3vP12gogmkLEXt$",
-                          "variable_value_new": ",\"sha\":\"$activity.definition_activity_01WNY79MVGE7B266DTn66Qe74A7TdBOHYHk.output.jsonpath_queries.sha$\""
+                          "variable_to_update": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X7I6VC4QILE6I1MfGOeSuXfZdc00pRXHF$",
+                          "variable_value_new": true
                         }
                       ]
                     },
@@ -631,23 +771,23 @@
             ]
           },
           {
-            "unique_name": "definition_activity_01WNY95455KNR7cJEQwq958QUKAnTRQZHDy",
+            "unique_name": "definition_activity_01X721V0O5QLZ6gNryDzfwCm33iHWHwoZTc",
             "name": "Execute Python Script",
-            "title": "Execute Python Script to Bas64 encode ACP Rule JSON",
+            "title": "Prepare Payload (ACP Rule)",
             "type": "python3.script",
             "base_type": "activity",
             "properties": {
               "action_timeout": 180,
               "continue_on_failure": false,
-              "display_name": "Execute Python Script to Bas64 encode ACP Rule JSON",
-              "script": "import base64\nimport sys\n\nmessage = sys.argv[1]\nmessage_bytes = message.encode('ascii')\nbase64_bytes = base64.b64encode(message_bytes)\nbase64_message = base64_bytes.decode('ascii')\n",
+              "display_name": "Prepare Payload (ACP Rule)",
+              "script": "import sys\n\nsplit = sys.argv[1].split('enabled')\n\nrule_content = \"{\\\"enabled\" + split[1]",
               "script_arguments": [
-                "$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@].ACPRuleJSON$"
+                "$activity.definition_activity_01X721K4VPT521R3bl2eqrz8LVi3yS5CaZt.output.jsonpath_queries.ACP Rule Content$"
               ],
               "script_queries": [
                 {
-                  "script_query": "base64_message",
-                  "script_query_name": "base64_message",
+                  "script_query": "rule_content",
+                  "script_query_name": "rule_content",
                   "script_query_type": "string"
                 }
               ],
@@ -656,40 +796,249 @@
             "object_type": "definition_activity"
           },
           {
-            "unique_name": "definition_activity_01WNY342UN7F85ghMwAgcmvF7lrl7aXCDOx",
-            "name": "HTTP Request",
-            "title": "GitHub - Upload ACP Rule File Content",
-            "type": "web-service.http_request",
-            "base_type": "activity",
+            "unique_name": "definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX",
+            "name": "Secure Firewall - Get Access Token",
+            "title": "Secure Firewall - Get Access Token",
+            "type": "workflow.atomic_workflow",
+            "base_type": "subworkflow",
             "properties": {
-              "action_timeout": 180,
-              "allow_auto_redirect": true,
-              "allow_headers_redirect": false,
-              "body": "{\"message\":\"$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.input.variable_workflow_01WO342J5TIYJ4wavWdVB19Q6Iu3KKvx0xu$\",\"committer\":{\"name\":\"$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.input.variable_workflow_01WO34KIUO9U25AX6t20wFk0RK7ialSz2g7$\",\"email\":\"$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.input.variable_workflow_01WO34T91C4FY7j6jJflwogNpL38v102wl9$\"},\"content\":\"$activity.definition_activity_01WNY95455KNR7cJEQwq958QUKAnTRQZHDy.output.script_queries.base64_message$\"$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WO3FPHZ5J143sHQn09k3vP12gogmkLEXt$}",
-              "content_type": "application/json",
-              "continue_on_error_status_code": false,
               "continue_on_failure": false,
-              "custom_headers": [
-                {
-                  "name": "Authorization",
-                  "value": "Bearer $workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WNXUL625TO37fpHUacVn4aMM1OCrOZ5tc$"
-                }
-              ],
-              "display_name": "GitHub - Upload ACP Rule File Content",
-              "method": "PUT",
-              "relative_url": "/contents/$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@].ACPName$-$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@].ACPRuleIndex$-$activity.definition_activity_01WO3S41YQQ2K0Oyjwaewp0Kb5nGrNfqrD4.input.source_array[@].ACPRuleName$.json",
+              "display_name": "Secure Firewall - Get Access Token",
               "runtime_user": {
                 "target_default": true
               },
               "skip_execution": false,
               "target": {
                 "override_workflow_target": true,
-                "target_id": "definition_target_01X60HR8ADEZE0Q3Dkc8u99k8gJDTy2hMXe"
-              }
+                "target_id": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o",
+                "target_type": "web-service.endpoint"
+              },
+              "workflow_id": "definition_workflow_01PP76OBLMFFT4g43eU1MrFz5S7BxbqRzOk",
+              "workflow_name": "Secure Firewall - Get Access Token"
             },
             "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01X7I8D0WAZ987JBJiTr3ReYF6tpSq9KZrh",
+            "name": "Condition Block",
+            "title": "Is ACP Rule New or Update?",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Is ACP Rule New or Update?",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01X7I8D14CZZ32A9cXt3lIezVqFKEESeYB8",
+                "name": "Condition Branch",
+                "title": "New ACP Rule",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X7I6VC4QILE6I1MfGOeSuXfZdc00pRXHF$",
+                    "operator": "eq",
+                    "right_operand": true
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "New ACP Rule",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01X7I8HTMF5JG1zjg7uen2wpAx3yrIxG30s",
+                    "name": "HTTP Request",
+                    "title": "Secure Firewall - Create ACP Rule",
+                    "type": "web-service.http_request",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "allow_auto_redirect": true,
+                      "allow_headers_redirect": false,
+                      "body": "$activity.definition_activity_01X721V0O5QLZ6gNryDzfwCm33iHWHwoZTc.output.script_queries.rule_content$",
+                      "content_type": "application/json",
+                      "continue_on_error_status_code": false,
+                      "continue_on_failure": false,
+                      "custom_headers": [
+                        {
+                          "name": "X-auth-access-token",
+                          "value": "$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECVZD3O8cyvubv6Cb2mfX5HASQ2$"
+                        }
+                      ],
+                      "display_name": "Secure Firewall - Create ACP Rule",
+                      "method": "POST",
+                      "relative_url": "/fmc_config/v1/domain/$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECP484xngkIgAlf2Yr0SrpVXhYx$/policy/accesspolicies/$activity.definition_activity_01X721K4VPT521R3bl2eqrz8LVi3yS5CaZt.output.jsonpath_queries.ACP ID$/accessrules",
+                      "runtime_user": {
+                        "target_default": true
+                      },
+                      "skip_execution": false,
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o"
+                      }
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01WNY95455KNR7cJEQwq958QUKAnTRQZHDy",
+                    "name": "Execute Python Script",
+                    "title": "Execute Python Script to Bas64 encode ACP Rule JSON",
+                    "type": "python3.script",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "continue_on_failure": false,
+                      "display_name": "Execute Python Script to Bas64 encode ACP Rule JSON",
+                      "script": "import base64\nimport sys\n\nmessage = sys.argv[1]\nmessage_bytes = message.encode('ascii')\nbase64_bytes = base64.b64encode(message_bytes)\nbase64_message = base64_bytes.decode('ascii')\n",
+                      "script_arguments": [
+                        "$activity.definition_activity_01X7I8HTMF5JG1zjg7uen2wpAx3yrIxG30s.output.response_body$"
+                      ],
+                      "script_queries": [
+                        {
+                          "script_query": "base64_message",
+                          "script_query_name": "base64_message",
+                          "script_query_type": "string"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01WNY342UN7F85ghMwAgcmvF7lrl7aXCDOx",
+                    "name": "HTTP Request",
+                    "title": "GitHub - Upload ACP Rule File Content",
+                    "type": "web-service.http_request",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "allow_auto_redirect": true,
+                      "allow_headers_redirect": false,
+                      "body": "{\n  \"message\": \"Rule ID created\",\n  \"committer\": {\n    \"name\": \"$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.input.variable_workflow_01WO34KIUO9U25AX6t20wFk0RK7ialSz2g7$\",\n    \"email\": \"$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.input.variable_workflow_01WO34T91C4FY7j6jJflwogNpL38v102wl9$\"\n  },\n  \"content\": \"$activity.definition_activity_01WNY95455KNR7cJEQwq958QUKAnTRQZHDy.output.script_queries.base64_message$\",\n  \"sha\": \"$activity.definition_activity_01X6U9QXRIDFN1sfEmBWFSIdUiy19qPfT8Z.input.source_array[@].FileSHA$\"\n}",
+                      "content_type": "application/json",
+                      "continue_on_error_status_code": false,
+                      "continue_on_failure": false,
+                      "custom_headers": [
+                        {
+                          "name": "Authorization",
+                          "value": "Bearer $workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01WNXUL625TO37fpHUacVn4aMM1OCrOZ5tc$"
+                        }
+                      ],
+                      "display_name": "GitHub - Upload ACP Rule File Content",
+                      "method": "PUT",
+                      "relative_url": "/contents/$activity.definition_activity_01X6U9QXRIDFN1sfEmBWFSIdUiy19qPfT8Z.input.source_array[@].FileName$",
+                      "runtime_user": {
+                        "target_default": true
+                      },
+                      "skip_execution": false,
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_01X60HR8ADEZE0Q3Dkc8u99k8gJDTy2hMXe"
+                      }
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01X7IZFY6YU6K0WKlhITbdV4vvovTRHjpFA",
+                    "name": "Set Variables",
+                    "title": "Set \"New ACP Rule\" variable to False",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Set \"New ACP Rule\" variable to False",
+                      "skip_execution": false,
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X7I6VC4QILE6I1MfGOeSuXfZdc00pRXHF$",
+                          "variable_value_new": true
+                        }
+                      ]
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01X7I8D1C512I2a71HOYFgnswTw55s9UDbs",
+                "name": "Condition Branch",
+                "title": "Update ACP Rule",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$workflow.definition_workflow_01WMID9NSHZ180UA6AD0RwUxLQj5R2GKvPN.local.variable_workflow_01X7I6VC4QILE6I1MfGOeSuXfZdc00pRXHF$",
+                    "operator": "eq",
+                    "right_operand": false
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "Update ACP Rule",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01X7HEF44252I3fBZWmjUjFxfML4h7AByJr",
+                    "name": "HTTP Request",
+                    "title": "Secure Firewall - Update ACP Rule",
+                    "type": "web-service.http_request",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "allow_auto_redirect": true,
+                      "allow_headers_redirect": false,
+                      "body": "$activity.definition_activity_01X721V0O5QLZ6gNryDzfwCm33iHWHwoZTc.output.script_queries.rule_content$",
+                      "content_type": "application/json",
+                      "continue_on_error_status_code": false,
+                      "continue_on_failure": false,
+                      "custom_headers": [
+                        {
+                          "name": "X-auth-access-token",
+                          "value": "$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECVZD3O8cyvubv6Cb2mfX5HASQ2$"
+                        }
+                      ],
+                      "display_name": "Secure Firewall - Update ACP Rule",
+                      "method": "PUT",
+                      "relative_url": "/fmc_config/v1/domain/$activity.definition_activity_01WN4B5YOH7E55tSQDQUd4nYOnaaqgDSNAX.output.variable_workflow_01PP76OBECP484xngkIgAlf2Yr0SrpVXhYx$/policy/accesspolicies/$activity.definition_activity_01X721K4VPT521R3bl2eqrz8LVi3yS5CaZt.output.jsonpath_queries.ACP ID$/accessrules/$activity.definition_activity_01X721K4VPT521R3bl2eqrz8LVi3yS5CaZt.output.jsonpath_queries.ACP Rule ID$",
+                      "runtime_user": {
+                        "target_default": true
+                      },
+                      "skip_execution": false,
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_01WN8OPNC487E1pDjqAsLWB8iXIJ4ElZn6o"
+                      }
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
           }
         ]
+      },
+      {
+        "unique_name": "definition_activity_01X7OC9NS5WL26doxZ6mHKmjGfqMTMBebon",
+        "name": "Set Variables",
+        "title": "Update \"Last Workflow Run\" global variable",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Update \"Last Workflow Run\" global variable",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$global.variable_01X6NCSHH18BI757LwB3eOBIblb6KPdx0J7.global.variable_01X6NCSHH18BI757LwB3eOBIblb6KPdx0J7$",
+              "variable_value_new": "$activity.definition_activity_01X7O7AQ2I94O5XWPGwdWZs0f4ckumBtN9c.output.script_queries.date$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
       }
     ],
     "categories": [
@@ -782,17 +1131,26 @@
       }
     }
   },
+  "variables": {
+    "variable_01X6NCSHH18BI757LwB3eOBIblb6KPdx0J7": {
+      "unique_name": "variable_01X6NCSHH18BI757LwB3eOBIblb6KPdx0J7",
+      "properties": {
+        "value": "2022-05-20T14:02:20Z",
+        "scope": "global",
+        "name": "Last Workflow Run",
+        "type": "datatype.date",
+        "is_required": false,
+        "is_invisible": false
+      },
+      "object_type": "variable"
+    }
+  },
   "table_types": {
     "tabletype_01WYBVZJFMHFM0VlVEGxcBEt1nUnY0TAunT": {
       "unique_name": "tabletype_01WYBVZJFMHFM0VlVEGxcBEt1nUnY0TAunT",
       "data_type": "datatype.tabletype",
       "display_name": "Access Control Policy Rules",
       "columns": [
-        {
-          "name": "name",
-          "title": "name",
-          "type": "string"
-        },
         {
           "name": "id",
           "title": "id",
@@ -801,6 +1159,11 @@
         {
           "name": "rules",
           "title": "rules",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "title": "name",
           "type": "string"
         }
       ],
@@ -813,11 +1176,6 @@
       "display_name": "ACP Rules Table Type",
       "description": "ACP Name\nACP Rule Index\nACP Rule Name\nACP Rule ID\nACP Rule JSON",
       "columns": [
-        {
-          "name": "ACPRuleJSON",
-          "title": "ACP Rule JSON",
-          "type": "string"
-        },
         {
           "name": "ACPName",
           "title": "ACP Name",
@@ -837,6 +1195,30 @@
           "name": "ACPRuleID",
           "title": "ACP Rule ID",
           "type": "string"
+        },
+        {
+          "name": "ACPRuleJSON",
+          "title": "ACP Rule JSON",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    },
+    "tabletype_01X6RRAKB5ZE067ZQlI3uRYz9MiS3eU690b": {
+      "unique_name": "tabletype_01X6RRAKB5ZE067ZQlI3uRYz9MiS3eU690b",
+      "data_type": "datatype.tabletype",
+      "display_name": "Commit Table",
+      "columns": [
+        {
+          "name": "FileName",
+          "title": "File Name",
+          "type": "string"
+        },
+        {
+          "name": "FileSHA",
+          "title": "File SHA",
+          "type": "string"
         }
       ],
       "base_type": "datatype",
@@ -844,8 +1226,7 @@
     }
   },
   "atomic_workflows": [
-    "definition_workflow_01PP76OBLMFFT4g43eU1MrFz5S7BxbqRzOk",
-    "definition_workflow_01RNQDMNVPYOA3R2brNciZxBSTEEjlG0vi1"
+    "definition_workflow_01PP76OBLMFFT4g43eU1MrFz5S7BxbqRzOk"
   ],
   "webhooks": {
     "webhook_01WQ2VYMLJ0G41uwSG4v8joEIi5nKNRcGbF": {
@@ -890,7 +1271,6 @@
     }
   },
   "dependent_workflows": [
-    "definition_workflow_01PP76OBLMFFT4g43eU1MrFz5S7BxbqRzOk",
-    "definition_workflow_01RNQDMNVPYOA3R2brNciZxBSTEEjlG0vi1"
+    "definition_workflow_01PP76OBLMFFT4g43eU1MrFz5S7BxbqRzOk"
   ]
 }

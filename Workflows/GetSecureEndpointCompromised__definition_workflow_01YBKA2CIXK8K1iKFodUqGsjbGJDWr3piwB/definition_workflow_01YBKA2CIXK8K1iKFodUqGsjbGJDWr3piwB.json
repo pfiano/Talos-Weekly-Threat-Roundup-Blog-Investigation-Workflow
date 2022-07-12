@@ -19,19 +19,6 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.boolean",
-        "properties": {
-          "value": false,
-          "scope": "local",
-          "name": "High or Critical severity found",
-          "type": "datatype.boolean",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YFYAO0SLMTO2hMwpSLFMXjC1hZe2jwWVY",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.integer",
         "properties": {
           "value": 0,
@@ -42,6 +29,19 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01YFSYH9H6YKJ3PcSGoiCna38KHkpLpwrG2",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "local",
+          "name": "High or Critical severity found",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YFYAO0SLMTO2hMwpSLFMXjC1hZe2jwWVY",
         "object_type": "variable_workflow"
       }
     ],
@@ -540,7 +540,7 @@
       "type": "schedule",
       "base_type": "trigger",
       "ref_id": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
-      "version": "1.0.0",
+      "version": "",
       "disabled": false,
       "unique_name": "triggerschedule_01YFYY7N1OWQ92hdinngrzNHNGJmZuOotke",
       "object_type": "triggerschedule"
@@ -549,17 +549,17 @@
   "schedules": {
     "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM": {
       "unique_name": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
-      "name": "Every 5 Minutes",
+      "name": "Every 5 Minute",
       "type": "basic.schedule",
       "base_type": "schedule",
       "properties": {
         "calendar": "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ",
         "timezone": "Europe/Brussels",
-        "starttime": "17:25",
+        "starttime": "00:00",
         "interval_hours": 0,
         "interval_minutes": 5,
-        "number_of_times": 20,
-        "display_name": "Every 5 Minutes",
+        "number_of_times": 288,
+        "display_name": "Every 5 Minute",
         "description": ""
       },
       "version": "1.0.0",
@@ -635,7 +635,7 @@
     "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b": {
       "unique_name": "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b",
       "properties": {
-        "value": 1657557000,
+        "value": 1657663500,
         "scope": "global",
         "name": "Last Compromised - Time Stamp (Unix epoch)",
         "type": "datatype.integer",
@@ -652,16 +652,6 @@
       "display_name": "Compromised Item",
       "columns": [
         {
-          "name": "events",
-          "title": "events",
-          "type": "string"
-        },
-        {
-          "name": "connector_guid",
-          "title": "connector_guid",
-          "type": "string"
-        },
-        {
           "name": "hostname",
           "title": "hostname",
           "type": "string"
@@ -669,6 +659,16 @@
         {
           "name": "created_at",
           "title": "created_at",
+          "type": "string"
+        },
+        {
+          "name": "events",
+          "title": "events",
+          "type": "string"
+        },
+        {
+          "name": "connector_guid",
+          "title": "connector_guid",
           "type": "string"
         }
       ],

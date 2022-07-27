@@ -1,0 +1,344 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m",
+    "name": "Get and Notify Secure Endpoint Audit Log changes",
+    "title": "Get and Notify Secure Endpoint Audit Log changes",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 43600,
+          "scope": "local",
+          "name": "time interval",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YTNPCIKELC14I1nU27BZ3SQRuEYGq1dyx",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "pfiano@cisco.com",
+          "scope": "local",
+          "name": "Notification Email Addresses",
+          "type": "datatype.string",
+          "description": "comma separated if multiple email addresses",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YTGG52PQFGT1hVFqhTaysXGjhnlc8MWHe",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "ApplicationBlockingList",
+          "scope": "local",
+          "name": "Action Log Type",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Get and Notify Secure Endpoint Audit Log changes",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01YTK03JNUX7O4yFpwBQrFkeb4HU2ygxorO",
+        "name": "Calculate Date",
+        "title": "Calculate Date",
+        "type": "core.calculate_date",
+        "base_type": "activity",
+        "properties": {
+          "adjustment": "-$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNPCIKELC14I1nU27BZ3SQRuEYGq1dyx$",
+          "continue_on_failure": false,
+          "display_name": "Calculate Date",
+          "original_date": "$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.output.start_time$",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01YTK2GBSMB683Dig5VkcE8EXDWWym602Di",
+        "name": "Format Date",
+        "title": "Format Date",
+        "type": "core.format_date",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Format Date",
+          "format_string": "2006-01-02T15:04:05Z",
+          "original_date": "$activity.definition_activity_01YTK03JNUX7O4yFpwBQrFkeb4HU2ygxorO.output.result$",
+          "skip_execution": false,
+          "use_custom_format": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01YTGG58PMT3I6wRDCSXM2CJiiumAtH0Amf",
+        "name": "HTTP Request",
+        "title": "Secure Endpoint - Get Audit Logs item list",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "allow_headers_redirect": false,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "Secure Endpoint - Get Audit Logs item list",
+          "method": "GET",
+          "relative_url": "/audit_logs?start_time=$activity.definition_activity_01YTK2GBSMB683Dig5VkcE8EXDWWym602Di.output.result$",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01YBMDAVR9SDI12rOOMmjJyTyWEVCvr4pOZ"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01YTGG59EL24768J6yvYCNFDXAy3Tmfr0XK",
+        "name": "Read Table from JSON",
+        "title": "Create Table of Audit Logs items",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": true,
+          "display_name": "Create Table of Audit Logs items",
+          "input_json": "$activity.definition_activity_01YTGG58PMT3I6wRDCSXM2CJiiumAtH0Amf.output.response_body$",
+          "jsonpath_query": "$.data[?(@.audit_log_type == '$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH$')]",
+          "persist_output": false,
+          "populate_columns": false,
+          "skip_execution": false,
+          "table_columns": [
+            {
+              "column_name": "audit_log_user",
+              "column_type": "string"
+            },
+            {
+              "column_name": "created_at",
+              "column_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "column_name": "old_attributes",
+              "column_type": "string"
+            },
+            {
+              "column_name": "new_attributes",
+              "column_type": "string"
+            },
+            {
+              "column_name": "event",
+              "column_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01YTNE492OR200SnRZXHH2kC1DjowYwVElS",
+        "name": "Condition Block",
+        "title": "Have we found new Audit Log Items",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Have we found new Audit Log Items",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01YTNE49A2A636AEpxiuZhpAcrxsl04kSOQ",
+            "name": "Condition Branch",
+            "title": "YES",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01YTGG59EL24768J6yvYCNFDXAy3Tmfr0XK.output.succeeded$",
+                "operator": "eq",
+                "right_operand": true
+              },
+              "continue_on_failure": false,
+              "display_name": "YES",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj",
+                "name": "For Each",
+                "title": "For Each Audit Log Item",
+                "type": "logic.for_each",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "For Each Audit Log Item",
+                  "skip_execution": false,
+                  "source_array": "$activity.definition_activity_01YTGG59EL24768J6yvYCNFDXAy3Tmfr0XK.output.read_table_from_json$"
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01YTGG5IYHHKD6cyCL9WsCSORWuZLrfPRV0",
+                    "name": "Send Email",
+                    "title": "Send Email (notify new Audit)",
+                    "type": "email.smtp_send_email",
+                    "base_type": "activity",
+                    "properties": {
+                      "action_timeout": 180,
+                      "body": "Please be aware that a new Action Log item type \"$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH$\" has been found with the following below information:\n\nAUDIT LOG USER: $activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].audit_log_user$\nCREATED AT: $activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].created_at$\nEVENT TYPE: $activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].event$\nOLD ATTRIBUTES: $activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].old_attributes$\nNEW ATTRIBUTES: $activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].new_attributes$",
+                      "continue_if_one_address_valid": false,
+                      "continue_on_failure": false,
+                      "display_name": "Send Email (notify new Audit)",
+                      "runtime_user": {
+                        "target_default": true
+                      },
+                      "skip_execution": false,
+                      "subject": "New Audit Log Item (type: $workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH$",
+                      "target": {
+                        "override_workflow_target": true,
+                        "target_id": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj"
+                      },
+                      "to": "$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTGG52PQFGT1hVFqhTaysXGjhnlc8MWHe$"
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "triggers": {
+    "triggerschedule_01YTGG558D9NY1AJbTG3kzeLC5vDlaMY5Ug": {
+      "workflow_id": "definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m",
+      "name": "Time Interval Check",
+      "title": "",
+      "lowercase_name": "schedule.time_interval_check",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
+      "version": "1.0.0",
+      "disabled": true,
+      "unique_name": "triggerschedule_01YTGG558D9NY1AJbTG3kzeLC5vDlaMY5Ug",
+      "object_type": "triggerschedule"
+    }
+  },
+  "schedules": {
+    "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM": {
+      "unique_name": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
+      "name": "Every 5 Minute",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ",
+        "timezone": "Europe/Brussels",
+        "starttime": "00:00",
+        "interval_hours": 0,
+        "interval_minutes": 5,
+        "number_of_times": 288,
+        "display_name": "Every 5 Minute",
+        "description": ""
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
+    }
+  },
+  "targets": {
+    "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj": {
+      "unique_name": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj",
+      "name": "Phishing Investigation Outgoing",
+      "title": "Phishing Investigation Outgoing",
+      "type": "email.smtp_endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01YFYJS9RRSSG1UJ3F7U203dQC8lZivMT5G",
+        "display_name": "Phishing Investigation Outgoing",
+        "no_runtime_user": false,
+        "port": 587,
+        "protocol": "SMTP",
+        "server": "smtp.gmail.com"
+      }
+    },
+    "definition_target_01YBMDAVR9SDI12rOOMmjJyTyWEVCvr4pOZ": {
+      "unique_name": "definition_target_01YBMDAVR9SDI12rOOMmjJyTyWEVCvr4pOZ",
+      "name": "Secure Endpoint Target",
+      "title": "Secure Endpoint Target",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01YBMEWVFH0Q93mDQfgl3f3oc61RqNywZQg",
+        "disable_certificate_validation": false,
+        "display_name": "Secure Endpoint Target",
+        "host": "api.eu.amp.cisco.com",
+        "ignore_proxy": false,
+        "no_runtime_user": false,
+        "path": "/v1",
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01YBMEWVFH0Q93mDQfgl3f3oc61RqNywZQg": {
+      "unique_name": "definition_runtime_user_01YBMEWVFH0Q93mDQfgl3f3oc61RqNywZQg",
+      "name": "Secure Endpoint Comune di Palermo Credentials",
+      "title": "Secure Endpoint Comune di Palermo Credentials",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "auth_option": "Basic",
+        "basic_password": "*****",
+        "basic_username": "4a3a6d39a72f08ebe023",
+        "display_name": "Secure Endpoint Comune di Palermo Credentials"
+      }
+    },
+    "definition_runtime_user_01YFYJS9RRSSG1UJ3F7U203dQC8lZivMT5G": {
+      "unique_name": "definition_runtime_user_01YFYJS9RRSSG1UJ3F7U203dQC8lZivMT5G",
+      "name": "pfiano@scuolaitalianabarcellona.it",
+      "title": "pfiano@scuolaitalianabarcellona.it",
+      "type": "runtime_user.email_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "pfiano@scuolaitalianabarcellona.it",
+        "password": "*****",
+        "sender": "pfiano@scuolaitalianabarcellona.it"
+      }
+    }
+  }
+}

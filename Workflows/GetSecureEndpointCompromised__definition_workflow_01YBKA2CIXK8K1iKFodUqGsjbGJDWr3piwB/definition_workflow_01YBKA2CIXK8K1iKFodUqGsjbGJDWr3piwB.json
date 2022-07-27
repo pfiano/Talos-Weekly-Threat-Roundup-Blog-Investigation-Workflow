@@ -7,15 +7,16 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "tabletype_01YFXIBFFARDW1XXEuueXaQCvfyW6WD9wVk",
+        "schema_id": "datatype.boolean",
         "properties": {
+          "value": false,
           "scope": "local",
-          "name": "Compromised Items",
-          "type": "datatype.table",
+          "name": "High or Critical severity found",
+          "type": "datatype.boolean",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01YFXLJUPO5PZ6qp1GPa6NfWTztUh3vzfJR",
+        "unique_name": "variable_workflow_01YFYAO0SLMTO2hMwpSLFMXjC1hZe2jwWVY",
         "object_type": "variable_workflow"
       },
       {
@@ -32,16 +33,29 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.boolean",
+        "schema_id": "datatype.string",
         "properties": {
-          "value": false,
+          "value": "pfiano@cisco.com",
           "scope": "local",
-          "name": "High or Critical severity found",
-          "type": "datatype.boolean",
+          "name": "Notification Email Addresses",
+          "type": "datatype.string",
+          "description": "comma separated if multiple email addresses",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01YFYAO0SLMTO2hMwpSLFMXjC1hZe2jwWVY",
+        "unique_name": "variable_workflow_01YTGDE6YBWLX0npiboBa8JhHP2hMsEoCA1",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_01YFXIBFFARDW1XXEuueXaQCvfyW6WD9wVk",
+        "properties": {
+          "scope": "local",
+          "name": "Compromised Items",
+          "type": "datatype.table",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YFXLJUPO5PZ6qp1GPa6NfWTztUh3vzfJR",
         "object_type": "variable_workflow"
       }
     ],
@@ -501,7 +515,7 @@
                             "override_workflow_target": true,
                             "target_id": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj"
                           },
-                          "to": "pfiano@cisco.com"
+                          "to": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YTGDE6YBWLX0npiboBa8JhHP2hMsEoCA1$"
                         },
                         "object_type": "definition_activity"
                       },
@@ -541,7 +555,7 @@
       "base_type": "trigger",
       "ref_id": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
       "version": "",
-      "disabled": false,
+      "disabled": true,
       "unique_name": "triggerschedule_01YFYY7N1OWQ92hdinngrzNHNGJmZuOotke",
       "object_type": "triggerschedule"
     }
@@ -635,7 +649,7 @@
     "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b": {
       "unique_name": "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b",
       "properties": {
-        "value": 1657663500,
+        "value": 1658922000,
         "scope": "global",
         "name": "Last Compromised - Time Stamp (Unix epoch)",
         "type": "datatype.integer",
@@ -652,11 +666,6 @@
       "display_name": "Compromised Item",
       "columns": [
         {
-          "name": "hostname",
-          "title": "hostname",
-          "type": "string"
-        },
-        {
           "name": "created_at",
           "title": "created_at",
           "type": "string"
@@ -669,6 +678,11 @@
         {
           "name": "connector_guid",
           "title": "connector_guid",
+          "type": "string"
+        },
+        {
+          "name": "hostname",
+          "title": "hostname",
           "type": "string"
         }
       ],

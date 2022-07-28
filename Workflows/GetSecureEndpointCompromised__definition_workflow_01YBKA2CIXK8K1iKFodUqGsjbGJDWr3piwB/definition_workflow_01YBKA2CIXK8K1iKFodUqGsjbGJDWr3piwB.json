@@ -20,6 +20,18 @@
         "object_type": "variable_workflow"
       },
       {
+        "schema_id": "tabletype_01YFXIBFFARDW1XXEuueXaQCvfyW6WD9wVk",
+        "properties": {
+          "scope": "local",
+          "name": "Compromised Items",
+          "type": "datatype.table",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YFXLJUPO5PZ6qp1GPa6NfWTztUh3vzfJR",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "datatype.integer",
         "properties": {
           "value": 0,
@@ -44,18 +56,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01YTGDE6YBWLX0npiboBa8JhHP2hMsEoCA1",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "tabletype_01YFXIBFFARDW1XXEuueXaQCvfyW6WD9wVk",
-        "properties": {
-          "scope": "local",
-          "name": "Compromised Items",
-          "type": "datatype.table",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YFXLJUPO5PZ6qp1GPa6NfWTztUh3vzfJR",
         "object_type": "variable_workflow"
       }
     ],
@@ -477,15 +477,23 @@
                     "properties": {
                       "condition": {
                         "left_operand": {
-                          "left_operand": "$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].severity$",
-                          "operator": "eq",
-                          "right_operand": "High"
+                          "left_operand": {
+                            "left_operand": "$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].severity$",
+                            "operator": "eq",
+                            "right_operand": "High"
+                          },
+                          "operator": "or",
+                          "right_operand": {
+                            "left_operand": "$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].severity$",
+                            "operator": "eq",
+                            "right_operand": "Critical"
+                          }
                         },
                         "operator": "or",
                         "right_operand": {
                           "left_operand": "$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].severity$",
                           "operator": "eq",
-                          "right_operand": "Critical"
+                          "right_operand": "Medium"
                         }
                       },
                       "continue_on_failure": false,
@@ -495,6 +503,48 @@
                     "object_type": "definition_activity",
                     "actions": [
                       {
+                        "unique_name": "definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv",
+                        "name": "JSONPath Query",
+                        "title": "Extract Hostname and GUID",
+                        "type": "corejava.jsonpathquery",
+                        "base_type": "activity",
+                        "properties": {
+                          "action_timeout": 180,
+                          "continue_on_failure": false,
+                          "display_name": "Extract Hostname and GUID",
+                          "input_json": "$activity.definition_activity_01YFXRNQBY3B54L1PwLA8jqqQmeAYbM9d8T.output.response_body$",
+                          "jsonpath_queries": [
+                            {
+                              "jsonpath_query": "$.data[0].computer.connector_guid",
+                              "jsonpath_query_name": "computer",
+                              "jsonpath_query_type": "string"
+                            },
+                            {
+                              "jsonpath_query": "$.data[0].computer.hostname",
+                              "jsonpath_query_name": "hostname",
+                              "jsonpath_query_type": "string"
+                            },
+                            {
+                              "jsonpath_query": "$.data[0].computer.links.computer",
+                              "jsonpath_query_name": "computer_links",
+                              "jsonpath_query_type": "string"
+                            },
+                            {
+                              "jsonpath_query": "$.data[0].computer.links.trajectory",
+                              "jsonpath_query_name": "trajectory",
+                              "jsonpath_query_type": "string"
+                            },
+                            {
+                              "jsonpath_query": "$.data[0].computer.links.group",
+                              "jsonpath_query_name": "group",
+                              "jsonpath_query_type": "string"
+                            }
+                          ],
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
                         "unique_name": "definition_activity_01YFYDPO59B411t5nanaSbdOUrXiYtoCB35",
                         "name": "Send Email",
                         "title": "Send Email (notify new Compromised)",
@@ -502,7 +552,7 @@
                         "base_type": "activity",
                         "properties": {
                           "action_timeout": 180,
-                          "body": "$activity.definition_activity_01YFXRNQBY3B54L1PwLA8jqqQmeAYbM9d8T.output.response_body$",
+                          "body": "Please note that a New Compromise with High or Critical events for the $activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.hostname$ computer has been created.\n\nConnector GUID: $activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.computer$",
                           "continue_if_one_address_valid": false,
                           "continue_on_failure": false,
                           "display_name": "Send Email (notify new Compromised)",
@@ -510,7 +560,7 @@
                             "target_default": true
                           },
                           "skip_execution": false,
-                          "subject": "New Compromise with High or Critical severity events created",
+                          "subject": "$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.hostname$ - New Compromise with High or Critical events",
                           "target": {
                             "override_workflow_target": true,
                             "target_id": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj"
@@ -649,7 +699,7 @@
     "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b": {
       "unique_name": "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b",
       "properties": {
-        "value": 1658922000,
+        "value": 1659013091,
         "scope": "global",
         "name": "Last Compromised - Time Stamp (Unix epoch)",
         "type": "datatype.integer",
@@ -666,16 +716,6 @@
       "display_name": "Compromised Item",
       "columns": [
         {
-          "name": "created_at",
-          "title": "created_at",
-          "type": "string"
-        },
-        {
-          "name": "events",
-          "title": "events",
-          "type": "string"
-        },
-        {
           "name": "connector_guid",
           "title": "connector_guid",
           "type": "string"
@@ -683,6 +723,16 @@
         {
           "name": "hostname",
           "title": "hostname",
+          "type": "string"
+        },
+        {
+          "name": "created_at",
+          "title": "created_at",
+          "type": "string"
+        },
+        {
+          "name": "events",
+          "title": "events",
           "type": "string"
         }
       ],

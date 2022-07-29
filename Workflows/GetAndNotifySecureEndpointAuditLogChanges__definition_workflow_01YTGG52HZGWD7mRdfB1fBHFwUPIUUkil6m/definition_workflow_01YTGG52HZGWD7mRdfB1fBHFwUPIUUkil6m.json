@@ -7,16 +7,29 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.integer",
+        "schema_id": "datatype.string",
         "properties": {
-          "value": 43600,
+          "value": "",
           "scope": "local",
-          "name": "time interval",
-          "type": "datatype.integer",
+          "name": "email_text",
+          "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01YTNPCIKELC14I1nU27BZ3SQRuEYGq1dyx",
+        "unique_name": "variable_workflow_01YVGTI5V6YAD6DF1nEBJzu9vINpGY7T5GX",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "ApplicationBlockingList",
+          "scope": "local",
+          "name": "Action Log Type",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH",
         "object_type": "variable_workflow"
       },
       {
@@ -34,16 +47,16 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.string",
+        "schema_id": "datatype.integer",
         "properties": {
-          "value": "ApplicationBlockingList",
+          "value": 343600,
           "scope": "local",
-          "name": "Action Log Type",
-          "type": "datatype.string",
+          "name": "time interval",
+          "type": "datatype.integer",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH",
+        "unique_name": "variable_workflow_01YTNPCIKELC14I1nU27BZ3SQRuEYGq1dyx",
         "object_type": "variable_workflow"
       }
     ],
@@ -88,7 +101,7 @@
           "display_name": "Format Date",
           "format_string": "2006-01-02T15:04:05Z",
           "original_date": "$activity.definition_activity_01YTK03JNUX7O4yFpwBQrFkeb4HU2ygxorO.output.result$",
-          "skip_execution": false,
+          "skip_execution": true,
           "use_custom_format": false
         },
         "object_type": "definition_activity"
@@ -107,7 +120,7 @@
           "continue_on_failure": false,
           "display_name": "Secure Endpoint - Get Audit Logs item list",
           "method": "GET",
-          "relative_url": "/audit_logs?start_time=$activity.definition_activity_01YTK2GBSMB683Dig5VkcE8EXDWWym602Di.output.result$",
+          "relative_url": "/audit_logs?audit_log_type=$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH$\u0026start_time=$activity.definition_activity_01YTK03JNUX7O4yFpwBQrFkeb4HU2ygxorO.output.result$",
           "runtime_user": {
             "target_default": true
           },
@@ -120,43 +133,24 @@
         "object_type": "definition_activity"
       },
       {
-        "unique_name": "definition_activity_01YTGG59EL24768J6yvYCNFDXAy3Tmfr0XK",
-        "name": "Read Table from JSON",
-        "title": "Create Table of Audit Logs items",
-        "type": "corejava.read_table_from_json",
+        "unique_name": "definition_activity_01YVHUX5KOZCP4DosFuZzlLa0Yd0yLcc6jq",
+        "name": "JSONPath Query",
+        "title": "Extract Number of New Audit Log Items",
+        "type": "corejava.jsonpathquery",
         "base_type": "activity",
         "properties": {
           "action_timeout": 180,
-          "continue_on_failure": true,
-          "display_name": "Create Table of Audit Logs items",
+          "continue_on_failure": false,
+          "display_name": "Extract Number of New Audit Log Items",
           "input_json": "$activity.definition_activity_01YTGG58PMT3I6wRDCSXM2CJiiumAtH0Amf.output.response_body$",
-          "jsonpath_query": "$.data[?(@.audit_log_type == '$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH$')]",
-          "persist_output": false,
-          "populate_columns": false,
-          "skip_execution": false,
-          "table_columns": [
+          "jsonpath_queries": [
             {
-              "column_name": "audit_log_user",
-              "column_type": "string"
-            },
-            {
-              "column_name": "created_at",
-              "column_type": "string",
-              "zdate_type_format": ""
-            },
-            {
-              "column_name": "old_attributes",
-              "column_type": "string"
-            },
-            {
-              "column_name": "new_attributes",
-              "column_type": "string"
-            },
-            {
-              "column_name": "event",
-              "column_type": "string"
+              "jsonpath_query": "$..results.total",
+              "jsonpath_query_name": "number_of_new_audit_log_items",
+              "jsonpath_query_type": "integer"
             }
-          ]
+          ],
+          "skip_execution": false
         },
         "object_type": "definition_activity"
       },
@@ -181,9 +175,9 @@
             "base_type": "activity",
             "properties": {
               "condition": {
-                "left_operand": "$activity.definition_activity_01YTGG59EL24768J6yvYCNFDXAy3Tmfr0XK.output.succeeded$",
-                "operator": "eq",
-                "right_operand": true
+                "left_operand": "$activity.definition_activity_01YVHUX5KOZCP4DosFuZzlLa0Yd0yLcc6jq.output.jsonpath_queries.number_of_new_audit_log_items$",
+                "operator": "gt",
+                "right_operand": 0
               },
               "continue_on_failure": false,
               "display_name": "YES",
@@ -191,6 +185,47 @@
             },
             "object_type": "definition_activity",
             "actions": [
+              {
+                "unique_name": "definition_activity_01YTGG59EL24768J6yvYCNFDXAy3Tmfr0XK",
+                "name": "Read Table from JSON",
+                "title": "Create Table of Audit Logs items",
+                "type": "corejava.read_table_from_json",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Create Table of Audit Logs items",
+                  "input_json": "$activity.definition_activity_01YTGG58PMT3I6wRDCSXM2CJiiumAtH0Amf.output.response_body$",
+                  "jsonpath_query": "$.data[?(@.audit_log_type == '$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH$')]",
+                  "persist_output": false,
+                  "populate_columns": false,
+                  "skip_execution": false,
+                  "table_columns": [
+                    {
+                      "column_name": "audit_log_user",
+                      "column_type": "string"
+                    },
+                    {
+                      "column_name": "created_at",
+                      "column_type": "string",
+                      "zdate_type_format": ""
+                    },
+                    {
+                      "column_name": "old_attributes",
+                      "column_type": "string"
+                    },
+                    {
+                      "column_name": "new_attributes",
+                      "column_type": "string"
+                    },
+                    {
+                      "column_name": "event",
+                      "column_type": "string"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
               {
                 "unique_name": "definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj",
                 "name": "For Each",
@@ -206,31 +241,76 @@
                 "object_type": "definition_activity",
                 "actions": [
                   {
-                    "unique_name": "definition_activity_01YTGG5IYHHKD6cyCL9WsCSORWuZLrfPRV0",
-                    "name": "Send Email",
-                    "title": "Send Email (notify new Audit)",
-                    "type": "email.smtp_send_email",
+                    "unique_name": "definition_activity_01YVGKA9BX37S5S5LHt4E4VlU8TmjaraqV9",
+                    "name": "Execute Python Script",
+                    "title": "Format Audit Log Item Text",
+                    "type": "python3.script",
                     "base_type": "activity",
                     "properties": {
                       "action_timeout": 180,
-                      "body": "Please be aware that a new Action Log item type \"$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH$\" has been found with the following below information:\n\nAUDIT LOG USER: $activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].audit_log_user$\nCREATED AT: $activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].created_at$\nEVENT TYPE: $activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].event$\nOLD ATTRIBUTES: $activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].old_attributes$\nNEW ATTRIBUTES: $activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].new_attributes$",
-                      "continue_if_one_address_valid": false,
                       "continue_on_failure": false,
-                      "display_name": "Send Email (notify new Audit)",
-                      "runtime_user": {
-                        "target_default": true
-                      },
+                      "display_name": "Format Audit Log Item Text",
+                      "script": "import sys\n\nemail_text = sys.argv[1]\nemail_text += \"\"\"\n\u003cp style=\"padding-left: 30px;\"\u003eAUDIT LOG USER: \u003cstrong\u003e$activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].audit_log_user$\u003c/strong\u003e\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003eCREATED AT: \u003cstrong\u003e$activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].created_at$\u003c/strong\u003e\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003eEVENT TYPE: \u003cstrong\u003e$activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].event$\u003c/strong\u003e\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003eOLD ATTRIBUTES: \u003cstrong\u003e$activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].old_attributes$\u003c/strong\u003e\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003eNEW ATTRIBUTES: \u003cstrong\u003e$activity.definition_activity_01YTNKUNV57B21ZxVxrVto0Pe73mmOgXUoj.input.source_array[@].new_attributes$\u003c/strong\u003e\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003e\u0026nbsp;\u003c/p\u003e\n\"\"\"",
+                      "script_arguments": [
+                        "$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YVGTI5V6YAD6DF1nEBJzu9vINpGY7T5GX$"
+                      ],
+                      "script_queries": [
+                        {
+                          "script_query": "email_text",
+                          "script_query_name": "email_text",
+                          "script_query_type": "string"
+                        }
+                      ],
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01YVHFHQ4BGI25P29GuA0rk0Z7rmkNRXg3p",
+                    "name": "Set Variables",
+                    "title": "Update email_text",
+                    "type": "core.set_multiple_variables",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Update email_text",
                       "skip_execution": false,
-                      "subject": "New Audit Log Item (type: $workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH$",
-                      "target": {
-                        "override_workflow_target": true,
-                        "target_id": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj"
-                      },
-                      "to": "$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTGG52PQFGT1hVFqhTaysXGjhnlc8MWHe$"
+                      "variables_to_update": [
+                        {
+                          "variable_to_update": "$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YVGTI5V6YAD6DF1nEBJzu9vINpGY7T5GX$",
+                          "variable_value_new": "$activity.definition_activity_01YVGKA9BX37S5S5LHt4E4VlU8TmjaraqV9.output.script_queries.email_text$"
+                        }
+                      ]
                     },
                     "object_type": "definition_activity"
                   }
                 ]
+              },
+              {
+                "unique_name": "definition_activity_01YTGG5IYHHKD6cyCL9WsCSORWuZLrfPRV0",
+                "name": "Send Email",
+                "title": "Send Email (notify new Audit items)",
+                "type": "email.smtp_send_email",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "body": "Please be aware that \u003cstrong\u003e$activity.definition_activity_01YVHUX5KOZCP4DosFuZzlLa0Yd0yLcc6jq.output.jsonpath_queries.number_of_new_audit_log_items$\u003c/strong\u003e Action Log item(s) type \u003cstrong\u003e$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH$\u003c/strong\u003e has/have been found with the following below information:\n\n\n$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YVGTI5V6YAD6DF1nEBJzu9vINpGY7T5GX$",
+                  "continue_if_one_address_valid": false,
+                  "continue_on_failure": false,
+                  "display_name": "Send Email (notify new Audit items)",
+                  "html": true,
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "subject": "New Audit Log Item(s) type: $workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTNHVJQ5XQN3cLwhwTr4lPE0zzj6MEGKH$",
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj"
+                  },
+                  "to": "$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.local.variable_workflow_01YTGG52PQFGT1hVFqhTaysXGjhnlc8MWHe$"
+                },
+                "object_type": "definition_activity"
               }
             ]
           }

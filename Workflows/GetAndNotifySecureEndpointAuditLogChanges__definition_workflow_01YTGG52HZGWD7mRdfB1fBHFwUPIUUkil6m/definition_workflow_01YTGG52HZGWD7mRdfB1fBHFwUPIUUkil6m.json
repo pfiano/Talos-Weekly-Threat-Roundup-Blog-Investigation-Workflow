@@ -20,6 +20,20 @@
         "object_type": "variable_workflow"
       },
       {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 3600,
+          "scope": "local",
+          "name": "time interval",
+          "type": "datatype.integer",
+          "description": "Default 60 minutes - If you change this, please note you need to update Trigger",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YTNPCIKELC14I1nU27BZ3SQRuEYGq1dyx",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "ApplicationBlockingList",
@@ -44,19 +58,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01YTGG52PQFGT1hVFqhTaysXGjhnlc8MWHe",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 343600,
-          "scope": "local",
-          "name": "time interval",
-          "type": "datatype.integer",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YTNPCIKELC14I1nU27BZ3SQRuEYGq1dyx",
         "object_type": "variable_workflow"
       }
     ],
@@ -87,22 +88,6 @@
           "display_name": "Calculate Date",
           "original_date": "$workflow.definition_workflow_01YTGG52HZGWD7mRdfB1fBHFwUPIUUkil6m.output.start_time$",
           "skip_execution": false
-        },
-        "object_type": "definition_activity"
-      },
-      {
-        "unique_name": "definition_activity_01YTK2GBSMB683Dig5VkcE8EXDWWym602Di",
-        "name": "Format Date",
-        "title": "Format Date",
-        "type": "core.format_date",
-        "base_type": "activity",
-        "properties": {
-          "continue_on_failure": false,
-          "display_name": "Format Date",
-          "format_string": "2006-01-02T15:04:05Z",
-          "original_date": "$activity.definition_activity_01YTK03JNUX7O4yFpwBQrFkeb4HU2ygxorO.output.result$",
-          "skip_execution": true,
-          "use_custom_format": false
         },
         "object_type": "definition_activity"
       },
@@ -329,27 +314,27 @@
       "lowercase_name": "schedule.time_interval_check",
       "type": "schedule",
       "base_type": "trigger",
-      "ref_id": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
-      "version": "1.0.0",
+      "ref_id": "schedule_01YVIA6KFOZHT1YIkPeW5x0hKL9G6moIC03",
+      "version": "",
       "disabled": true,
       "unique_name": "triggerschedule_01YTGG558D9NY1AJbTG3kzeLC5vDlaMY5Ug",
       "object_type": "triggerschedule"
     }
   },
   "schedules": {
-    "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM": {
-      "unique_name": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
-      "name": "Every 5 Minute",
+    "schedule_01YVIA6KFOZHT1YIkPeW5x0hKL9G6moIC03": {
+      "unique_name": "schedule_01YVIA6KFOZHT1YIkPeW5x0hKL9G6moIC03",
+      "name": "Every 60 minutes",
       "type": "basic.schedule",
       "base_type": "schedule",
       "properties": {
         "calendar": "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ",
         "timezone": "Europe/Brussels",
         "starttime": "00:00",
-        "interval_hours": 0,
-        "interval_minutes": 5,
-        "number_of_times": 288,
-        "display_name": "Every 5 Minute",
+        "interval_hours": 1,
+        "interval_minutes": 0,
+        "number_of_times": 24,
+        "display_name": "Every 60 minutes",
         "description": ""
       },
       "version": "1.0.0",

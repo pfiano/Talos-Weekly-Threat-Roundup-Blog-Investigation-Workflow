@@ -418,6 +418,28 @@
             "object_type": "definition_activity"
           },
           {
+            "unique_name": "definition_activity_01YVX7I2RMW864YAcksnMaZ8DRPAzaXvT2m",
+            "name": "JSONPath Query",
+            "title": "Extract Events",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Events",
+              "input_json": "$activity.definition_activity_01YFXRNQBY3B54L1PwLA8jqqQmeAYbM9d8T.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$..[?(@.severity == \"Medium\" || @.severity == \"High\" || @.severity == \"Critical\")]",
+                  "jsonpath_query_name": "events",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
             "unique_name": "definition_activity_01YFY44QXXM3Z38mNJ3CYTWAzC2hcVYSi2l",
             "name": "Read Table from JSON",
             "title": "Create Event Severity table",
@@ -427,14 +449,26 @@
               "action_timeout": 180,
               "continue_on_failure": false,
               "display_name": "Create Event Severity table",
-              "input_json": "$activity.definition_activity_01YFXRNQBY3B54L1PwLA8jqqQmeAYbM9d8T.output.response_body$",
-              "jsonpath_query": "$.data",
+              "input_json": "$activity.definition_activity_01YVX7I2RMW864YAcksnMaZ8DRPAzaXvT2m.output.jsonpath_queries.events$",
+              "jsonpath_query": "$.",
               "persist_output": false,
               "populate_columns": false,
               "skip_execution": false,
               "table_columns": [
                 {
                   "column_name": "severity",
+                  "column_type": "string"
+                },
+                {
+                  "column_name": "event_type",
+                  "column_type": "string"
+                },
+                {
+                  "column_name": "connector_guid",
+                  "column_type": "string"
+                },
+                {
+                  "column_name": "computer",
                   "column_type": "string"
                 }
               ]
@@ -505,38 +539,38 @@
                       {
                         "unique_name": "definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv",
                         "name": "JSONPath Query",
-                        "title": "Extract Hostname and GUID",
+                        "title": "Extract Event Information",
                         "type": "corejava.jsonpathquery",
                         "base_type": "activity",
                         "properties": {
                           "action_timeout": 180,
                           "continue_on_failure": false,
-                          "display_name": "Extract Hostname and GUID",
-                          "input_json": "$activity.definition_activity_01YFXRNQBY3B54L1PwLA8jqqQmeAYbM9d8T.output.response_body$",
+                          "display_name": "Extract Event Information",
+                          "input_json": "$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].computer$",
                           "jsonpath_queries": [
                             {
-                              "jsonpath_query": "$.data[0].computer.connector_guid",
-                              "jsonpath_query_name": "computer",
+                              "jsonpath_query": "$.connector_guid",
+                              "jsonpath_query_name": "connector_guid",
                               "jsonpath_query_type": "string"
                             },
                             {
-                              "jsonpath_query": "$.data[0].computer.hostname",
+                              "jsonpath_query": "$.hostname",
                               "jsonpath_query_name": "hostname",
                               "jsonpath_query_type": "string"
                             },
                             {
-                              "jsonpath_query": "$.data[0].computer.links.computer",
-                              "jsonpath_query_name": "computer_links",
+                              "jsonpath_query": "$.external_ip",
+                              "jsonpath_query_name": "external_ip",
                               "jsonpath_query_type": "string"
                             },
                             {
-                              "jsonpath_query": "$.data[0].computer.links.trajectory",
-                              "jsonpath_query_name": "trajectory",
+                              "jsonpath_query": "$.network_addresses[0].ip",
+                              "jsonpath_query_name": "internal_ip",
                               "jsonpath_query_type": "string"
                             },
                             {
-                              "jsonpath_query": "$.data[0].computer.links.group",
-                              "jsonpath_query_name": "group",
+                              "jsonpath_query": "$.network_addresses[0].mac",
+                              "jsonpath_query_name": "mac",
                               "jsonpath_query_type": "string"
                             }
                           ],
@@ -552,15 +586,16 @@
                         "base_type": "activity",
                         "properties": {
                           "action_timeout": 180,
-                          "body": "Please note that a New Compromise with High or Critical events for the $activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.hostname$ computer has been created.\n\nConnector GUID: $activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.computer$",
+                          "body": "\u003cp\u003ePlease note that a New Compromise with \u003cstrong\u003e\u003cspan style=\"color: #ff0000;\"\u003eHigh\u003c/span\u003e\u003c/strong\u003e and/or \u003cstrong\u003e\u003cspan style=\"color: #993300;\"\u003eCritical\u003c/span\u003e\u003c/strong\u003e events for the \u003cstrong\u003e$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.hostname$\u003c/strong\u003e computer has been created.\u003c/p\u003e\n\u003cp\u003e\u0026nbsp;\u003c/p\u003e\n\u003cp\u003eConnector GUID: \u003cstrong\u003e$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.connector_guid$\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eSeverity: \u003cstrong\u003e$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].severity$\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eEvent Type: \u003cstrong\u003e$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].event_type$\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eExternal IP Address: \u003cstrong\u003e$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.external_ip$\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eInternal IP Address: \u003cstrong\u003e$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.internal_ip$\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eMAC Address: \u003cstrong\u003e$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.mac$\u003c/strong\u003e\u003c/p\u003e",
                           "continue_if_one_address_valid": false,
                           "continue_on_failure": false,
                           "display_name": "Send Email (notify new Compromised)",
+                          "html": true,
                           "runtime_user": {
                             "target_default": true
                           },
                           "skip_execution": false,
-                          "subject": "$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.hostname$ - New Compromise with High or Critical events",
+                          "subject": "$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.hostname$ - New Compromise with High/Critical events",
                           "target": {
                             "override_workflow_target": true,
                             "target_id": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj"
@@ -633,14 +668,14 @@
   "targets": {
     "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj": {
       "unique_name": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj",
-      "name": "Phishing Investigation Outgoing",
-      "title": "Phishing Investigation Outgoing",
+      "name": "pfiano_mailbox",
+      "title": "pfiano_mailbox",
       "type": "email.smtp_endpoint",
       "base_type": "target",
       "object_type": "definition_target",
       "properties": {
         "default_runtime_user_id": "definition_runtime_user_01YFYJS9RRSSG1UJ3F7U203dQC8lZivMT5G",
-        "display_name": "Phishing Investigation Outgoing",
+        "display_name": "pfiano_mailbox",
         "no_runtime_user": false,
         "port": 587,
         "protocol": "SMTP",
@@ -677,7 +712,7 @@
       "properties": {
         "auth_option": "Basic",
         "basic_password": "*****",
-        "basic_username": "4a3a6d39a72f08ebe023",
+        "basic_username": "f11e493ac97f2eed9b25",
         "display_name": "Secure Endpoint Comune di Palermo Credentials"
       }
     },
@@ -699,7 +734,7 @@
     "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b": {
       "unique_name": "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b",
       "properties": {
-        "value": 1659013091,
+        "value": 1659221645,
         "scope": "global",
         "name": "Last Compromised - Time Stamp (Unix epoch)",
         "type": "datatype.integer",
@@ -716,6 +751,11 @@
       "display_name": "Compromised Item",
       "columns": [
         {
+          "name": "events",
+          "title": "events",
+          "type": "string"
+        },
+        {
           "name": "connector_guid",
           "title": "connector_guid",
           "type": "string"
@@ -728,11 +768,6 @@
         {
           "name": "created_at",
           "title": "created_at",
-          "type": "string"
-        },
-        {
-          "name": "events",
-          "title": "events",
           "type": "string"
         }
       ],

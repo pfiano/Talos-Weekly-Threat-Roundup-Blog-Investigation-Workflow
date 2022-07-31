@@ -7,45 +7,6 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "External_IP_Address",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YWVG73I2TO31rLR2GW5XZ1Zdeg3sKTVgp",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "email_text",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YWUT3DFCDCF5viM8kI49DlqlYPeg28Tl7",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "Internal_IP_Address",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YWVGDGQQF8E2hd9Eco4pafZffR5tDP2PZ",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.boolean",
         "properties": {
           "value": false,
@@ -56,6 +17,46 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01YFYAO0SLMTO2hMwpSLFMXjC1hZe2jwWVY",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "pfiano@cisco.com",
+          "scope": "local",
+          "name": "Notification Email Addresses",
+          "type": "datatype.string",
+          "description": "comma separated if multiple email addresses",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YTGDE6YBWLX0npiboBa8JhHP2hMsEoCA1",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "Current Timestamp",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YFSYH9H6YKJ3PcSGoiCna38KHkpLpwrG2",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "External_IP_Address",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YWVG73I2TO31rLR2GW5XZ1Zdeg3sKTVgp",
         "object_type": "variable_workflow"
       },
       {
@@ -74,19 +75,6 @@
       {
         "schema_id": "datatype.integer",
         "properties": {
-          "value": 0,
-          "scope": "local",
-          "name": "Current Timestamp",
-          "type": "datatype.integer",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YFSYH9H6YKJ3PcSGoiCna38KHkpLpwrG2",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
           "value": 1,
           "scope": "local",
           "name": "Event_Number",
@@ -95,6 +83,19 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01YWWQK55ZS762oyVAW6hGVVATwxFDsLzul",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Internal_IP_Address",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YWVGDGQQF8E2hd9Eco4pafZffR5tDP2PZ",
         "object_type": "variable_workflow"
       },
       {
@@ -112,15 +113,14 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "pfiano@cisco.com",
+          "value": "",
           "scope": "local",
-          "name": "Notification Email Addresses",
+          "name": "email_text",
           "type": "datatype.string",
-          "description": "comma separated if multiple email addresses",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01YTGDE6YBWLX0npiboBa8JhHP2hMsEoCA1",
+        "unique_name": "variable_workflow_01YWUT3DFCDCF5viM8kI49DlqlYPeg28Tl7",
         "object_type": "variable_workflow"
       }
     ],
@@ -240,6 +240,77 @@
           }
         },
         "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01YX85NS0A34149aSfoK6iSOooURPEVu2Ht",
+        "name": "JSONPath Query",
+        "title": "Extract number of Compromised Items",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract number of Compromised Items",
+          "input_json": "$activity.definition_activity_01YBMA7H40OUA53mfETFrZty2LSEP1GPa6T.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.metadata.results.total",
+              "jsonpath_query_name": "number_of_items",
+              "jsonpath_query_type": "integer"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01YX86JZA0A3H1EJLIXUJ1dJUja1pfmbENY",
+        "name": "Condition Block",
+        "title": "Have we found new Compromised Items?",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Have we found new Compromised Items?",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01YX86JZFLI2F5lAyhvwtY7F6hpiVV8gPNT",
+            "name": "Condition Branch",
+            "title": "No",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01YX85NS0A34149aSfoK6iSOooURPEVu2Ht.output.jsonpath_queries.number_of_items$",
+                "operator": "eq",
+                "right_operand": 0
+              },
+              "continue_on_failure": false,
+              "display_name": "No",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01YX87BSI0ANG2o15aybwB3pog0Exog7Aff",
+                "name": "Completed",
+                "title": "Then exit the workflow",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "continue_on_failure": false,
+                  "display_name": "Then exit the workflow",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
       },
       {
         "unique_name": "definition_activity_01YBRAVFAQNMF3VEIKkVvpGCwdm598q2V7H",
@@ -788,7 +859,7 @@
       "type": "schedule",
       "base_type": "trigger",
       "ref_id": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
-      "version": "",
+      "version": "1.0.0",
       "disabled": false,
       "unique_name": "triggerschedule_01YFYY7N1OWQ92hdinngrzNHNGJmZuOotke",
       "object_type": "triggerschedule"
@@ -861,8 +932,8 @@
       "properties": {
         "auth_option": "Basic",
         "basic_password": "*****",
-        "basic_username": "4a3a6d39a72f08ebe023",
-        "display_name": "Secure Endpoint Comune di Palermo Credentials"
+        "basic_username": "803fe78c7d76fb0a0a09",
+        "display_name": "Secure Endpoint"
       }
     },
     "definition_runtime_user_01YFYJS9RRSSG1UJ3F7U203dQC8lZivMT5G": {
@@ -883,7 +954,7 @@
     "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b": {
       "unique_name": "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b",
       "properties": {
-        "value": 1659281701,
+        "value": 1659305741,
         "scope": "global",
         "name": "Last Compromised - Time Stamp (Unix epoch)",
         "type": "datatype.integer",
@@ -900,11 +971,6 @@
       "display_name": "Compromised Item",
       "columns": [
         {
-          "name": "connector_guid",
-          "title": "connector_guid",
-          "type": "string"
-        },
-        {
           "name": "hostname",
           "title": "hostname",
           "type": "string"
@@ -917,6 +983,11 @@
         {
           "name": "events",
           "title": "events",
+          "type": "string"
+        },
+        {
+          "name": "connector_guid",
+          "title": "connector_guid",
           "type": "string"
         }
       ],

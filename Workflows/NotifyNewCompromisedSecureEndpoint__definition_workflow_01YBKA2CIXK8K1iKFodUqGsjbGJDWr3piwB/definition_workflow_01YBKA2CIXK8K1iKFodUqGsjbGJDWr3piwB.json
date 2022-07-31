@@ -1,0 +1,933 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB",
+    "name": "Notify New Compromised Secure Endpoint",
+    "title": "Notify New Compromised Secure Endpoint",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "External_IP_Address",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YWVG73I2TO31rLR2GW5XZ1Zdeg3sKTVgp",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "email_text",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YWUT3DFCDCF5viM8kI49DlqlYPeg28Tl7",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Internal_IP_Address",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YWVGDGQQF8E2hd9Eco4pafZffR5tDP2PZ",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "local",
+          "name": "High or Critical severity found",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YFYAO0SLMTO2hMwpSLFMXjC1hZe2jwWVY",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "MAC_Address",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YWVGICNWHV64aphgDUmpJflbhqhbU3E0g",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "Current Timestamp",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YFSYH9H6YKJ3PcSGoiCna38KHkpLpwrG2",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 1,
+          "scope": "local",
+          "name": "Event_Number",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YWWQK55ZS762oyVAW6hGVVATwxFDsLzul",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "tabletype_01YFXIBFFARDW1XXEuueXaQCvfyW6WD9wVk",
+        "properties": {
+          "scope": "local",
+          "name": "Compromised Items",
+          "type": "datatype.table",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YFXLJUPO5PZ6qp1GPa6NfWTztUh3vzfJR",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "pfiano@cisco.com",
+          "scope": "local",
+          "name": "Notification Email Addresses",
+          "type": "datatype.string",
+          "description": "comma separated if multiple email addresses",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YTGDE6YBWLX0npiboBa8JhHP2hMsEoCA1",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Notify New Compromised Secure Endpoint",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01YFSKO5GAUDW0miHmfIEOpnSkgxOMTpVV2",
+        "name": "Group",
+        "title": "Set the global variable: Last Compromised Timestamp",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set the global variable: Last Compromised Timestamp",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01YFSYLDW29PH3pWS0LX60ezXKp8aAgNUi1",
+            "name": "Set Variables",
+            "title": "Set Current Timestamp Variable",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Set Current Timestamp Variable",
+              "skip_execution": false,
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YFSYH9H6YKJ3PcSGoiCna38KHkpLpwrG2$",
+                  "variable_value_new": "$global.variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b.global.variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01YF8MXIGHSER3KcZ47SXolcrHe08qQT5FM",
+            "name": "Time - DateTime (string) to Unix Epoch (int)",
+            "title": "Time - DateTime (string) to Unix Epoch (int)",
+            "type": "workflow.atomic_workflow",
+            "base_type": "subworkflow",
+            "properties": {
+              "display_name": "Time - DateTime (string) to Unix Epoch (int)",
+              "input": {
+                "variable_workflow_01YF7ZSWCQ02P1EkfhCEiCWiV0giTLUGdSp": ""
+              },
+              "runtime_user": {
+                "target_default": true
+              },
+              "target": {
+                "no_target": true
+              },
+              "workflow_id": "definition_workflow_01JANGI152PWM5WXe1bvW1lHwfhcBNBpd6M",
+              "workflow_name": "Time - DateTime (string) to Unix Epoch (int)"
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01YF8MLNTP5UK453LPJSKq32IGQdLGN7cNu",
+            "name": "Set Variables",
+            "title": "Update Last Compromised Timestamp Variable",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Update Last Compromised Timestamp Variable",
+              "skip_execution": false,
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$global.variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b.global.variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b$",
+                  "variable_value_new": "$activity.definition_activity_01YF8MXIGHSER3KcZ47SXolcrHe08qQT5FM.output.variable_workflow_01YF89YFQ3MWJ1VBHBhRHpkSxxJ38Zj3u4V$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01YBMA7H40OUA53mfETFrZty2LSEP1GPa6T",
+        "name": "HTTP Request",
+        "title": "Secure Endpoint - Get Compromised item list",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "allow_headers_redirect": false,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "Secure Endpoint - Get Compromised item list",
+          "method": "GET",
+          "relative_url": "/compromises",
+          "runtime_user": {
+            "override_target_runtime_user": true,
+            "runtime_user_id": "definition_runtime_user_01YBMEWVFH0Q93mDQfgl3f3oc61RqNywZQg"
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01YBMDAVR9SDI12rOOMmjJyTyWEVCvr4pOZ"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01YBRAVFAQNMF3VEIKkVvpGCwdm598q2V7H",
+        "name": "Read Table from JSON",
+        "title": "Create Table of Compromised items",
+        "type": "corejava.read_table_from_json",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Create Table of Compromised items",
+          "input_json": "$activity.definition_activity_01YBMA7H40OUA53mfETFrZty2LSEP1GPa6T.output.response_body$",
+          "jsonpath_query": "$.data[*]",
+          "persist_output": false,
+          "populate_columns": false,
+          "skip_execution": false,
+          "table_columns": [
+            {
+              "column_name": "status",
+              "column_type": "string"
+            },
+            {
+              "column_name": "created_at",
+              "column_type": "string",
+              "zdate_type_format": ""
+            },
+            {
+              "column_name": "computer",
+              "column_type": "string"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01YCK41CEGAG05Dfl4CRSRm9K6bfURIRLpB",
+        "name": "For Each",
+        "title": "For Each Compromised Item",
+        "type": "logic.for_each",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "For Each Compromised Item",
+          "skip_execution": false,
+          "source_array": "$activity.definition_activity_01YBRAVFAQNMF3VEIKkVvpGCwdm598q2V7H.output.read_table_from_json$"
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01YFSOV6M9S5T3uc7RU0DX6EDel1QuAD0hE",
+            "name": "Condition Block",
+            "title": "Check status and timestamp",
+            "type": "logic.if_else",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Check status and timestamp",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "blocks": [
+              {
+                "unique_name": "definition_activity_01YFSOV6S432C6wOWooPxjoepvaUkR6rxDh",
+                "name": "Condition Branch",
+                "title": "if the item is \"in_progress\" status",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01YCK41CEGAG05Dfl4CRSRm9K6bfURIRLpB.input.source_array[@].status$",
+                    "operator": "eq",
+                    "right_operand": "in_progress"
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "if the item is \"in_progress\" status",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01YFSSMY5R9T90EbKpDDKQUUvRU9RKGw9wA",
+                    "name": "Continue",
+                    "title": "Continue to the next item",
+                    "type": "logic.continue",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Continue to the next item",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity"
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_01YFSP4EQ5XWX15fSx3mnuHDNrkFtuANM3X",
+                "name": "Condition Branch",
+                "title": "If item is in \"unresolved\" state",
+                "type": "logic.condition_block",
+                "base_type": "activity",
+                "properties": {
+                  "condition": {
+                    "left_operand": "$activity.definition_activity_01YCK41CEGAG05Dfl4CRSRm9K6bfURIRLpB.input.source_array[@].status$",
+                    "operator": "eq",
+                    "right_operand": "unresolved"
+                  },
+                  "continue_on_failure": false,
+                  "display_name": "If item is in \"unresolved\" state",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "actions": [
+                  {
+                    "unique_name": "definition_activity_01YF7YGF8SJCY6DND2DPNLEnxfbMws3avZs",
+                    "name": "Time - DateTime to Unix Epoch",
+                    "title": "Time - DateTime to Unix Epoch",
+                    "type": "workflow.atomic_workflow",
+                    "base_type": "subworkflow",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Time - DateTime to Unix Epoch",
+                      "input": {
+                        "variable_workflow_01YF7ZSWCQ02P1EkfhCEiCWiV0giTLUGdSp": "$activity.definition_activity_01YCK41CEGAG05Dfl4CRSRm9K6bfURIRLpB.input.source_array[@].created_at$"
+                      },
+                      "runtime_user": {
+                        "target_default": true
+                      },
+                      "skip_execution": false,
+                      "target": {
+                        "no_target": true
+                      },
+                      "workflow_id": "definition_workflow_01JANGI152PWM5WXe1bvW1lHwfhcBNBpd6M",
+                      "workflow_name": "Time - DateTime (string) to Unix Epoch (int)"
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_01YFSTK4MOSZC115klfEsqUlapNzXFbdcId",
+                    "name": "Condition Block",
+                    "title": "Check timestamp of the current Compromised item",
+                    "type": "logic.if_else",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Check timestamp of the current Compromised item",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "blocks": [
+                      {
+                        "unique_name": "definition_activity_01YFSTK4RSA3Q1XDixtQd5dXwClwzfQkD4g",
+                        "name": "Condition Branch",
+                        "title": "If created_at is older then current timestamp",
+                        "type": "logic.condition_block",
+                        "base_type": "activity",
+                        "properties": {
+                          "condition": {
+                            "left_operand": "$activity.definition_activity_01YF7YGF8SJCY6DND2DPNLEnxfbMws3avZs.output.variable_workflow_01YF89YFQ3MWJ1VBHBhRHpkSxxJ38Zj3u4V$",
+                            "operator": "lte",
+                            "right_operand": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YFSYH9H6YKJ3PcSGoiCna38KHkpLpwrG2$"
+                          },
+                          "continue_on_failure": false,
+                          "display_name": "If created_at is older then current timestamp",
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity",
+                        "actions": [
+                          {
+                            "unique_name": "definition_activity_01YFSUSDN1SP26Mm1fxdnPB54YCUSxEHufi",
+                            "name": "Continue",
+                            "title": "Continue to the next item",
+                            "type": "logic.continue",
+                            "base_type": "activity",
+                            "properties": {
+                              "continue_on_failure": false,
+                              "display_name": "Continue to the next item",
+                              "skip_execution": false
+                            },
+                            "object_type": "definition_activity"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01YFXM1Y70A1A27HyqDxysWmdT8FCuyBNU0",
+            "name": "JSONPath Query",
+            "title": "Extract Connector GUID and Hostname",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Connector GUID and Hostname",
+              "input_json": "$activity.definition_activity_01YCK41CEGAG05Dfl4CRSRm9K6bfURIRLpB.input.source_array[@].computer$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$.connector_guid",
+                  "jsonpath_query_name": "connector_guid",
+                  "jsonpath_query_type": "string"
+                },
+                {
+                  "jsonpath_query": "$.hostname",
+                  "jsonpath_query_name": "hostname",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01YFXRNQBY3B54L1PwLA8jqqQmeAYbM9d8T",
+            "name": "HTTP Request",
+            "title": "Secure Endpoint - Get Events",
+            "type": "web-service.http_request",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "allow_auto_redirect": true,
+              "allow_headers_redirect": false,
+              "continue_on_error_status_code": false,
+              "continue_on_failure": false,
+              "display_name": "Secure Endpoint - Get Events",
+              "method": "GET",
+              "relative_url": "/events?connector_guid[]=$activity.definition_activity_01YFXM1Y70A1A27HyqDxysWmdT8FCuyBNU0.output.jsonpath_queries.connector_guid$\u0026start_date=$activity.definition_activity_01YCK41CEGAG05Dfl4CRSRm9K6bfURIRLpB.input.source_array[@].created_at$",
+              "runtime_user": {
+                "override_target_runtime_user": true,
+                "runtime_user_id": "definition_runtime_user_01YBMEWVFH0Q93mDQfgl3f3oc61RqNywZQg"
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01YBMDAVR9SDI12rOOMmjJyTyWEVCvr4pOZ"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01YVX7I2RMW864YAcksnMaZ8DRPAzaXvT2m",
+            "name": "JSONPath Query",
+            "title": "Extract Events",
+            "type": "corejava.jsonpathquery",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Extract Events",
+              "input_json": "$activity.definition_activity_01YFXRNQBY3B54L1PwLA8jqqQmeAYbM9d8T.output.response_body$",
+              "jsonpath_queries": [
+                {
+                  "jsonpath_query": "$..[?(@.severity ==  \"High\" || @.severity == \"Critical\")]",
+                  "jsonpath_query_name": "events",
+                  "jsonpath_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01YFY44QXXM3Z38mNJ3CYTWAzC2hcVYSi2l",
+            "name": "Read Table from JSON",
+            "title": "Create Event Severity table",
+            "type": "corejava.read_table_from_json",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Create Event Severity table",
+              "input_json": "$activity.definition_activity_01YVX7I2RMW864YAcksnMaZ8DRPAzaXvT2m.output.jsonpath_queries.events$",
+              "jsonpath_query": "$.",
+              "persist_output": false,
+              "populate_columns": false,
+              "skip_execution": false,
+              "table_columns": [
+                {
+                  "column_name": "severity",
+                  "column_type": "string"
+                },
+                {
+                  "column_name": "event_type",
+                  "column_type": "string"
+                },
+                {
+                  "column_name": "connector_guid",
+                  "column_type": "string"
+                },
+                {
+                  "column_name": "computer",
+                  "column_type": "string"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X",
+            "name": "For Each",
+            "title": "For Each Event in the table",
+            "type": "logic.for_each",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "For Each Event in the table",
+              "skip_execution": false,
+              "source_array": "$activity.definition_activity_01YFY44QXXM3Z38mNJ3CYTWAzC2hcVYSi2l.output.read_table_from_json$"
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01YFYARMJHO6V2SrqnXh8vDBNS1TRuHTlBn",
+                "name": "Condition Block",
+                "title": "Check Severity",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Check Severity",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_01YFYARMP87TI0hhCVkJWZwEwhpROR1ong3",
+                    "name": "Condition Branch",
+                    "title": "If Severity High or Critical",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": {
+                          "left_operand": "$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].severity$",
+                          "operator": "eq",
+                          "right_operand": "High"
+                        },
+                        "operator": "or",
+                        "right_operand": {
+                          "left_operand": "$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].severity$",
+                          "operator": "eq",
+                          "right_operand": "Critical"
+                        }
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "If Severity High or Critical",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv",
+                        "name": "JSONPath Query",
+                        "title": "Extract Event Information",
+                        "type": "corejava.jsonpathquery",
+                        "base_type": "activity",
+                        "properties": {
+                          "action_timeout": 180,
+                          "continue_on_failure": false,
+                          "display_name": "Extract Event Information",
+                          "input_json": "$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].computer$",
+                          "jsonpath_queries": [
+                            {
+                              "jsonpath_query": "$.hostname",
+                              "jsonpath_query_name": "hostname",
+                              "jsonpath_query_type": "string"
+                            },
+                            {
+                              "jsonpath_query": "$.external_ip",
+                              "jsonpath_query_name": "external_ip",
+                              "jsonpath_query_type": "string"
+                            },
+                            {
+                              "jsonpath_query": "$.network_addresses[0].ip",
+                              "jsonpath_query_name": "internal_ip",
+                              "jsonpath_query_type": "string"
+                            },
+                            {
+                              "jsonpath_query": "$.network_addresses[0].mac",
+                              "jsonpath_query_name": "mac",
+                              "jsonpath_query_type": "string"
+                            }
+                          ],
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01YWVGLQB8VLU5qhDfBS8A9L80MkQRBs61F",
+                        "name": "Set Variables",
+                        "title": "Set Event Info Variables",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Event Info Variables",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWVG73I2TO31rLR2GW5XZ1Zdeg3sKTVgp$",
+                              "variable_value_new": "$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.external_ip$"
+                            },
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWVGDGQQF8E2hd9Eco4pafZffR5tDP2PZ$",
+                              "variable_value_new": "$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.internal_ip$"
+                            },
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWVGICNWHV64aphgDUmpJflbhqhbU3E0g$",
+                              "variable_value_new": "$activity.definition_activity_01YUAJ9VEKQUI2bf39t6yAMtsQFqurKS7lv.output.jsonpath_queries.mac$"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01YWUX2O7FYEL4Z7fvQ8Ci5f5ZHKxaoClEK",
+                        "name": "Execute Python Script",
+                        "title": "Create and Format email_text for the current event",
+                        "type": "python3.script",
+                        "base_type": "activity",
+                        "properties": {
+                          "action_timeout": 180,
+                          "continue_on_failure": false,
+                          "display_name": "Create and Format email_text for the current event",
+                          "script": "import sys\n\nemail_text = sys.argv[1]\nemail_text += \"\"\"\n\u003cp\u003e\u003cstrong\u003e\u003cspan style=\"color: #3366ff;\"\u003eEVENT N. $workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWWQK55ZS762oyVAW6hGVVATwxFDsLzul$\u003c/span\u003e\u003c/strong\u003e\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003eSeverity: \u003cstrong\u003e$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].severity$\u003c/strong\u003e\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003eEvent Type: \u003cstrong\u003e$activity.definition_activity_01YFY96VN9KJY5s2Z3Mw70OZDU2jM434U2X.input.source_array[@].event_type$\u003c/strong\u003e\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003e\u0026nbsp;\u003c/p\u003e\n\"\"\"",
+                          "script_arguments": [
+                            "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWUT3DFCDCF5viM8kI49DlqlYPeg28Tl7$"
+                          ],
+                          "script_queries": [
+                            {
+                              "script_query": "email_text",
+                              "script_query_name": "email_text",
+                              "script_query_type": "string"
+                            }
+                          ],
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01YWUYQQGRAHT0txItNk8R95cYOqHyA9QN5",
+                        "name": "Set Variables",
+                        "title": "Update email_text variable with the new event text",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Update email_text variable with the new event text",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWUT3DFCDCF5viM8kI49DlqlYPeg28Tl7$",
+                              "variable_value_new": "$activity.definition_activity_01YWUX2O7FYEL4Z7fvQ8Ci5f5ZHKxaoClEK.output.script_queries.email_text$"
+                            },
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWWQK55ZS762oyVAW6hGVVATwxFDsLzul$",
+                              "variable_value_new": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWWQK55ZS762oyVAW6hGVVATwxFDsLzul$+1"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01YFYDPO59B411t5nanaSbdOUrXiYtoCB35",
+            "name": "Send Email",
+            "title": "Send Email (notify new Compromised)",
+            "type": "email.smtp_send_email",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "body": "\u003cp\u003ePlease note that a New Compromise with \u003cstrong\u003e\u003cspan style=\"color: #ff0000;\"\u003eHigh\u003c/span\u003e\u003c/strong\u003e and/or \u003cstrong\u003e\u003cspan style=\"color: #993300;\"\u003eCritical\u003c/span\u003e\u003c/strong\u003e events for the \u003cstrong\u003e$activity.definition_activity_01YFXM1Y70A1A27HyqDxysWmdT8FCuyBNU0.output.jsonpath_queries.hostname$\u003c/strong\u003e computer has been detected and created in Inbox.\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003eExternal IP Address: \u003cstrong\u003e$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWVG73I2TO31rLR2GW5XZ1Zdeg3sKTVgp$\u003c/strong\u003e\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003eInternal IP Address: \u003cstrong\u003e$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWVGDGQQF8E2hd9Eco4pafZffR5tDP2PZ$\u003c/strong\u003e\u003c/p\u003e\n\u003cp style=\"padding-left: 30px;\"\u003eMAC Address: \u003cstrong\u003e$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWVGICNWHV64aphgDUmpJflbhqhbU3E0g$\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u0026nbsp;\u003c/p\u003e\n$activity.definition_activity_01YFY44QXXM3Z38mNJ3CYTWAzC2hcVYSi2l.output.row_count$ Events Related:\n$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWUT3DFCDCF5viM8kI49DlqlYPeg28Tl7$\n",
+              "continue_if_one_address_valid": false,
+              "continue_on_failure": false,
+              "display_name": "Send Email (notify new Compromised)",
+              "html": true,
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "subject": "$activity.definition_activity_01YFXM1Y70A1A27HyqDxysWmdT8FCuyBNU0.output.jsonpath_queries.hostname$ - New Compromise with High/Critical events",
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj"
+              },
+              "to": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YTGDE6YBWLX0npiboBa8JhHP2hMsEoCA1$"
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01YWUTDPEUHIW6Mz1l6XM7huSVhhZipLxu3",
+            "name": "Set Variables",
+            "title": "Clear Event Info Variables",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Clear Event Info Variables",
+              "skip_execution": false,
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWUT3DFCDCF5viM8kI49DlqlYPeg28Tl7$",
+                  "variable_value_new": ""
+                },
+                {
+                  "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWVG73I2TO31rLR2GW5XZ1Zdeg3sKTVgp$",
+                  "variable_value_new": ""
+                },
+                {
+                  "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWVGDGQQF8E2hd9Eco4pafZffR5tDP2PZ$",
+                  "variable_value_new": ""
+                },
+                {
+                  "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWVGICNWHV64aphgDUmpJflbhqhbU3E0g$",
+                  "variable_value_new": ""
+                },
+                {
+                  "variable_to_update": "$workflow.definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB.local.variable_workflow_01YWWQK55ZS762oyVAW6hGVVATwxFDsLzul$",
+                  "variable_value_new": 1
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "triggers": {
+    "triggerschedule_01YFYY7N1OWQ92hdinngrzNHNGJmZuOotke": {
+      "workflow_id": "definition_workflow_01YBKA2CIXK8K1iKFodUqGsjbGJDWr3piwB",
+      "name": "Time Interval Check",
+      "title": "",
+      "lowercase_name": "schedule.time_interval_check",
+      "type": "schedule",
+      "base_type": "trigger",
+      "ref_id": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
+      "version": "",
+      "disabled": false,
+      "unique_name": "triggerschedule_01YFYY7N1OWQ92hdinngrzNHNGJmZuOotke",
+      "object_type": "triggerschedule"
+    }
+  },
+  "schedules": {
+    "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM": {
+      "unique_name": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
+      "name": "Every 5 Minute",
+      "type": "basic.schedule",
+      "base_type": "schedule",
+      "properties": {
+        "calendar": "calendar_recurring_1BMfMWvgiDhSjBQ7hTSyvz3NyVZ",
+        "timezone": "Europe/Brussels",
+        "starttime": "00:00",
+        "interval_hours": 0,
+        "interval_minutes": 5,
+        "number_of_times": 288,
+        "display_name": "Every 5 Minute",
+        "description": ""
+      },
+      "version": "1.0.0",
+      "object_type": "schedule"
+    }
+  },
+  "targets": {
+    "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj": {
+      "unique_name": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj",
+      "name": "Phishing Investigation Outgoing",
+      "title": "Phishing Investigation Outgoing",
+      "type": "email.smtp_endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01YFYJS9RRSSG1UJ3F7U203dQC8lZivMT5G",
+        "display_name": "Phishing Investigation Outgoing",
+        "no_runtime_user": false,
+        "port": 587,
+        "protocol": "SMTP",
+        "server": "smtp.gmail.com"
+      }
+    },
+    "definition_target_01YBMDAVR9SDI12rOOMmjJyTyWEVCvr4pOZ": {
+      "unique_name": "definition_target_01YBMDAVR9SDI12rOOMmjJyTyWEVCvr4pOZ",
+      "name": "Secure Endpoint Target",
+      "title": "Secure Endpoint Target",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01YBMEWVFH0Q93mDQfgl3f3oc61RqNywZQg",
+        "disable_certificate_validation": false,
+        "display_name": "Secure Endpoint Target",
+        "host": "api.eu.amp.cisco.com",
+        "ignore_proxy": false,
+        "no_runtime_user": false,
+        "path": "/v1",
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01YBMEWVFH0Q93mDQfgl3f3oc61RqNywZQg": {
+      "unique_name": "definition_runtime_user_01YBMEWVFH0Q93mDQfgl3f3oc61RqNywZQg",
+      "name": "Secure Endpoint Comune di Palermo Credentials",
+      "title": "Secure Endpoint Comune di Palermo Credentials",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "auth_option": "Basic",
+        "basic_password": "*****",
+        "basic_username": "4a3a6d39a72f08ebe023",
+        "display_name": "Secure Endpoint Comune di Palermo Credentials"
+      }
+    },
+    "definition_runtime_user_01YFYJS9RRSSG1UJ3F7U203dQC8lZivMT5G": {
+      "unique_name": "definition_runtime_user_01YFYJS9RRSSG1UJ3F7U203dQC8lZivMT5G",
+      "name": "pfiano@scuolaitalianabarcellona.it",
+      "title": "pfiano@scuolaitalianabarcellona.it",
+      "type": "runtime_user.email_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "pfiano@scuolaitalianabarcellona.it",
+        "password": "*****",
+        "sender": "pfiano@scuolaitalianabarcellona.it"
+      }
+    }
+  },
+  "variables": {
+    "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b": {
+      "unique_name": "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b",
+      "properties": {
+        "value": 1659281701,
+        "scope": "global",
+        "name": "Last Compromised - Time Stamp (Unix epoch)",
+        "type": "datatype.integer",
+        "is_required": false,
+        "is_invisible": false
+      },
+      "object_type": "variable"
+    }
+  },
+  "table_types": {
+    "tabletype_01YFXIBFFARDW1XXEuueXaQCvfyW6WD9wVk": {
+      "unique_name": "tabletype_01YFXIBFFARDW1XXEuueXaQCvfyW6WD9wVk",
+      "data_type": "datatype.tabletype",
+      "display_name": "Compromised Item",
+      "columns": [
+        {
+          "name": "connector_guid",
+          "title": "connector_guid",
+          "type": "string"
+        },
+        {
+          "name": "hostname",
+          "title": "hostname",
+          "type": "string"
+        },
+        {
+          "name": "created_at",
+          "title": "created_at",
+          "type": "string"
+        },
+        {
+          "name": "events",
+          "title": "events",
+          "type": "string"
+        }
+      ],
+      "base_type": "datatype",
+      "object_type": "tabletype"
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_01JANGI152PWM5WXe1bvW1lHwfhcBNBpd6M"
+  ],
+  "dependent_workflows": [
+    "definition_workflow_01JANGI152PWM5WXe1bvW1lHwfhcBNBpd6M"
+  ]
+}

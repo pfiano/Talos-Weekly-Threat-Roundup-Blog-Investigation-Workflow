@@ -7,33 +7,6 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.boolean",
-        "properties": {
-          "value": false,
-          "scope": "local",
-          "name": "High or Critical severity found",
-          "type": "datatype.boolean",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YFYAO0SLMTO2hMwpSLFMXjC1hZe2jwWVY",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "pfiano@cisco.com",
-          "scope": "local",
-          "name": "Notification Email Addresses",
-          "type": "datatype.string",
-          "description": "comma separated if multiple email addresses",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YTGDE6YBWLX0npiboBa8JhHP2hMsEoCA1",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.integer",
         "properties": {
           "value": 0,
@@ -44,6 +17,19 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01YFSYH9H6YKJ3PcSGoiCna38KHkpLpwrG2",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "email_text",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YWUT3DFCDCF5viM8kI49DlqlYPeg28Tl7",
         "object_type": "variable_workflow"
       },
       {
@@ -73,19 +59,6 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "value": 1,
-          "scope": "local",
-          "name": "Event_Number",
-          "type": "datatype.integer",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YWWQK55ZS762oyVAW6hGVVATwxFDsLzul",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
@@ -99,6 +72,46 @@
         "object_type": "variable_workflow"
       },
       {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "pfiano@cisco.com",
+          "scope": "local",
+          "name": "Notification Email Addresses",
+          "type": "datatype.string",
+          "description": "comma separated if multiple email addresses",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YTGDE6YBWLX0npiboBa8JhHP2hMsEoCA1",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 1,
+          "scope": "local",
+          "name": "Event_Number",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YWWQK55ZS762oyVAW6hGVVATwxFDsLzul",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "local",
+          "name": "High or Critical severity found",
+          "type": "datatype.boolean",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YFYAO0SLMTO2hMwpSLFMXjC1hZe2jwWVY",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "tabletype_01YFXIBFFARDW1XXEuueXaQCvfyW6WD9wVk",
         "properties": {
           "scope": "local",
@@ -108,19 +121,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01YFXLJUPO5PZ6qp1GPa6NfWTztUh3vzfJR",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "email_text",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YWUT3DFCDCF5viM8kI49DlqlYPeg28Tl7",
         "object_type": "variable_workflow"
       }
     ],
@@ -556,13 +556,14 @@
           {
             "unique_name": "definition_activity_01YVX7I2RMW864YAcksnMaZ8DRPAzaXvT2m",
             "name": "JSONPath Query",
-            "title": "Extract Events",
+            "title": "Extract High and Critical Severity Events",
             "type": "corejava.jsonpathquery",
             "base_type": "activity",
             "properties": {
               "action_timeout": 180,
               "continue_on_failure": false,
-              "display_name": "Extract Events",
+              "description": "Please change JSONPath Query in case to also include Medium or Low severity events",
+              "display_name": "Extract High and Critical Severity Events",
               "input_json": "$activity.definition_activity_01YFXRNQBY3B54L1PwLA8jqqQmeAYbM9d8T.output.response_body$",
               "jsonpath_queries": [
                 {
@@ -659,6 +660,7 @@
                         }
                       },
                       "continue_on_failure": false,
+                      "description": "Modify Condition if you need to include Compromises with Low or Medium severity events",
                       "display_name": "If Severity High or Critical",
                       "skip_execution": false
                     },
@@ -859,8 +861,8 @@
       "type": "schedule",
       "base_type": "trigger",
       "ref_id": "schedule_01YFYY5O6BYVO0u3FMNiFmHvdauXpydSdwM",
-      "version": "1.0.0",
-      "disabled": false,
+      "version": "",
+      "disabled": true,
       "unique_name": "triggerschedule_01YFYY7N1OWQ92hdinngrzNHNGJmZuOotke",
       "object_type": "triggerschedule"
     }
@@ -888,14 +890,14 @@
   "targets": {
     "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj": {
       "unique_name": "definition_target_01VBUKKZJNIN94TNLgYyA4mJncrkG6iuhhj",
-      "name": "Phishing Investigation Outgoing",
-      "title": "Phishing Investigation Outgoing",
+      "name": "pfiano mailbox SMTP",
+      "title": "pfiano mailbox SMTP",
       "type": "email.smtp_endpoint",
       "base_type": "target",
       "object_type": "definition_target",
       "properties": {
         "default_runtime_user_id": "definition_runtime_user_01YFYJS9RRSSG1UJ3F7U203dQC8lZivMT5G",
-        "display_name": "Phishing Investigation Outgoing",
+        "display_name": "pfiano mailbox SMTP",
         "no_runtime_user": false,
         "port": 587,
         "protocol": "SMTP",
@@ -924,8 +926,8 @@
   "runtime_users": {
     "definition_runtime_user_01YBMEWVFH0Q93mDQfgl3f3oc61RqNywZQg": {
       "unique_name": "definition_runtime_user_01YBMEWVFH0Q93mDQfgl3f3oc61RqNywZQg",
-      "name": "Secure Endpoint Comune di Palermo Credentials",
-      "title": "Secure Endpoint Comune di Palermo Credentials",
+      "name": "Secure Endpoint Beeri API Key",
+      "title": "Secure Endpoint Beeri API Key",
       "type": "runtime_user.web-service_basic_credentials",
       "base_type": "runtime_user",
       "object_type": "definition_runtime_user",
@@ -933,7 +935,7 @@
         "auth_option": "Basic",
         "basic_password": "*****",
         "basic_username": "803fe78c7d76fb0a0a09",
-        "display_name": "Secure Endpoint"
+        "display_name": "Secure Endpoint Beeri API Key"
       }
     },
     "definition_runtime_user_01YFYJS9RRSSG1UJ3F7U203dQC8lZivMT5G": {
@@ -954,7 +956,7 @@
     "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b": {
       "unique_name": "variable_01YF8LCO5SZKJ0xMQlflcrwkNQu9a6C2A8b",
       "properties": {
-        "value": 1659305741,
+        "value": 1659306569,
         "scope": "global",
         "name": "Last Compromised - Time Stamp (Unix epoch)",
         "type": "datatype.integer",
@@ -971,6 +973,11 @@
       "display_name": "Compromised Item",
       "columns": [
         {
+          "name": "connector_guid",
+          "title": "connector_guid",
+          "type": "string"
+        },
+        {
           "name": "hostname",
           "title": "hostname",
           "type": "string"
@@ -983,11 +990,6 @@
         {
           "name": "events",
           "title": "events",
-          "type": "string"
-        },
-        {
-          "name": "connector_guid",
-          "title": "connector_guid",
           "type": "string"
         }
       ],

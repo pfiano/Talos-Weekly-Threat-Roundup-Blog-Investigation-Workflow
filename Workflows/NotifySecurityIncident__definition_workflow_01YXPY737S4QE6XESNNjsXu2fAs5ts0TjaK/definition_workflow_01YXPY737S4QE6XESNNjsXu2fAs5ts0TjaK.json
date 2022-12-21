@@ -11,19 +11,6 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "domain reputations",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_0205WCM30BPN319iQJRIG5bdiMeLhZyAwGp",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
           "name": "Umbrella OrgID",
           "type": "datatype.string",
           "is_required": false,
@@ -37,12 +24,12 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "Amp email text",
+          "name": "domain reputations",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01YYFZA82SZ110pzTztVkZ4aF9PzNgWxHJT",
+        "unique_name": "variable_workflow_0205WCM30BPN319iQJRIG5bdiMeLhZyAwGp",
         "object_type": "variable_workflow"
       },
       {
@@ -61,19 +48,6 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "Umbrella email text",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YYFAYZF69NA2jO5cHtX5h0RZWLfaVAnTV",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
           "value": "Netanelz+beerireports@cybercom.co.il,oron@beeriprint.co.il,pfiano@cisco.com,raziel@beeriprint.co.il",
           "scope": "local",
           "name": "Email Notification",
@@ -82,6 +56,19 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_020BZIBRUUYV75gUcAktqDbOTeEiTCVCm1b",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Amp email text",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YYFZA82SZ110pzTztVkZ4aF9PzNgWxHJT",
         "object_type": "variable_workflow"
       },
       {
@@ -95,6 +82,32 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_0229UFVCW7WC40IDxbUczlZaRFZLRvxxZxp",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "User",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_022AR6TRCIROL7Z4jbm664wAIN1k3K0ZzYn",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Umbrella email text",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YYFAYZF69NA2jO5cHtX5h0RZWLfaVAnTV",
         "object_type": "variable_workflow"
       }
     ],
@@ -338,6 +351,122 @@
                             "object_type": "definition_activity"
                           },
                           {
+                            "unique_name": "definition_activity_022AQL270W8P571rk9N6mnFAzPyNgnxf6RW",
+                            "name": "JSONPath Query",
+                            "title": "Extract Username",
+                            "type": "corejava.jsonpathquery",
+                            "base_type": "activity",
+                            "properties": {
+                              "action_timeout": 180,
+                              "continue_on_failure": true,
+                              "display_name": "Extract Username",
+                              "input_json": "$activity.definition_activity_01YYGBE2LUXZ55dLscK5PDU7ef2IqxFzuHT.output.response_body$",
+                              "jsonpath_queries": [
+                                {
+                                  "jsonpath_query": "$.data.[*].computer.user",
+                                  "jsonpath_query_name": "user",
+                                  "jsonpath_query_type": "string",
+                                  "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+                                }
+                              ],
+                              "skip_execution": false
+                            },
+                            "object_type": "definition_activity"
+                          },
+                          {
+                            "unique_name": "definition_activity_022AR5LP29SEU3Cah73vY9Q563a0PwBh88Q",
+                            "name": "Condition Block",
+                            "title": "Condition Block",
+                            "type": "logic.if_else",
+                            "base_type": "activity",
+                            "properties": {
+                              "continue_on_failure": false,
+                              "display_name": "Condition Block",
+                              "skip_execution": false
+                            },
+                            "object_type": "definition_activity",
+                            "blocks": [
+                              {
+                                "unique_name": "definition_activity_022AR5LPBGOP74mNqQn218shqzPwY4L4IAf",
+                                "name": "Condition Branch",
+                                "title": "Condition Branch",
+                                "type": "logic.condition_block",
+                                "base_type": "activity",
+                                "properties": {
+                                  "condition": {
+                                    "left_operand": "$activity.definition_activity_022AQL270W8P571rk9N6mnFAzPyNgnxf6RW.output.succeeded$",
+                                    "operator": "eq",
+                                    "right_operand": true
+                                  },
+                                  "continue_on_failure": false,
+                                  "display_name": "Condition Branch",
+                                  "skip_execution": false
+                                },
+                                "object_type": "definition_activity",
+                                "actions": [
+                                  {
+                                    "unique_name": "definition_activity_022AR70WB979A6Q29CGPew4GVBP4POpmLnt",
+                                    "name": "Set Variables",
+                                    "title": "Set User variable with extracted username",
+                                    "type": "core.set_multiple_variables",
+                                    "base_type": "activity",
+                                    "properties": {
+                                      "continue_on_failure": false,
+                                      "display_name": "Set User variable with extracted username",
+                                      "skip_execution": false,
+                                      "variables_to_update": [
+                                        {
+                                          "variable_to_update": "$workflow.definition_workflow_01YXPY737S4QE6XESNNjsXu2fAs5ts0TjaK.local.variable_workflow_022AR6TRCIROL7Z4jbm664wAIN1k3K0ZzYn$",
+                                          "variable_value_new": "$activity.definition_activity_022AQL270W8P571rk9N6mnFAzPyNgnxf6RW.output.jsonpath_queries.user$"
+                                        }
+                                      ]
+                                    },
+                                    "object_type": "definition_activity"
+                                  }
+                                ]
+                              },
+                              {
+                                "unique_name": "definition_activity_022AR5LPJ4MY11RzggFW04APYPPYGTATTy9",
+                                "name": "Condition Branch",
+                                "title": "Condition Branch",
+                                "type": "logic.condition_block",
+                                "base_type": "activity",
+                                "properties": {
+                                  "condition": {
+                                    "left_operand": "$activity.definition_activity_022AQL270W8P571rk9N6mnFAzPyNgnxf6RW.output.succeeded$",
+                                    "operator": "eq",
+                                    "right_operand": false
+                                  },
+                                  "continue_on_failure": false,
+                                  "display_name": "Condition Branch",
+                                  "skip_execution": false
+                                },
+                                "object_type": "definition_activity",
+                                "actions": [
+                                  {
+                                    "unique_name": "definition_activity_022AR7S6FNB3A2hmQJtx9nyI9fSOR9CSXla",
+                                    "name": "Set Variables",
+                                    "title": "Set User Variables as Not Applicable",
+                                    "type": "core.set_multiple_variables",
+                                    "base_type": "activity",
+                                    "properties": {
+                                      "continue_on_failure": false,
+                                      "display_name": "Set User Variables as Not Applicable",
+                                      "skip_execution": false,
+                                      "variables_to_update": [
+                                        {
+                                          "variable_to_update": "$workflow.definition_workflow_01YXPY737S4QE6XESNNjsXu2fAs5ts0TjaK.local.variable_workflow_022AR6TRCIROL7Z4jbm664wAIN1k3K0ZzYn$",
+                                          "variable_value_new": "Not Applicable"
+                                        }
+                                      ]
+                                    },
+                                    "object_type": "definition_activity"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
                             "unique_name": "definition_activity_01YYGOHDPG3NQ320MSRySG6414RX9XgzO13",
                             "name": "Execute Python Script",
                             "title": "Parse AMP events",
@@ -347,7 +476,7 @@
                               "action_timeout": 180,
                               "continue_on_failure": false,
                               "display_name": "Parse AMP events",
-                              "script": "import json\nimport sys\nimport traceback\n\ndef html_list( a_list ):\n    print(f\"html_list({json.dumps(a_list)}\")\n    html = \"\"\n    if len(a_list) == 0:\n        html += \"\u0026nbsp;\"\n    else:\n        if len(a_list) != 1:\n            html += \"\u003cul\u003e\"\n        if type(a_list) is list:\n            for item in a_list:\n                if len(a_list) != 1:\n                    html += \"\u003cli\u003e\"\n                html += f\"{item}\"\n                if len(a_list) != 1:\n                    html += \"\u003c/li\u003e\"\n        elif type(a_list) is dict:\n            for label, item in a_list.items():\n                if len(a_list) != 1:\n                    html += \"\u003cli\u003e\"\n                html += f\"{label}: {item}\"\n                if len(a_list) != 1:\n                    html += \"\u003c/li\u003e\"\n        else:\n            raise Exception(\"Unknow type: \" + str(type(a_list)))\n        if len(a_list) != 1:\n            html += \"\u003c/ul\u003e\"\n\n    return html\n\ndef protect_url( url ):\n    url = url.replace(\"/\", \"/\u003cspan class=\\\"hide_me\\\"\u003e\u0026nbsp;\u003c/span\u003e\")\n    url = url.replace(\"\\\\\", \"\\\\\u003cspan class=\\\"hide_me\\\"\u003e\u0026nbsp;\u003c/span\u003e\")\n    url = url.replace(\".\", \".\u003cspan class=\\\"hide_me\\\"\u003e\u0026nbsp;\u003c/span\u003e\")\n    return url\n\nMAX_EVENTS = 10\n\nemail_text = sys.argv[1]\n\nevents = {}\nevents[\"response\"] = sys.argv[2]\nevents[\"status_code\"] = sys.argv[3]\nevents[\"status_text\"] = sys.argv[4]\n\nstatus = sys.argv[5]\ncrated_at = sys.argv[6]\nupdated_at = sys.argv[7]\nconnector_guid = sys.argv[8]\nhostname = sys.argv[9]\n\ntry:\n    if events[\"status_code\"] != \"200\":\n        raise Exception(\"HTML Error!\")\n\n    response = json.loads(events[\"response\"])\n\n    if \"data\" not in response:\n        raise Exception(\"No data!\")\n\n    response = response[\"data\"]\n\n    if len(response) \u003e 0:\n\n        network_addresses = []\n\n        for riga in response:\n            if (\"computer\" in riga) and (\"network_addresses\" in riga[\"computer\"]):\n                for network_address in riga[\"computer\"][\"network_addresses\"]:\n                    if (\"ip\" in network_address) and (network_address[\"ip\"] not in network_addresses):\n                        network_addresses.append(network_address[\"ip\"])\n\n        email_text += f\"\u003ch2\u003e New Incident for the Host {hostname}\u003c/h2\u003e\"\n\n        email_text += \"\u003ctable\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003estatus\u003c/th\u003e\u003ctd\u003e{status}\u003c/td\u003e\u003c/tr\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003ecrated_at\u003c/th\u003e\u003ctd\u003e{crated_at}\u003c/td\u003e\u003c/tr\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003eupdated_at\u003c/th\u003e\u003ctd\u003e{updated_at}\u003c/td\u003e\u003c/tr\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003econnector_guid\u003c/th\u003e\u003ctd\u003e{connector_guid}\u003c/td\u003e\u003c/tr\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003eDevice Trajectory\u003c/th\u003e\u003ctd\u003ehttps://console.eu.amp.cisco.com/computers/{connector_guid}/trajectory2\u003c/tr\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003enetwork_addresses\u003c/th\u003e\u003ctd\u003e{html_list(network_addresses)}\u003c/td\u003e\u003c/tr\u003e\"\n        email_text += \"\u003c/table\u003e\"\n\n        email_text += f\"\u003cp\u003eBelow the latest {MAX_EVENTS} events detected on the Compromised Host:\u003c/p\u003e\"\n\n        email_text += \"\u003ctable\u003e\"\n        email_text += \"\u003ctr\u003e\u003cth\u003edate\u003c/th\u003e\u003cth\u003eevent_type\u003c/th\u003e\u003cth\u003efile\u003c/th\u003e\u003cth\u003eerror\u003c/th\u003e\u003c/tr\u003e\"\n        for riga in response:\n            email_text += \"\u003ctr\u003e\"\n\n            if \"date\" in riga:\n                email_text += f\"\u003ctd\u003e{riga['date']}\u003c/td\u003e\"\n            else:\n                email_text += \"\u003ctd\u003e\u0026nbsp;\u003c/td\u003e\"\n\n            if \"event_type\" in riga:\n                email_text += f\"\u003ctd\u003e{riga['event_type']}\u003c/td\u003e\"\n            else:\n                email_text += \"\u003ctd\u003e\u0026nbsp;\u003c/td\u003e\"\n\n            file_details = {}\n\n            if \"file\" in riga:\n                if \"file_path\" in riga[\"file\"]:\n                    file_details[\"file_path\"] = protect_url(riga[\"file\"][\"file_path\"])\n                if (\"identity\" in riga[\"file\"]) and (\"sha256\" in riga[\"file\"][\"identity\"]):\n                    file_details[\"sha256\"] = riga['file']['identity']['sha256']\n                if len(file_details) == 0:\n                    file_details[\"json\"] = json.dumps(riga['file'])\n\n            email_text += f\"\u003ctd\u003e{html_list(file_details)}\u003c/td\u003e\"\n\n            if \"error\" in riga:\n                if \"description\" in riga['error']:\n                    email_text += f\"\u003ctd\u003e{riga['error']['description']}\u003c/td\u003e\"\n                else:\n                    email_text += f\"\u003ctd\u003e{json.dumps(riga['error'])}\u003c/td\u003e\"\n            else:\n                email_text += \"\u003ctd\u003e\u0026nbsp;\u003c/td\u003e\"\n\n            email_text += \"\u003c/tr\u003e\"\n        email_text += \"\u003c/table\u003e\"\n\nexcept Exception as Err:\n    email_text = \"\u003ch1\u003eAPI AMP ERROR\u003c/h1\u003e\"\n    email_text += f\"\u003cp\u003e{traceback.format_exc()}\u003c/p\u003e\"\n    email_text += \"\u003cp\u003e\"\n\n    for key, value in events.items():\n        email_text += f\"{key}: {json.dumps(value)}\u003cbr\u003e\"\n\n        email_text += \"\u003c/p\u003e\"\n        print( email_text )\n        raise Err",
+                              "script": "import json\nimport sys\nimport traceback\n\ndef html_list( a_list ):\n    print(f\"html_list({json.dumps(a_list)}\")\n    html = \"\"\n    if len(a_list) == 0:\n        html += \"\u0026nbsp;\"\n    else:\n        if len(a_list) != 1:\n            html += \"\u003cul\u003e\"\n        if type(a_list) is list:\n            for item in a_list:\n                if len(a_list) != 1:\n                    html += \"\u003cli\u003e\"\n                html += f\"{item}\"\n                if len(a_list) != 1:\n                    html += \"\u003c/li\u003e\"\n        elif type(a_list) is dict:\n            for label, item in a_list.items():\n                if len(a_list) != 1:\n                    html += \"\u003cli\u003e\"\n                html += f\"{label}: {item}\"\n                if len(a_list) != 1:\n                    html += \"\u003c/li\u003e\"\n        else:\n            raise Exception(\"Unknow type: \" + str(type(a_list)))\n        if len(a_list) != 1:\n            html += \"\u003c/ul\u003e\"\n\n    return html\n\ndef protect_url( url ):\n    url = url.replace(\"/\", \"/\u003cspan class=\\\"hide_me\\\"\u003e\u0026nbsp;\u003c/span\u003e\")\n    url = url.replace(\"\\\\\", \"\\\\\u003cspan class=\\\"hide_me\\\"\u003e\u0026nbsp;\u003c/span\u003e\")\n    url = url.replace(\".\", \".\u003cspan class=\\\"hide_me\\\"\u003e\u0026nbsp;\u003c/span\u003e\")\n    return url\n\nMAX_EVENTS = 10\n\nemail_text = sys.argv[1]\n\nevents = {}\nevents[\"response\"] = sys.argv[2]\nevents[\"status_code\"] = sys.argv[3]\nevents[\"status_text\"] = sys.argv[4]\n\nstatus = sys.argv[5]\ncrated_at = sys.argv[6]\nupdated_at = sys.argv[7]\nconnector_guid = sys.argv[8]\nhostname = sys.argv[9]\n\ntry:\n    if events[\"status_code\"] != \"200\":\n        raise Exception(\"HTML Error!\")\n\n    response = json.loads(events[\"response\"])\n\n    if \"data\" not in response:\n        raise Exception(\"No data!\")\n\n    response = response[\"data\"]\n\n    if len(response) \u003e 0:\n\n        network_addresses = []\n\n        for riga in response:\n            if (\"computer\" in riga) and (\"network_addresses\" in riga[\"computer\"]):\n                for network_address in riga[\"computer\"][\"network_addresses\"]:\n                    if (\"ip\" in network_address) and (network_address[\"ip\"] not in network_addresses):\n                        network_addresses.append(network_address[\"ip\"])\n\n        email_text += f\"\u003ch2\u003e New Incident for the Host {hostname}\u003c/h2\u003e\"\n\n        email_text += \"\u003ctable\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003estatus\u003c/th\u003e\u003ctd\u003e{status}\u003c/td\u003e\u003c/tr\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003ecrated_at\u003c/th\u003e\u003ctd\u003e{crated_at}\u003c/td\u003e\u003c/tr\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003eupdated_at\u003c/th\u003e\u003ctd\u003e{updated_at}\u003c/td\u003e\u003c/tr\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003econnector_guid\u003c/th\u003e\u003ctd\u003e{connector_guid}\u003c/td\u003e\u003c/tr\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003eDevice Trajectory\u003c/th\u003e\u003ctd\u003ehttps://console.eu.amp.cisco.com/computers/{connector_guid}/trajectory2\u003c/tr\u003e\"\n        email_text += f\"\u003ctr\u003e\u003cth\u003enetwork_addresses\u003c/th\u003e\u003ctd\u003e{html_list(network_addresses)}\u003c/td\u003e\u003c/tr\u003e\"\n        email_text += \"\u003c/table\u003e\"\n\n        email_text += f\"\u003cp\u003eBelow the latest {MAX_EVENTS} events detected on the Compromised Host:\u003c/p\u003e\"\n\n        email_text += \"\u003ctable\u003e\"\n        email_text += \"\u003ctr\u003e\u003cth\u003edate\u003c/th\u003e\u003cth\u003euser\u003c/th\u003e\u003cth\u003eevent_type\u003c/th\u003e\u003cth\u003efile\u003c/th\u003e\u003cth\u003eerror\u003c/th\u003e\u003c/tr\u003e\"\n        for riga in response:\n            email_text += \"\u003ctr\u003e\"\n\n            if \"date\" in riga:\n                email_text += f\"\u003ctd\u003e{riga['date']}\u003c/td\u003e\"\n            else:\n                email_text += \"\u003ctd\u003e\u0026nbsp;\u003c/td\u003e\"\n\n            email_text += f\"\u003ctd\u003e{sys.argv[10]}\u003c/td\u003e\"\n\n            if \"event_type\" in riga:\n                email_text += f\"\u003ctd\u003e{riga['event_type']}\u003c/td\u003e\"\n            else:\n                email_text += \"\u003ctd\u003e\u0026nbsp;\u003c/td\u003e\"\n\n            file_details = {}\n\n            if \"file\" in riga:\n                if \"file_path\" in riga[\"file\"]:\n                    file_details[\"file_path\"] = protect_url(riga[\"file\"][\"file_path\"])\n                if (\"identity\" in riga[\"file\"]) and (\"sha256\" in riga[\"file\"][\"identity\"]):\n                    file_details[\"sha256\"] = riga['file']['identity']['sha256']\n                if len(file_details) == 0:\n                    file_details[\"json\"] = json.dumps(riga['file'])\n\n            email_text += f\"\u003ctd\u003e{html_list(file_details)}\u003c/td\u003e\"\n\n            if \"error\" in riga:\n                if \"description\" in riga['error']:\n                    email_text += f\"\u003ctd\u003e{riga['error']['description']}\u003c/td\u003e\"\n                else:\n                    email_text += f\"\u003ctd\u003e{json.dumps(riga['error'])}\u003c/td\u003e\"\n            else:\n                email_text += \"\u003ctd\u003e\u0026nbsp;\u003c/td\u003e\"\n\n            email_text += \"\u003c/tr\u003e\"\n        email_text += \"\u003c/table\u003e\"\n\nexcept Exception as Err:\n    email_text = \"\u003ch1\u003eAPI AMP ERROR\u003c/h1\u003e\"\n    email_text += f\"\u003cp\u003e{traceback.format_exc()}\u003c/p\u003e\"\n    email_text += \"\u003cp\u003e\"\n\n    for key, value in events.items():\n        email_text += f\"{key}: {json.dumps(value)}\u003cbr\u003e\"\n\n        email_text += \"\u003c/p\u003e\"\n        print( email_text )\n        raise Err",
                               "script_arguments": [
                                 "$workflow.definition_workflow_01YXPY737S4QE6XESNNjsXu2fAs5ts0TjaK.local.variable_workflow_01YYFZA82SZ110pzTztVkZ4aF9PzNgWxHJT$",
                                 "$activity.definition_activity_01YYGBE2LUXZ55dLscK5PDU7ef2IqxFzuHT.output.response_body$",
@@ -357,7 +486,8 @@
                                 "$activity.definition_activity_01YYG5Q3PEWNL5tIN503l123oUVMlduNVya.input.source_array[@].created_at$",
                                 "$activity.definition_activity_01YYG5Q3PEWNL5tIN503l123oUVMlduNVya.input.source_array[@].updated_at$",
                                 "$activity.definition_activity_01YYG5Q3PEWNL5tIN503l123oUVMlduNVya.input.source_array[@].connector_guid$",
-                                "$activity.definition_activity_01YYG5Q3PEWNL5tIN503l123oUVMlduNVya.input.source_array[@].hostname$"
+                                "$activity.definition_activity_01YYG5Q3PEWNL5tIN503l123oUVMlduNVya.input.source_array[@].hostname$",
+                                "$workflow.definition_workflow_01YXPY737S4QE6XESNNjsXu2fAs5ts0TjaK.local.variable_workflow_022AR6TRCIROL7Z4jbm664wAIN1k3K0ZzYn$"
                               ],
                               "script_queries": [
                                 {
